@@ -4,7 +4,7 @@
  */
 package Views;
 
-import DomainModels.TaiKhoan;
+import DomainModels.TaiKhoan1;
 import Services.TaiKhoanService;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -128,7 +128,7 @@ private final TaiKhoanService taiKhoanSer=new TaiKhoanService();
             return;
         }
 
-        TaiKhoan tk =taiKhoanSer.getAllTks(username, password);
+        TaiKhoan1 tk =taiKhoanSer.getAllTks(username, password);
         if (tk != null) {
             JOptionPane.showMessageDialog(this, " Đăng nhập thành công");
             new FormMain().setVisible(true);

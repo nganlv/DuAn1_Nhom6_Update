@@ -8,20 +8,16 @@ package DomainModels;
  *
  * @author nguye
  */
-public class TaiKhoan {
-     private String id;
-    private String ma;
-    private String ten;
-    private String matkhau;
+public class ChucVu {
+      private String id, ma, ten;
 
-    public TaiKhoan() {
+    public ChucVu() {
     }
 
-    public TaiKhoan(String id, String ma, String ten, String matkhau) {
+    public ChucVu(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.matkhau = matkhau;
     }
 
     public String getId() {
@@ -47,16 +43,7 @@ public class TaiKhoan {
     public void setTen(String ten) {
         this.ten = ten;
     }
-
-    public String getMatkhau() {
-        return matkhau;
-    }
-
-    public void setMatkhau(String matkhau) {
-        this.matkhau = matkhau;
-    }
-    
-    @Override
+@Override
     public String toString() {
         return ten;
     }
