@@ -94,6 +94,18 @@ public class BanHangJpanel extends javax.swing.JPanel {
         }
         tblHoaDonCho.setModel(model);
     }
+    private void loadTableHdc1() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Nhân viên tạo", "Mã khách hàng", "Tên Khách hàng"});
+        List<QlHoaDonCho> listhdc = iHoaDonChoService.getHd2s(txtMaKh.getText());
+        if (listhdc == null) {
+            JOptionPane.showMessageDialog(this, "Rỗng");
+        }
+        for (QlHoaDonCho hdc : listhdc) {
+            model.addRow(new Object[]{hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getMaKh(), hdc.getTenKh()});
+        }
+        tblHoaDonCho.setModel(model);
+    }
 
     private void loadTableGioHang() {
         DefaultTableModel model = new DefaultTableModel();
@@ -835,10 +847,10 @@ private void loadComboboxHtbh() {
         hd.setHinhThucTT(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
         iHoaDonSer.updateTTs(hd);
         JOptionPane.showMessageDialog(this, "Thanh toán thành công");
-//        QlHoaDon hd1=new QlHoaDon();
-//        hd1.setTienKhachDua(Double.parseDouble(txtTienKhachDua.getText()));
-//        hd1.setDonGia(Double.parseDouble(jlbDonGia.getText()));
-//        iHoaDonSer.updateTKDs(hd1);
+        QlHoaDon hd1=new QlHoaDon();
+        hd1.setTienKhachDua(Double.parseDouble(txtTienKhachDua.getText()));
+        hd1.setDonGia(Double.parseDouble(jlbDonGia.getText()));
+        iHoaDonSer.updateTKDs(hd1);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnHuyHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyHdActionPerformed
@@ -853,6 +865,10 @@ private void loadComboboxHtbh() {
         hd.setHinhThucBh(cboHtbh.getItemAt(cboHtbh.getSelectedIndex()));
         hd.setHinhThucTT(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
         iHoaDonSer.updateTT2s(hd);
+        QlHoaDon hd1=new QlHoaDon();
+        hd1.setTienKhachDua(Double.parseDouble(txtTienKhachDua.getText()));
+        hd1.setDonGia(Double.parseDouble(jlbDonGia.getText()));
+        iHoaDonSer.updateTKDs(hd1);
         JOptionPane.showMessageDialog(this, "Hủy thành công");
     }//GEN-LAST:event_btnHuyHdActionPerformed
 
