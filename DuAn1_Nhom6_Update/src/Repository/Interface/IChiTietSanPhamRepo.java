@@ -16,5 +16,5 @@ public interface IChiTietSanPhamRepo {
     public List<ChiTietSanPham> timSp(String ma);
     public List<ChiTietSanPham> locSpTheoTH(String th);
     public List<ChiTietSanPham> locSpTheoGT(String gt);
-    public List<ChiTietSanPham> locSpTheoTT(Integer tt);
+    public List<ChiTietSanPham> locSpTheoTT(String tt);
 }

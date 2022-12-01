@@ -33,6 +33,19 @@ public class HoaDonChiTietService implements IHoaDonChiTietSer{
         return null;
     }
     @Override
+    public List<QlHoaDonChiTiet> getAllHdct2s(Double tt){
+        try {
+            List<QlHoaDonChiTiet> listHdct=new ArrayList<>();
+            for(HoaDonChiTiet hdct:iHoaDonChiTietRepo.getAllHdct2(tt)){
+                listHdct.add(new QlHoaDonChiTiet(hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(),hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()));
+            }
+            return listHdct;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
     public Integer updateSls(QlHoaDonChiTiet hdct){
         try {
            return iHoaDonChiTietRepo.updateSl(new HoaDonChiTiet(hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(),hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()));

@@ -52,6 +52,38 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
         }
         return null;
     }
+    @Override
+    public List<HoaDonChiTiet> getAllHdct2(Double tt) {
+        try {
+            List<HoaDonChiTiet> listHdct = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select SanPham.Ma, SanPham.Ten, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong, KhuyenMai.GiamGia, (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as ThanhTien from ChiTietSP\n"
+                    + " join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
+                    + " join HoaDonChiTiet on ChiTietSP.Id=HoaDonChiTiet.IdChiTietSP\n"
+                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + " where (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDouble(1, tt);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                hdct.setMaSp(rs.getString("Ma"));
+                hdct.setTenSp(rs.getString("Ten"));
+                hdct.setDonGia(rs.getDouble("DonGia"));
+                hdct.setGiamGia(rs.getDouble("GiamGia"));
+                hdct.setSoLuong(rs.getInt("SoLuong"));
+                hdct.setThanhTien(rs.getDouble("ThanhTien"));
+                listHdct.add(hdct);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listHdct;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer updateSl(HoaDonChiTiet hdct) {

@@ -16,5 +16,5 @@ public interface IChiTietSanPhamService {
     public List<QlChiTietSanPham> timSps(String ma);
     public List<QlChiTietSanPham> locSpTheoTHs(String th);
     public List<QlChiTietSanPham> locSpTheoGTs(String gt);
-    public List<QlChiTietSanPham> locSpTheoTTs(Integer tt);
+    public List<QlChiTietSanPham> locSpTheoTTs(String tt);
 }

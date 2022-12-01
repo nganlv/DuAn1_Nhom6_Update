@@ -13,12 +13,13 @@ import java.math.BigDecimal;
 public class QlChiTietSanPham {
     private String ma, ten, thuongHieu, xuatXu, gioiTinh, kieuMay, theLoai, phuKien, tinhNang, hinhDangMat, chatLieuMat,
             chatLieuDay, mauMat, mauVo, kichThuoc, donGia;
-    private int namBh, soLuong, tinhTrang;
-
+    private int namBh, soLuong;
+    private String tinhTrang;
+    
     public QlChiTietSanPham() {
     }
 
-    public QlChiTietSanPham(String ma, String ten, String thuongHieu, String xuatXu, String gioiTinh, String kieuMay, String theLoai, String phuKien, String tinhNang, String hinhDangMat, String chatLieuMat, String chatLieuDay, String mauMat, String mauVo, String kichThuoc, String donGia, int namBh, int soLuong, int tinhTrang) {
+    public QlChiTietSanPham(String ma, String ten, String thuongHieu, String xuatXu, String gioiTinh, String kieuMay, String theLoai, String phuKien, String tinhNang, String hinhDangMat, String chatLieuMat, String chatLieuDay, String mauMat, String mauVo, String kichThuoc, String donGia, int namBh, int soLuong, String tinhTrang) {
         this.ma = ma;
         this.ten = ten;
         this.thuongHieu = thuongHieu;
@@ -184,19 +185,11 @@ public class QlChiTietSanPham {
         this.soLuong = soLuong;
     }
 
-    public int getTinhTrang() {
+    public String getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(int tinhTrang) {
+    public void setTinhTrang(String tinhTrang) {
         this.tinhTrang = tinhTrang;
-    }
-
-    public String tinhTrange() {
-        if (tinhTrang == 0) {
-            return "Còn kinh doanh";
-        } else {
-            return "Ngừng kinh doanh";
-        }
     }
 }

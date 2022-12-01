@@ -59,7 +59,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
-                ctsp.setTinhTrang(rs.getInt("TinhTrang"));
+                ctsp.setTinhTrang(rs.getString("TinhTrang"));
                 ctsp.setKichThuoc(rs.getString("KichThuoc"));
                 listCtsp.add(ctsp);
             }
@@ -114,7 +114,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
-                ctsp.setTinhTrang(rs.getInt("TinhTrang"));
+                ctsp.setTinhTrang(rs.getString("TinhTrang"));
                 ctsp.setKichThuoc(rs.getString("KichThuoc"));
                 listCtsp.add(ctsp);
             }
@@ -169,7 +169,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
-                ctsp.setTinhTrang(rs.getInt("TinhTrang"));
+                ctsp.setTinhTrang(rs.getString("TinhTrang"));
                 ctsp.setKichThuoc(rs.getString("KichThuoc"));
                 listCtsp.add(ctsp);
             }
@@ -224,7 +224,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
-                ctsp.setTinhTrang(rs.getInt("TinhTrang"));
+                ctsp.setTinhTrang(rs.getString("TinhTrang"));
                 ctsp.setKichThuoc(rs.getString("KichThuoc"));
                 listCtsp.add(ctsp);
             }
@@ -239,7 +239,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
     }
 
     @Override
-    public List<ChiTietSanPham> locSpTheoTT(Integer tt) {
+    public List<ChiTietSanPham> locSpTheoTT(String tt) {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
@@ -258,7 +258,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + " join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id"
                     + " where TinhTrang=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, tt);
+            ps.setString(1, tt);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ChiTietSanPham ctsp = new ChiTietSanPham();
@@ -279,7 +279,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
-                ctsp.setTinhTrang(rs.getInt("TinhTrang"));
+                ctsp.setTinhTrang(rs.getString("TinhTrang"));
                 ctsp.setKichThuoc(rs.getString("KichThuoc"));
                 listCtsp.add(ctsp);
             }
