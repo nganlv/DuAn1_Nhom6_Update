@@ -2,26 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package ViewModels;
 
 /**
  *
  * @author nguye
  */
-public class TaiKhoan {
-     private String id;
-    private String ma;
-    private String ten;
-    private String matkhau;
+public class QuanLyChucVu {
+      private String id, ma, ten;
 
-    public TaiKhoan() {
+    public QuanLyChucVu() {
     }
 
-    public TaiKhoan(String id, String ma, String ten, String matkhau) {
+    public QuanLyChucVu(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.matkhau = matkhau;
     }
 
     public String getId() {
@@ -47,17 +43,5 @@ public class TaiKhoan {
     public void setTen(String ten) {
         this.ten = ten;
     }
-
-    public String getMatkhau() {
-        return matkhau;
-    }
-
-    public void setMatkhau(String matkhau) {
-        this.matkhau = matkhau;
-    }
-    
-    @Override
-    public String toString() {
-        return ten;
-    }
+      
 }

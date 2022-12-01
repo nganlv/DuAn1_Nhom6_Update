@@ -5,34 +5,116 @@
 package Repository;
 
 import DomainModels.TaiKhoan;
+import DomainModels.TaiKhoan;
 import Utilities.DBContext;
+import ViewModels.QuanLyTaiKhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
- * @author levan
+ * @author nguye
  */
 public class TaiKhoanRepo {
-
-    public TaiKhoan getAllTk(String ten, String matKhau) throws SQLException {
-        Connection conn = DBContext.getConnection();
-        String sql = "select Ten, MatKhau from TaiKhoan where Ten=? and MatKhau=?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, ten);
-        ps.setString(2, matKhau);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            TaiKhoan tk = new TaiKhoan();
-            tk.setTen(rs.getString("Ten"));
-            tk.setMatKhau(rs.getString("MatKhau"));
-            return tk;
+    public List<QuanLyTaiKhoan> getAll() {
+        List<QuanLyTaiKhoan> listCV = new ArrayList();
+        String sql = "select Id,Ma,Ten,MatKhau from TaiKhoan";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                listCV.add(new QuanLyTaiKhoan(rs.getString("Id"), rs.getString("Ma"), rs.getString("Ten"), rs.getString("MatKhau")));
+            }
+            return listCV;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        rs.close();
-        ps.close();
-        conn.close();
+
         return null;
+    }
+ public List<TaiKhoan> getView() {
+        List<TaiKhoan> listCV = new ArrayList();
+        String sql = "select Id,Ma,Ten,MatKhau from TaiKhoan";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                listCV.add(new TaiKhoan(rs.getString("Id"), rs.getString("Ma"), rs.getString("Ten"), rs.getString("MatKhau")));
+            }
+            return listCV;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+public TaiKhoan getOne(String maTK) {
+        String sql = """
+                     SELECT Id, Ma, Ten,MatKhau
+                     FROM     TaiKhoan """;
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maTK);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                TaiKhoan cv = new TaiKhoan(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString("4"));
+                return cv;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public Integer addTT(TaiKhoan tk) throws SQLException {
+      String sql = """
+                     INSERT INTO [dbo].[TaiKhoan]
+                                ([Ma]
+                                ,[Ten]
+                                 ,[MatKhau])
+                          VALUES (?,?,?)""";
+
+        try ( Connection conn = DBContext.getConnection();  PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, tk.getMa());
+            ps.setString(2, tk.getTen());
+            ps.setString(3, tk.getMatkhau());
+       
+            return ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+
+    public Integer updateCV(TaiKhoan tk) {
+        String sql = """
+                     UPDATE [dbo].[TaiKhoan]
+                             SET [Ten] = ?
+                           WHERE Ma = ? """;
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(2, tk.getMa());
+            ps.setObject(1, tk.getTen());
+
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+
+    }
+
+    public Integer deleteCV(String maTk) {
+        String sql = """
+                     DELETE FROM [dbo].[TaiKhoan]
+                                 WHERE Ma = ?""";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maTk);
+
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

@@ -4,8 +4,8 @@
  */
 package Services;
 
-import DomainModels.TaiKhoan;
-import Repository.TaiKhoanRepo;
+import DomainModels.TaiKhoan1;
+import Repository.TaiKhoanRepo1;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +14,9 @@ import java.util.List;
  * @author levan
  */
 public class TaiKhoanService {
-    private final TaiKhoanRepo taiKhoanRepo=new TaiKhoanRepo();
+    private final TaiKhoanRepo1 taiKhoanRepo=new TaiKhoanRepo1();
    
-    public TaiKhoan getAllTks(String ten, String matKhau){
+    public TaiKhoan1 getAllTks(String ten, String matKhau){
         try {
             return taiKhoanRepo.getAllTk(ten, matKhau);
         } catch (Exception e) {
