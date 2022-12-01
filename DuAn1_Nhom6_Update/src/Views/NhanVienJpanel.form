@@ -98,14 +98,10 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="cbLoc" min="-2" pref="132" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="btnLoc" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Component id="txtSearch" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="btnTim" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="cbLoc" min="-2" pref="183" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="txtSearch" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btnThem" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnXoa" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -113,7 +109,7 @@
                                       <Component id="jButton4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="755" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="755" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -183,9 +179,7 @@
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cbLoc" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnLoc" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnTim" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="26" max="32767" attributes="0"/>
                           <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
@@ -230,13 +224,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="text" type="java.lang.String" value="NH&#xc2;N VI&#xca;N"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Historic" size="14" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="33" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="NH&#xc2;N VI&#xca;N"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rdDanghiviec">
@@ -333,19 +327,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSearch">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="text" type="java.lang.String" value="EMAIL"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnTim">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="tim"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -358,6 +347,9 @@
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;ChucVu&gt;()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbLocActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;ChucVu&gt;()"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ChucVu&gt;"/>
@@ -367,14 +359,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="TRANG THAI"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnLoc">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="loc"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMa">
         </Component>

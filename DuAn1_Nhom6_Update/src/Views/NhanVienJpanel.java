@@ -255,11 +255,9 @@ public void LoadTable(){
         jButton4 = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnTim = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         cbLoc = new javax.swing.JComboBox<ChucVu>();
         jLabel11 = new javax.swing.JLabel();
-        btnLoc = new javax.swing.JButton();
         txtMa = new javax.swing.JTextField();
         txtTen = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
@@ -275,9 +273,9 @@ public void LoadTable(){
 
         rdDanglam.setText("DANG LAM");
 
+        jLabel1.setText("NHÂN VIÊN");
         jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 3, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel1.setText("NHÂN VIÊN");
 
         rdDanghiviec.setText("DA NGHI VIEC");
 
@@ -336,27 +334,24 @@ public void LoadTable(){
 
         jButton4.setText("LAM MOI");
 
-        jLabel9.setText("EMAIL");
-
-        btnTim.setText("tim");
-        btnTim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimActionPerformed(evt);
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
+
+        jLabel9.setText("EMAIL");
 
         jLabel10.setText("CHUC VU");
 
         cbLoc.setModel(new javax.swing.DefaultComboBoxModel<ChucVu>());
-
-        jLabel11.setText("TRANG THAI");
-
-        btnLoc.setText("loc");
-        btnLoc.addActionListener(new java.awt.event.ActionListener() {
+        cbLoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocActionPerformed(evt);
+                cbLocActionPerformed(evt);
             }
         });
+
+        jLabel11.setText("TRANG THAI");
 
         rdNam.setText("NAM");
 
@@ -422,14 +417,10 @@ public void LoadTable(){
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(btnLoc)
-                                .addGap(76, 76, 76)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(btnTim)
-                                .addGap(72, 72, 72)
+                                .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(144, 144, 144)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnThem)
                                     .addComponent(btnXoa)
@@ -493,9 +484,7 @@ public void LoadTable(){
                         .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLoc)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTim))
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(btnLoad)
                         .addGap(104, 104, 104)))
@@ -550,15 +539,19 @@ public void LoadTable(){
         LoadTable();
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        // TODO add your handling code here:
+        LoadTable();
+    }//GEN-LAST:event_btnLoadActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
         tim();
+    }//GEN-LAST:event_txtSearchKeyReleased
 
-    }//GEN-LAST:event_btnTimActionPerformed
-
-    private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
+    private void cbLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model=new DefaultTableModel();
+             DefaultTableModel model=new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã nhân viên", "Tên",  "Giới tính", "Ngày sinh","SDT", "Địa chỉ",  "Email", "TaiKhoan", "Chức vụ", "Trạng thái"});
         List<QuanLyNhanVien> listQlnv=nvService.getLOCs(String.valueOf(cbLoc.getItemAt(cbLoc.getSelectedIndex())));
         for (QuanLyNhanVien nv : listQlnv) {
@@ -571,20 +564,13 @@ public void LoadTable(){
             model.addRow(new Object[]{nv.getMa(),nv.getTen(),nv.getGioitinh(),formatDate(nv.getNgaysinh()),nv.getSdt(),nv.getDiachi(),nv.getEmail(),nv.getTaikhoan(),nv.getChucvu(),trangThai});
         }
         tblNhanVien.setModel(model);
-    }//GEN-LAST:event_btnLocActionPerformed
-
-    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
-        // TODO add your handling code here:
-        LoadTable();
-    }//GEN-LAST:event_btnLoadActionPerformed
+    }//GEN-LAST:event_cbLocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
-    private javax.swing.JButton btnLoc;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTim;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<ChucVu> cbCV;
     private javax.swing.JComboBox<ChucVu> cbLoc;
