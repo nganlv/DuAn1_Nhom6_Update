@@ -99,7 +99,7 @@ public void LoadTable(){
         try {
             nv.setNgaysinh(new SimpleDateFormat("dd-MM-yyyy").parse(dpTime.getText()));
         } catch (ParseException ex) {
-            Logger.getLogger(NhanVienForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NhanVienJpanel.class.getName()).log(Level.SEVERE, null, ex);
         }
          nv.setSdt(txtSdt.getText().trim());
         nv.setDiachi(txtDiaChi.getText().trim());
