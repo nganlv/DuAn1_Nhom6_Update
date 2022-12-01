@@ -89,7 +89,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
     }
 
     @Override
-    public List<QlChiTietSanPham> locSpTheoTTs(Integer tt) {
+    public List<QlChiTietSanPham> locSpTheoTTs(String tt) {
         try {
             List<QlChiTietSanPham> listSp = new ArrayList<>();
             for (ChiTietSanPham ctsp : iChiTietSanPhamRepo.locSpTheoTT(tt)) {

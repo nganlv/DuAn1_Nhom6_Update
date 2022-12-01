@@ -4,16 +4,17 @@
  */
 package Service.Interface;
 
-import ViewModels.QlHoaDonChiTiet;
+import DomainModels.HoaDon;
+import ViewModels.QlHoaDon;
 import java.util.List;
 
 /**
  *
  * @author levan
  */
-public interface IHoaDonChiTietSer {
-    public List<QlHoaDonChiTiet> getAllHdcts(String ma);
-    public List<QlHoaDonChiTiet> getAllHdct2s(Double tt);
-    public Integer updateSls(QlHoaDonChiTiet hdct);
-    public List<QlHoaDonChiTiet> deletes();
+public interface IHoaDonSer {
+  public  List<QlHoaDon> getAllHds();
+    public Integer updateTTs(QlHoaDon hd);
+    public Integer updateTT2s(QlHoaDon hd);
+    public Integer updateTKDs(QlHoaDon hd);
 }

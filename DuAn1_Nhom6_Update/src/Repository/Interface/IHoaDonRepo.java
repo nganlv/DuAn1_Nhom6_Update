@@ -4,6 +4,7 @@
  */
 package Repository.Interface;
 
+import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
 import java.util.List;
 
@@ -11,9 +12,9 @@ import java.util.List;
  *
  * @author levan
  */
-public interface IHoaDonChiTietRepo {
-    public List<HoaDonChiTiet> getAllHdct(String ma);
-    public List<HoaDonChiTiet> getAllHdct2(Double tt );
-    public Integer updateSl(HoaDonChiTiet hdct);
-    public List<HoaDonChiTiet> delete();
+public interface IHoaDonRepo {
+    public List<HoaDon> getAllHd();
+    public Integer updateTT(HoaDon hd);
+    public Integer updateTT2(HoaDon hd);
+    public Integer updateTKD(HoaDon hd);
 }
