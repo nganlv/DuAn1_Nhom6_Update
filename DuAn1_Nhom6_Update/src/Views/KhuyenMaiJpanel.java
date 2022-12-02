@@ -3,18 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Views;
-
+import Service.Interface.IKhuyenMaiService;
+import ViewModels.QLKhuyenMai;
+import Services.KhuyenMaiService;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author levan
  */
 public class KhuyenMaiJpanel extends javax.swing.JPanel {
-
+private final IKhuyenMaiService ikmService = new KhuyenMaiService();
     /**
      * Creates new form KhuyenMaiJpanel
      */
     public KhuyenMaiJpanel() {
         initComponents();
+         txtngay.getSettings().setAllowKeyboardEditing(false);
+         txtngaykt.getSettings().setAllowKeyboardEditing(false);
+        txtngay.getSettings().setDateRangeLimits(LocalDate.of(1989, Month.JULY, 1), LocalDate.now());
     }
 
     /**
@@ -32,15 +42,19 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
-        datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtngay = new com.github.lgooddatepicker.components.DatePicker();
+        txtngaykt = new com.github.lgooddatepicker.components.DatePicker();
+        txtma = new javax.swing.JTextField();
+        txtten = new javax.swing.JTextField();
+        txtgiamgia = new javax.swing.JTextField();
+        btnthem = new javax.swing.JButton();
+        btnsua = new javax.swing.JButton();
+        btnxoa = new javax.swing.JButton();
+        btnload = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblKhuyenMai = new javax.swing.JTable();
+        tbbang = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -54,6 +68,34 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
         jLabel6.setText("Ngày kết thúc");
 
         jLabel7.setText("Giảm giá");
+
+        btnthem.setText("Thêm");
+        btnthem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthemActionPerformed(evt);
+            }
+        });
+
+        btnsua.setText("Sửa");
+        btnsua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsuaActionPerformed(evt);
+            }
+        });
+
+        btnxoa.setText("Xóa");
+        btnxoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoaActionPerformed(evt);
+            }
+        });
+
+        btnload.setText("Load");
+        btnload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -69,18 +111,28 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)))
+                            .addComponent(txtngay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtma)
+                            .addComponent(txtten)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(datePicker2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3))))
+                            .addComponent(txtngaykt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtgiamgia))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(btnthem)
+                .addGap(114, 114, 114)
+                .addComponent(btnsua)
+                .addGap(123, 123, 123)
+                .addComponent(btnxoa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnload)
+                .addGap(116, 116, 116))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,24 +140,30 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addComponent(txtgiamgia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnthem)
+                    .addComponent(btnsua)
+                    .addComponent(btnxoa)
+                    .addComponent(btnload))
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -113,7 +171,7 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tblKhuyenMai.setModel(new javax.swing.table.DefaultTableModel(
+        tbbang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,7 +182,12 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblKhuyenMai);
+        tbbang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbbangMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbbang);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,11 +236,97 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    public void hienTT() {
+        int index = tbbang.getSelectedRow();
+          txtma.setText((String) tbbang.getValueAt(index, 0));
+        txtten.setText((String) tbbang.getValueAt(index, 1));
+        txtngay.setText((String) tbbang.getValueAt(index, 2));
+        txtngaykt.setText((String) tbbang.getValueAt(index, 3));
+        txtgiamgia.setText((String) tbbang.getValueAt(index, 4));
+        
+    }
+        public boolean check() {
+        if (txtma.getText().isEmpty() || txtten.getText().isEmpty() || txtngay.getText().isEmpty() || txtngaykt.getText().isEmpty() || txtgiamgia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "trống dũ liệu");
+            return false;
+        }
+        return true;
+        
+    }
+            public QLKhuyenMai getText1() {
+        QLKhuyenMai cv = new QLKhuyenMai();
+        cv.setMa(txtma.getText());
+        cv.setTen(txtten.getText());
+        cv.setNgayBD(txtngay.getText());
+        cv.setNgayKT(txtngaykt.getText());
+        cv.setGiagia(txtgiamgia.getText());
+        return cv;
+    }
+       
+    public void them() {
+        if(check()){
+        QLKhuyenMai vc = getText1();
+        ikmService.add(vc);}
+        
+    }
+    public void sua() {
+        if(check()){
+        QLKhuyenMai vc = getText1();
+        ikmService.update(vc);}
+        
+    }
+    public void xoa() {
+        int index= tbbang.getSelectedRow();
+      if(txtma.getText().isEmpty()){
+      
+      JOptionPane.showMessageDialog(this, "Mã trống");
+      
+      }
+      else{
+      String ma = (String) tbbang.getValueAt(index,0);
+      ikmService.delete(ma);
+      
+      }
+        
+    }
+    private void btnloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloadActionPerformed
+loadTable();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnloadActionPerformed
 
+    private void tbbangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbbangMouseClicked
+hienTT();        // TODO add your handling code here:
+    }//GEN-LAST:event_tbbangMouseClicked
+
+    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+them();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnthemActionPerformed
+
+    private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
+        sua();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsuaActionPerformed
+
+    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
+        xoa();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnxoaActionPerformed
+ private void loadTable() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{ "Mã", "Tên","Ngày Bắt Đầu","Ngày Kết Thúc","Giảm Giá"});
+        List<QLKhuyenMai> listSp = ikmService.getAlls();
+        if (listSp == null) {
+            JOptionPane.showMessageDialog(this, "Rỗng");
+            return;
+        }
+        for (QLKhuyenMai sp : listSp) {
+            model.addRow(new Object[]{ sp.getMa(), sp.getTen(),sp.getNgayBD(),sp.getNgayKT(),sp.getGiagia()});
+        }
+        tbbang.setModel(model);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private javax.swing.JButton btnload;
+    private javax.swing.JButton btnsua;
+    private javax.swing.JButton btnthem;
+    private javax.swing.JButton btnxoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -188,9 +337,11 @@ public class KhuyenMaiJpanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTable tblKhuyenMai;
+    private javax.swing.JTable tbbang;
+    private javax.swing.JTextField txtgiamgia;
+    private javax.swing.JTextField txtma;
+    private com.github.lgooddatepicker.components.DatePicker txtngay;
+    private com.github.lgooddatepicker.components.DatePicker txtngaykt;
+    private javax.swing.JTextField txtten;
     // End of variables declaration//GEN-END:variables
 }
