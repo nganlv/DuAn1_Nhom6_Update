@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class KhuyenMaiJpanel extends javax.swing.JPanel {
 private final IKhuyenMaiService ikmService = new KhuyenMaiService();
+DefaultTableModel model= new DefaultTableModel();
     /**
      * Creates new form KhuyenMaiJpanel
      */
@@ -308,18 +309,22 @@ them();        // TODO add your handling code here:
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
         xoa();        // TODO add your handling code here:
     }//GEN-LAST:event_btnxoaActionPerformed
- private void loadTable() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{ "Mã", "Tên","Ngày Bắt Đầu","Ngày Kết Thúc","Giảm Giá"});
-        List<QLKhuyenMai> listSp = ikmService.getAlls();
-        if (listSp == null) {
-            JOptionPane.showMessageDialog(this, "Rỗng");
-            return;
-        }
-        for (QLKhuyenMai sp : listSp) {
-            model.addRow(new Object[]{ sp.getMa(), sp.getTen(),sp.getNgayBD(),sp.getNgayKT(),sp.getGiagia()});
+public void loadTable() {
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên ","Ngày Bắt Đầu","Ngày Kết Thúc","Giảm Giá"});
+        model.setRowCount(0);
+        List<QLKhuyenMai> ds = ikmService.getAlls();
+        for (QLKhuyenMai d : ds) {
+            Object[] row = new Object[]{
+                d.getMa(),
+                d.getTen(),
+                d.getNgayBD(),
+                d.getNgayKT(),
+                d.getGiagia()
+            };
+            model.addRow(row);
         }
         tbbang.setModel(model);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
