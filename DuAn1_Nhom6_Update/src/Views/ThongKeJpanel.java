@@ -3,18 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Views;
-
+import javax.swing.table.DefaultTableModel;
+import Service.Interface.IThongKeSV;
+import ViewModels.QuanLyThongKe;
+import java.util.*;
+import javax.swing.JOptionPane;
+import Services.ThongKeService;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author levan
  */
 public class ThongKeJpanel extends javax.swing.JPanel {
-
+  public final IThongKeSV service = new ThongKeService();
+    DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form ThongKeJpanel
      */
     public ThongKeJpanel() {
         initComponents();
+       thang();
     }
 
     /**
@@ -27,16 +35,135 @@ public class ThongKeJpanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbbang = new javax.swing.JTable();
+        btnthongke = new javax.swing.JButton();
+        btnsend = new javax.swing.JButton();
+        txtseach = new javax.swing.JTextField();
+        btnseach = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cbthang = new javax.swing.JComboBox<>();
+        btnthang = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtnam = new javax.swing.JTextField();
+        btnnam = new javax.swing.JButton();
+
+        tbbang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbbang);
+
+        btnthongke.setText("Thống Kê");
+        btnthongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthongkeActionPerformed(evt);
+            }
+        });
+
+        btnsend.setText("Gửi Báo Cáo");
+        btnsend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsendActionPerformed(evt);
+            }
+        });
+
+        btnseach.setText("Seach");
+        btnseach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnseachActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nhập Mã Sản Phẩm ");
+
+        cbthang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnthang.setText("OK");
+        btnthang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthangActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Thống Kê Theo Tháng");
+
+        jLabel3.setText("Thống Kê Theo Năm");
+
+        btnnam.setText("OK");
+        btnnam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnthongke)
+                .addGap(132, 132, 132)
+                .addComponent(btnsend)
+                .addGap(56, 56, 56))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtseach, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnthang)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(btnseach)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnnam)))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtseach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnseach))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnthang)
+                    .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnnam))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnthongke)
+                    .addComponent(btnsend))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -50,9 +177,153 @@ public class ThongKeJpanel extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+ public List<QuanLyThongKe> layds() {
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
+        model.setRowCount(0);
+        List<QuanLyThongKe> dsnv = service.getAll();
+        for (QuanLyThongKe kh : dsnv) {
+            Object[] row = new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getNgay(),
+                kh.getSoLuong(),
+                kh.getDongia(),
+                kh.getThanhTien(),};
+            model.addRow(row);
+        }
+        tbbang.setModel(model);
+        return dsnv;
+    }
+
+    public List<QuanLyThongKe> tim() {
+        try {
+              if (txtseach.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập mã để tìm");
+            return null;
+
+        } else {
+
+            String ma = txtseach.getText();
+            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
+        model.setRowCount(0);
+        List<QuanLyThongKe> dsnv = service.tim(ma);
+        for (QuanLyThongKe kh : dsnv) {
+            Object[] row = new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getNgay(),
+                kh.getSoLuong(),
+                kh.getDongia(),
+                kh.getThanhTien(),};
+            model.addRow(row);
+        }
+        tbbang.setModel(model);
+        return dsnv;
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"k Thay sp can tim");
+            return null;
+        }
+    }
+    
+    public List<QuanLyThongKe> nam() {
+        try {
+              if (txtnam.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập Năm để Thống kê");
+            return null;
+
+        } else {
+
+            String ma = txtnam.getText();
+            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
+        model.setRowCount(0);
+        List<QuanLyThongKe> dsnv = service.nam(ma);
+        for (QuanLyThongKe kh : dsnv) {
+            Object[] row = new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getNgay(),
+                kh.getSoLuong(),
+                kh.getDongia(),
+                kh.getThanhTien(),};
+            model.addRow(row);
+        }
+        tbbang.setModel(model);
+        return dsnv;
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"k Thay sp can tim");
+            return null;
+        }
+    }
+ public void thang() {
+        String loai[] = {"1", "2", "3","4", "5", "6","7", "8", "9","10", "11", "12"};
+        cbthang.setModel(new DefaultComboBoxModel<>(loai));
+        
+    }
+    public List<QuanLyThongKe> thang1() {
+        try {
+              
+
+         
+
+            String month = cbthang.getSelectedItem().toString();
+            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
+        model.setRowCount(0);
+        List<QuanLyThongKe> dsnv = service.thang(month);
+        for (QuanLyThongKe kh : dsnv) {
+            Object[] row = new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getNgay(),
+                kh.getSoLuong(),
+                kh.getDongia(),
+                kh.getThanhTien(),};
+            model.addRow(row);
+        }
+        tbbang.setModel(model);
+        return dsnv;
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"k Thay sp can tim");
+            return null;
+        }
+    }
+    private void btnthongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthongkeActionPerformed
+layds();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnthongkeActionPerformed
+
+    private void btnsendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsendActionPerformed
+
+    private void btnseachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseachActionPerformed
+tim();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnseachActionPerformed
+
+    private void btnthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthangActionPerformed
+thang1();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnthangActionPerformed
+
+    private void btnnamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnamActionPerformed
+        nam();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnamActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnnam;
+    private javax.swing.JButton btnseach;
+    private javax.swing.JButton btnsend;
+    private javax.swing.JButton btnthang;
+    private javax.swing.JButton btnthongke;
+    private javax.swing.JComboBox<String> cbthang;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbbang;
+    private javax.swing.JTextField txtnam;
+    private javax.swing.JTextField txtseach;
     // End of variables declaration//GEN-END:variables
 }
