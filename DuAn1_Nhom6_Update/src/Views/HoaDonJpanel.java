@@ -11,6 +11,8 @@ import Services.HoaDonService;
 import ViewModels.QlHoaDon;
 import ViewModels.QlHoaDonChiTiet;
 import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,7 +28,7 @@ private final IHoaDonChiTietSer iHoaDonChiTietSer=new HoaDonChiTietService();
     public HoaDonJpanel() {
         initComponents();
         loadTableHd();
-        
+        loadCombobox();
     }
 private void loadTableHd(){
     DefaultTableModel model=new DefaultTableModel();
@@ -48,6 +50,14 @@ private void loadTableHdCt(){
 
         }
     tblHoaDonChiTiet.setModel(model);
+}
+private void loadCombobox(){
+    String[] tinhTrang={"Đã thanh toán","Đã hũy"};
+    String[] hinhThucBH={"Bán trực tiếp","Ship code"};
+    String[] hinhThucTT={"Tiền mặt","Chuyển khoản","Quẹt thẻ"};
+    cboTinhTrang.setModel(new DefaultComboBoxModel<>(tinhTrang));
+    cboHinhThucBh.setModel(new DefaultComboBoxModel<>(hinhThucBH));
+    cboHinhThucTT.setModel(new DefaultComboBoxModel<>(hinhThucTT));
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,13 +127,13 @@ private void loadTableHdCt(){
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(cboTinhTrang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
