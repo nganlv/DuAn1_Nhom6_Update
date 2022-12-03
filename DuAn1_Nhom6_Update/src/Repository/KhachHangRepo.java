@@ -104,28 +104,33 @@ public class KhachHangRepo {
         return -1;
     }
 
-    public ArrayList<KhachHang> getTim() throws Exception {
-        ArrayList<KhachHang> Kh = new ArrayList();
-        Connection con = DBContext.getConnection();
-        String sql = "SELECT Ma, HoTen, GioiTinh, NgaySinh, Sdt, DiaChi, Email, NgayTao, NgayHetHan, Diem FROM KhachHang where Ma = ? ";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
+    public ArrayList<KhachHang> getTim(String ma) throws Exception {
+        
+    ArrayList<KhachHang> kh = new ArrayList<>();
+        
+        
+         Connection con = DBContext.getConnection(); 
+         String sql = "SELECT Ma, HoTen, GioiTinh, NgaySinh, Sdt, DiaChi, Email, NgayTao, NgayHetHan, Diem FROM KhachHang where Ma = ?"; 
+         PreparedStatement ps = con.prepareStatement(sql); 
+            ps.setString(1,ma );
 
-        while (rs.next()) {
-            Kh.add(new KhachHang(
-                    rs.getString("Ma"),
-                    rs.getString("Hoten"),
-                    rs.getString("GioiTinh"),
-                    rs.getString("Sdt"),
-                    rs.getString("DiaChi"),
-                    rs.getString("Email"),
-                    rs.getString("Diem"),
-                    rs.getString("NgaySinh"),
-                    rs.getString("NgayTao"),
-                    rs.getString("NgayHetHan")
-            ));
-        }
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                KhachHang nv = new KhachHang();
+                nv.setMaKH(rs.getString("Ma"));
+                nv.setHoTen(rs.getString("HoTen"));
+                nv.setGioiTinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getString("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiaChi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setNgayTao(rs.getString("NgayTao"));
+                nv.setNgayHetHan(rs.getString("NgayHetHan"));
+                nv.setDiem(rs.getString("Diem"));
+                kh.add(nv);
 
-        return Kh;
+            }
+
+        return kh;
     }
 }

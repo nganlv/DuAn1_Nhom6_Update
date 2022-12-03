@@ -56,10 +56,10 @@ private final KhachHangImpl KHser = new KhachHangImpl();
     }
      public KhachHang getInsert() {
         KhachHang kh = new KhachHang();
-        kh.setMaKH(txtMA.getText().trim());
+        kh.setMaKH(txtMa.getText().trim());
         kh.setHoTen(txtHoTen.getText().trim());
         kh.setGioiTinh(rdoNam.isSelected() ? "Nam" : "Nữ");
-        kh.setSdt(txtSDT.getText().trim());
+        kh.setSdt(txtSdt.getText().trim());
         kh.setDiaChi(txtDiaChi.getText().trim());
         kh.setEmail(txtEmail.getText());
         kh.setDiem(txtDiem.getText());
@@ -76,14 +76,14 @@ private final KhachHangImpl KHser = new KhachHangImpl();
     }
          public void fillText(int index){
         ArrayList<KhachHang> list = KHser.getView();
-        txtMA.setText(list.get(index).getMaKH());
+        txtMa.setText(list.get(index).getMaKH());
         txtHoTen.setText(list.get(index).getHoTen());
         if(list.get(index).getGioiTinh().equals("Nam")){
             rdoNam.setSelected(true);
         }else{
             rdoNu.setSelected(true);
         }
-        txtSDT.setText(list.get(index).getSdt());
+        txtSdt.setText(list.get(index).getSdt());
         txtDiaChi.setText(list.get(index).getDiaChi());
         txtEmail.setText(list.get(index).getEmail());
         txtDiem.setText(list.get(index).getDiem());
@@ -92,6 +92,40 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         txtNgayHetHan.setText(list.get(index).getNgayHetHan());
         
         
+    }
+         public ArrayList <KhachHang> tim() {
+        if (txtTim.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập mã để tìm");
+          return null;
+
+        } else {
+     
+            DefaultTableModel model = new DefaultTableModel();
+            String ma = txtTim.getText();
+            model.setColumnIdentifiers(new String[]{"Mã", "Họ và tên", "Giới tính", "SĐT", "Địa chỉ", "Email", "Điểm", "Ngày sinh", "Ngày tạo", "Ngày hết hạn"});
+            model.setRowCount(0);
+            ArrayList<KhachHang> dsnv = KHser.getTim(ma);
+            for (KhachHang kh : dsnv) {
+
+                Object[] row = new Object[]{
+                    kh.getMaKH(),
+                    kh.getHoTen(),
+                    kh.getGioiTinh(),
+                    kh.getSdt(),
+                    kh.getDiaChi(),
+                    kh.getEmail(),
+                    kh.getDiem(),
+                    kh.getNgaysinh(),
+                    kh.getNgayTao(),
+                    kh.getNgayHetHan()
+                };
+
+                model.addRow(row);
+            }
+            tblKhachHang.setModel(model);
+
+            return dsnv;
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,36 +138,31 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-
         jPanel2 = new javax.swing.JPanel();
-
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-
         txtSdt = new javax.swing.JTextField();
-        dateNgaySinh = new com.github.lgooddatepicker.components.DatePicker();
-        rdoGioiTinh = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdoNam = new javax.swing.JRadioButton();
+        rdoNu = new javax.swing.JRadioButton();
         txtHoTen = new javax.swing.JTextField();
         txtMa = new javax.swing.JTextField();
-
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-
         jLabel11 = new javax.swing.JLabel();
-        dateNgayHH = new com.github.lgooddatepicker.components.DatePicker();
-        dateNgayTao = new com.github.lgooddatepicker.components.DatePicker();
         txtEmail = new javax.swing.JTextField();
         txtDiem = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        txtNgaySinh = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgayHetHan = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgayTao = new com.github.lgooddatepicker.components.DatePicker();
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -159,11 +188,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
         jLabel6.setText("Số điện thoại");
 
-        buttonGroup1.add(rdoGioiTinh);
-        rdoGioiTinh.setText("Nam");
+        buttonGroup1.add(rdoNam);
+        rdoNam.setText("Nam");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
+        buttonGroup1.add(rdoNu);
+        rdoNu.setText("Nữ");
 
         jLabel7.setText("Địa chỉ");
 
@@ -175,14 +204,14 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
         jLabel11.setText("Điểm");
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 51));
         btnThem.setText("Thêm");
+        btnThem.setBackground(new java.awt.Color(255, 255, 51));
 
-        btnSua.setBackground(new java.awt.Color(255, 255, 51));
         btnSua.setText("Sửa");
+        btnSua.setBackground(new java.awt.Color(255, 255, 51));
 
-        btnReset.setBackground(new java.awt.Color(255, 255, 51));
         btnReset.setText("Làm mới");
+        btnReset.setBackground(new java.awt.Color(255, 255, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -202,12 +231,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                         .addComponent(txtMa, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtHoTen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(rdoGioiTinh)
+                        .addComponent(rdoNam)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtSdt)
-                        .addComponent(dateNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
+                        .addComponent(rdoNu))
+                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(146, 146, 146)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -217,11 +245,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtEmail)
-                    .addComponent(dateNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(dateNgayHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(txtDiem)
-                    .addComponent(txtDiaChi))
+                    .addComponent(txtDiaChi)
+                    .addComponent(txtNgayHetHan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNgayTao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -254,21 +282,23 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(rdoGioiTinh)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jLabel9)
-                            .addComponent(dateNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(rdoNam)
+                            .addComponent(rdoNu)
+                            .addComponent(jLabel9)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(btnSua)))
+                        .addComponent(btnSua))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(dateNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
-                            .addComponent(dateNgayHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNgayHetHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -281,11 +311,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Thiết lập thông tin khách hàng");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Thông tin khách hàng");
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -304,6 +334,12 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         jScrollPane1.setViewportView(tblKhachHang);
 
         jLabel13.setText("Tìm kiếm");
+
+        txtTim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKeyReleased(evt);
+            }
+        });
 
         jLabel14.setText("Lọc theo giới tính");
 
@@ -346,14 +382,12 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
-
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -364,14 +398,12 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                             .addComponent(jLabel1)
                             .addComponent(jLabel12))
                         .addGap(0, 0, Short.MAX_VALUE)))
-
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,7 +411,6 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -416,7 +447,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
-        if (KHser.checkMa(txtMA.getText().trim())) {
+        if (KHser.checkMa(txtMa.getText().trim())) {
             JOptionPane.showMessageDialog(this, "Mã tai khoan đã tồn tại");
         } else {
             JOptionPane.showMessageDialog(this, KHser.add(getInsert()));
@@ -428,7 +459,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
 
-        if(!KHser.checkMa(txtMA.getText().trim())){
+        if(!KHser.checkMa(txtMa.getText().trim())){
             JOptionPane.showMessageDialog(this, "Mã tai khoan không tồn tại");
         }else{
             JOptionPane.showMessageDialog(this, KHser.update(getInsert()));
@@ -443,30 +474,30 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         }else{
             int chon = JOptionPane.showConfirmDialog(this, "Bạn chắn chắn muốn xóa", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
             if(chon == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(this, KHser.delete(txtMA.getText().trim()));
+                JOptionPane.showMessageDialog(this, KHser.delete(txtMa.getText().trim()));
                 loadTable();
             }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void txtTimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKeyReleased
+        // TODO add your handling code here:
+        tim();
+    }//GEN-LAST:event_txtTimKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboGioiTinh;
-    private com.github.lgooddatepicker.components.DatePicker dateNgayHH;
-    private com.github.lgooddatepicker.components.DatePicker dateNgaySinh;
-    private com.github.lgooddatepicker.components.DatePicker dateNgayTao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -476,20 +507,21 @@ private final KhachHangImpl KHser = new KhachHangImpl();
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rdoGioiTinh;
+    private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblKhachHang;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDiem;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMa;
+    private com.github.lgooddatepicker.components.DatePicker txtNgayHetHan;
+    private com.github.lgooddatepicker.components.DatePicker txtNgaySinh;
+    private com.github.lgooddatepicker.components.DatePicker txtNgayTao;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTim;
-
     // End of variables declaration//GEN-END:variables
 }
