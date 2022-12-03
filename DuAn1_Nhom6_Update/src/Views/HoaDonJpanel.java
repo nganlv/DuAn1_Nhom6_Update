@@ -20,8 +20,10 @@ import javax.swing.table.DefaultTableModel;
  * @author levan
  */
 public class HoaDonJpanel extends javax.swing.JPanel {
-private final IHoaDonSer iHoaDonSer=new HoaDonService();
-private final IHoaDonChiTietSer iHoaDonChiTietSer=new HoaDonChiTietService();
+
+    private final IHoaDonSer iHoaDonSer = new HoaDonService();
+    private final IHoaDonChiTietSer iHoaDonChiTietSer = new HoaDonChiTietService();
+
     /**
      * Creates new form HoaDonJpanel
      */
@@ -30,35 +32,75 @@ private final IHoaDonChiTietSer iHoaDonChiTietSer=new HoaDonChiTietService();
         loadTableHd();
         loadCombobox();
     }
-private void loadTableHd(){
-    DefaultTableModel model=new DefaultTableModel();
-    model.setColumnIdentifiers(new String[]{"Mã hóa đơn","Ngày tạo","Ngày thanh toán","Mã khách hàng","Tên khách hàng","Tổng tiền","Tiền khách đưa","Tiền thừa","Hình thức bán hàng","Hình thức thanh toán","Trạng thái","Ghi chú"});
-    List<QlHoaDon> listHd=iHoaDonSer.getAllHds();
-    for(QlHoaDon hd: listHd){
-        model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
-                        hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
-                        hd.getTinhTrang(), hd.getGhiChu()});
+
+    private void loadTableHd() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
+        List<QlHoaDon> listHd = iHoaDonSer.getAllHds();
+        for (QlHoaDon hd : listHd) {
+            model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
+                hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
+                hd.getTinhTrang(), hd.getGhiChu()});
+        }
+        tblHoaDon.setModel(model);
     }
-    tblHoaDon.setModel(model);
-}
-private void loadTableHdCt(){
-    DefaultTableModel model = new DefaultTableModel();
+
+    private void loadTableHdCt() {
+        DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Giảm giá", "Số lượng", "Thành tiền"});
         List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdct2s(Double.parseDouble(txtTongTien.getText()));
         for (QlHoaDonChiTiet hdct : listhdct) {
             model.addRow(new Object[]{hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(), hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()});
 
         }
-    tblHoaDonChiTiet.setModel(model);
-}
-private void loadCombobox(){
-    String[] tinhTrang={"Đã thanh toán","Đã hũy"};
-    String[] hinhThucBH={"Bán trực tiếp","Ship code"};
-    String[] hinhThucTT={"Tiền mặt","Chuyển khoản","Quẹt thẻ"};
-    cboTinhTrang.setModel(new DefaultComboBoxModel<>(tinhTrang));
-    cboHinhThucBh.setModel(new DefaultComboBoxModel<>(hinhThucBH));
-    cboHinhThucTT.setModel(new DefaultComboBoxModel<>(hinhThucTT));
-}
+        tblHoaDonChiTiet.setModel(model);
+    }
+
+    private void loadCombobox() {
+        String[] tinhTrang = {"Đã thanh toán", "Đã hủy"};
+        String[] hinhThucBH = {"Bán trực tiếp", "Ship code"};
+        String[] hinhThucTT = {"Tiền mặt", "Chuyển khoản", "Quẹt thẻ"};
+        cboTinhTrang.setModel(new DefaultComboBoxModel<>(tinhTrang));
+        cboHinhThucBh.setModel(new DefaultComboBoxModel<>(hinhThucBH));
+        cboHinhThucTT.setModel(new DefaultComboBoxModel<>(hinhThucTT));
+    }
+
+    private void locHdTheoTT() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
+        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoTTs(cboTinhTrang.getItemAt(cboTinhTrang.getSelectedIndex()));
+        for (QlHoaDon hd : listHd) {
+            model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
+                hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
+                hd.getTinhTrang(), hd.getGhiChu()});
+        }
+        tblHoaDon.setModel(model);
+    }
+
+    private void locHdTheoHTBH() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
+        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoHTBHs(cboHinhThucBh.getItemAt(cboHinhThucBh.getSelectedIndex()));
+        for (QlHoaDon hd : listHd) {
+            model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
+                hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
+                hd.getTinhTrang(), hd.getGhiChu()});
+        }
+        tblHoaDon.setModel(model);
+    }
+
+    private void locHdTheoHHTT() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
+        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoTTs(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
+        for (QlHoaDon hd : listHd) {
+            model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
+                hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
+                hd.getTinhTrang(), hd.getGhiChu()});
+        }
+        tblHoaDon.setModel(model);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,6 +124,7 @@ private void loadCombobox(){
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         cboHinhThucTT = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHoaDonChiTiet = new javax.swing.JTable();
@@ -95,6 +138,12 @@ private void loadCombobox(){
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Tìm kiếm hóa đơn :");
+
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,6 +170,11 @@ private void loadCombobox(){
         jLabel2.setText("Tình trạng ");
 
         cboTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboTinhTrang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTinhTrangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,6 +205,11 @@ private void loadCombobox(){
         jLabel3.setText("Hình thức bán hàng");
 
         cboHinhThucBh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboHinhThucBh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHinhThucBhActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -181,6 +240,11 @@ private void loadCombobox(){
         jLabel4.setText("Hình thức thanh toán");
 
         cboHinhThucTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboHinhThucTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHinhThucTTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -205,6 +269,13 @@ private void loadCombobox(){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Hiển thị");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -217,11 +288,13 @@ private void loadCombobox(){
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(212, 212, 212))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(52, 52, 52)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
         );
@@ -233,10 +306,12 @@ private void loadCombobox(){
                     .addComponent(jLabel1)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -315,12 +390,12 @@ private void loadCombobox(){
                 .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-private void fillHd(int index){
-    List<QlHoaDon> listHd=iHoaDonSer.getAllHds();
-    txtTongTien.setText(String.valueOf(listHd.get(index).getTongTien()));
-}
+private void fillHd(int index) {
+        List<QlHoaDon> listHd = iHoaDonSer.getAllHds();
+        txtTongTien.setText(String.valueOf(listHd.get(index).getTongTien()));
+    }
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        int index=tblHoaDon.getSelectedRow();
+        int index = tblHoaDon.getSelectedRow();
         fillHd(index);
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
@@ -328,12 +403,41 @@ private void fillHd(int index){
         loadTableHdCt();
     }//GEN-LAST:event_btnLoadActionPerformed
 
+    private void cboTinhTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTinhTrangActionPerformed
+        locHdTheoTT();
+    }//GEN-LAST:event_cboTinhTrangActionPerformed
+
+    private void cboHinhThucBhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHinhThucBhActionPerformed
+        locHdTheoHTBH();
+    }//GEN-LAST:event_cboHinhThucBhActionPerformed
+
+    private void cboHinhThucTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHinhThucTTActionPerformed
+        locHdTheoHHTT();
+    }//GEN-LAST:event_cboHinhThucTTActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadTableHd();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
+        List<QlHoaDon> listHd = iHoaDonSer.timHds(txtTimKiem.getText());
+        for (QlHoaDon hd : listHd) {
+            model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
+                hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
+                hd.getTinhTrang(), hd.getGhiChu()});
+        }
+        tblHoaDon.setModel(model);
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
     private javax.swing.JComboBox<String> cboHinhThucBh;
     private javax.swing.JComboBox<String> cboHinhThucTT;
     private javax.swing.JComboBox<String> cboTinhTrang;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

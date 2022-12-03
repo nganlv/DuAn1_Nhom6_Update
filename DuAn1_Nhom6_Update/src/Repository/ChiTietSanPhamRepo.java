@@ -245,7 +245,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, "
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, "
                     + " GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, "
                     + " HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, "
                     + " MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia, NamBH, SoLuongTon, TinhTrang from ChiTietSP\n"
@@ -355,7 +355,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, "
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, "
                     + " GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, "
                     + " HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, "
                     + " MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia, NamBH, SoLuongTon, TinhTrang from ChiTietSP\n"

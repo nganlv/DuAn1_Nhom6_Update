@@ -55,7 +55,7 @@ public class HoaDonChoRepo implements IHoaDonChoRepo {
         try {
             List<HoaDonCho> listHd = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select top(1) HoaDon.Ma as MaHD, GETDATE() as NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
+            String sql = "select  HoaDon.Ma as MaHD, GETDATE() as NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
                     + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
                     + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
                     + " where KhachHang.Ma=?";
