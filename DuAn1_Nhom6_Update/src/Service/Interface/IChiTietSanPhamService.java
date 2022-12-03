@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.ChiTietSanPham;
 import ViewModels.QlChiTietSanPham;
 import java.util.List;
 
@@ -13,8 +14,9 @@ import java.util.List;
  */
 public interface IChiTietSanPhamService {
     public List<QlChiTietSanPham> getAllCtsps();
-    public List<QlChiTietSanPham> timSps(String ma);
+    public List<ChiTietSanPham> timSps(String ma);
     public List<QlChiTietSanPham> locSpTheoTHs(String th);
     public List<QlChiTietSanPham> locSpTheoGTs(String gt);
     public List<QlChiTietSanPham> locSpTheoTTs(String tt);
+    public List<QlChiTietSanPham> add(QlChiTietSanPham sp);
 }
