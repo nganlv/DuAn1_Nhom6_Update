@@ -6,6 +6,7 @@ package Repository;
 
 import Repository.Interface.IChiTietSanPhamRepo;
 import DomainModels.ChiTietSanPham;
+import DomainModels.NhanVien;
 import Utilities.DBContext;
 import ViewModels.QlChiTietSanPham;
 import java.util.List;
@@ -464,6 +465,74 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
     @Override
     public List<ChiTietSanPham> timSp(String ma) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String updates(QlChiTietSanPham sp) {
+ String sql = """
+        update ChiTietSP  
+                   set  IdSp= ?
+                    ,IdThuongHieu = ?
+                    ,IdXuatxu = ?
+                      ,IdTheLoai= ?
+                         ,IdChatLieuDay = ?
+                           ,IdMauMatSo = ?
+                          ,IdMauVo = ?
+                           ,IdPhuKien = ?
+                         ,IdTinhNang= ?
+                      ,HinhDangMatSo= ?
+                     ,ChatLieuMatKinh= ?
+                    ,GioiTinh = ?
+                    ,KieuMay = ?
+                      ,NamBH = ?
+                         ,KichThuoc = ?
+                        ,SoLuongTon = ?
+                           ,DonGia = ?
+                         ,TinhTrang = ?
+              where ChiTietSP.Ma = ?""";
+     try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setObject(19, sp.getMa());
+            ps.setObject(1, sp.getTen());
+            ps.setObject(2, sp.getThuongHieu());
+            ps.setObject(3, sp.getXuatXu());
+            ps.setObject(4, sp.getTheLoai());
+            ps.setObject(5, sp.getChatLieuDay());
+            ps.setObject(6, sp.getMauMat());
+            ps.setObject(7, sp.getMauVo());
+            ps.setObject(8, sp.getPhuKien());
+            ps.setObject(9, sp.getTinhNang());
+            ps.setObject(10, sp.getHinhDangMat());
+            ps.setObject(11, sp.getChatLieuMat());
+            ps.setObject(12, sp.getGioiTinh());
+            ps.setObject(13, sp.getKieuMay());
+            ps.setInt(14, sp.getNamBh());
+            ps.setObject(15, sp.getKichThuoc());
+            ps.setInt(16, sp.getSoLuong());
+            ps.setObject(17, sp.getDonGia());
+            ps.setObject(18, sp.getTinhTrang());
+          ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String delete(String maNV) {
+         try {
+            Connection conn = DBContext.getConnection();
+            String sql = "delete from ChiTietSP where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, maNV);
+           ps.executeUpdate();
+            ps.close();
+            conn.close();
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
 }
