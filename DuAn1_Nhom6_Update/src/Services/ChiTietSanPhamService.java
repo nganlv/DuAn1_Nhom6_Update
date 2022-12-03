@@ -9,8 +9,11 @@ import DomainModels.ChiTietSanPham;
 import Repository.ChiTietSanPhamRepo;
 import Repository.Interface.IChiTietSanPhamRepo;
 import ViewModels.QlChiTietSanPham;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +27,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
     public List<QlChiTietSanPham> getAllCtsps() {
         try {
             List<QlChiTietSanPham> listCtsp = new ArrayList<>();
-            for (ChiTietSanPham ctsp : iChiTietSanPhamRepo.getAllCtsp()) {
+            for (QlChiTietSanPham ctsp : iChiTietSanPhamRepo.getAllCtsps()) {
                 listCtsp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
@@ -38,11 +41,11 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
     }
 
     @Override
-    public List<QlChiTietSanPham> timSps(String ma) {
+    public List<ChiTietSanPham> timSps(String ma) {
         try {
-            List<QlChiTietSanPham> timSp = new ArrayList<>();
-            for (ChiTietSanPham ctsp : iChiTietSanPhamRepo.timSp(ma)) {
-                timSp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
+            List<ChiTietSanPham> timSp = new ArrayList<>();
+            for (QlChiTietSanPham ctsp : iChiTietSanPhamRepo.timSps(ma)) {
+                timSp.add(new ChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
                         ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
@@ -104,4 +107,10 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
         }
         return null;
     }
+
+    @Override
+    public List<QlChiTietSanPham> add(QlChiTietSanPham sp) {
+        return iChiTietSanPhamRepo.addsp(sp);
+    }
+    
 }

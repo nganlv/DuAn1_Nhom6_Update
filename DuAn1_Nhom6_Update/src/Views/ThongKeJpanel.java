@@ -356,7 +356,7 @@ layds();        // TODO add your handling code here:
     }//GEN-LAST:event_btnseachActionPerformed
 
     private void btnthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthangActionPerformed
-thang();        // TODO add your handling code here:
+thang1();        // TODO add your handling code here:
     }//GEN-LAST:event_btnthangActionPerformed
  public List<QuanLyThongKe> layds() {
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});

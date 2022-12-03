@@ -4,6 +4,7 @@
  */
 package Views;
 
+import DomainModels.ChiTietSanPham;
 import Service.Interface.IChatLieuDaySer;
 import Services.ChiTietSanPhamService;
 import Service.Interface.IChiTietSanPhamService;
@@ -77,24 +78,78 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         loadTableCtsp();
     }
 
-    private void loadTableCtsp() {
+    //    private void loadTableCtsp() {
+//        DefaultTableModel model = new DefaultTableModel();
+//         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Thương hiệu", "Xuất xứ","Thể loại","Chất liệu dây","Màu mặt số","Màu vỏ",   "Phụ kiện", "Tính năng", "Hình dạng mặt", "Chất liệu mặt", "Giới tính", "Kiểu máy",  "Năm bảo hành",  "Kích thước","Số lượng tồn", "Đơn giá",  "Tình trạng"});
+//        List<QlChiTietSanPham> listCtsp = iChiTietSanPhamService.getAllCtsps();
+//        if (listCtsp == null) {
+//            JOptionPane.showMessageDialog(this, "Rỗng");
+//            return;
+//        }
+//        for (QlChiTietSanPham ctsp : listCtsp) {
+//            model.addRow(new Object[]{ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(), ctsp.getTheLoai(), ctsp.getChatLieuDay(), ctsp.getMauMat(), ctsp.getMauVo(),
+//                        ctsp.getPhuKien(), ctsp.getTinhNang(), ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getGioiTinh(), ctsp.getKieuMay(),
+//                        ctsp.getNamBh(), ctsp.getKichThuoc(), ctsp.getSoLuong(), ctsp.getDonGia(), ctsp.getTinhTrang()});
+//        }
+//        tblChiTietSp.setModel(model);
+//    }
+ private void loadTableCtsp() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Thương hiệu", "Xuất xứ", "Giới tính", "Kiểu máy", "Thể loại", "Phụ kiện", "Tính năng", "Hình dạng mặt", "Chất liệu mặt", "Chất liệu dây", "Màu mặt số", "Màu vỏ", "Kích thước", "Đơn giá", "Năm bảo hành", "Số lượng tồn", "Tình trạng"});
-        List<QlChiTietSanPham> listCtsp = iChiTietSanPhamService.getAllCtsps();
-        if (listCtsp == null) {
-            JOptionPane.showMessageDialog(this, "Rỗng");
-            return;
-        }
-        for (QlChiTietSanPham ctsp : listCtsp) {
+       List<QlChiTietSanPham> listCtsp = iChiTietSanPhamService.getAllCtsps();
+       if (listCtsp == null) {
+          JOptionPane.showMessageDialog(this, "Rỗng");
+          return;
+       }
+       for (QlChiTietSanPham ctsp : listCtsp) {
             model.addRow(new Object[]{ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                 ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
-                ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
+               ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
                 ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()});
         }
-        tblChiTietSp.setModel(model);
-    }
-    
+       tblChiTietSp.setModel(model);
+   }    
 
+    public QlChiTietSanPham getData(){
+    QlChiTietSanPham sp=new QlChiTietSanPham();
+    sp.setMa(txtMa.getText().trim());
+    sp.setKieuMay(txtKieuMay.getText().trim());
+    sp.setHinhDangMat(txtHinhDangMat.getText().trim());
+    sp.setChatLieuMat(txtChatLieuMat.getText().trim());
+    sp.setKichThuoc(txtKichThuoc.getText().trim());
+    sp.setDonGia(txtDonGia.getText().trim());
+    sp.setSoLuong(Integer.parseInt(txtSoLuongTon.getText().trim()));
+    QlSanPham sp1=(QlSanPham) cboTen.getSelectedItem();
+    QlThuongHieu th=(QlThuongHieu)cboThuongHieu.getSelectedItem();
+    QlXuatXu xx=(QlXuatXu) cboXuatXu.getSelectedItem();
+    QlTheLoai tl=(QlTheLoai) cboTheLoai.getSelectedItem();
+    QlPhuKien pk=(QlPhuKien) cboPhuKien.getSelectedItem();
+    QlTinhNang tn=(QlTinhNang)  cboTinhNang.getSelectedItem();
+    QlChatLieuDay cld=(QlChatLieuDay) cboChatLieuDay.getSelectedItem();
+    QlMauMatSo mms=(QlMauMatSo) cboMauMatSo.getSelectedItem();
+    QlMauVo mv=(QlMauVo) cboMauVo.getSelectedItem();
+    sp.setTen(sp1.getId());
+    sp.setThuongHieu(th.getId());
+    sp.setXuatXu(xx.getId());
+    sp.setTheLoai(tl.getId());
+    sp.setPhuKien(pk.getId());
+    sp.setTinhNang(tn.getId());
+    sp.setChatLieuDay(cld.getId());
+    sp.setMauMat(mms.getId());
+    sp.setMauVo(mv.getId());
+       
+        if(rdoGioiTinh.isSelected()){
+            sp.setGioiTinh("Nam");
+        }else{
+            sp.setGioiTinh("Nữ");
+        }
+    if(rdoTinhTrang.isSelected()){
+        sp.setTinhTrang("Còn kinh doanh");
+    }else{
+    sp.setTinhTrang("Ngừng kinh doanh");
+    }
+    return sp;
+}
     private void loadCombobox() {
         
         String[] gioiTinh = {"Nam", "Nữ"};
@@ -105,11 +160,9 @@ public class SanPhamJpanel extends javax.swing.JPanel {
 
     private void loadCbSp() {
         List<QlSanPham> listSp = iSanPhamSer.getAllSps();
-        if (listSp == null) {
-            JOptionPane.showMessageDialog(this, "Rỗng");
-        }
+        
         for (QlSanPham sp : listSp) {
-            cboTen.addItem(sp.getTen());
+            cboTen.addItem(sp);
         }
     }
 
@@ -119,7 +172,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlThuongHieu th : listTh) {
-            cboThuongHieu.addItem(th.getTen());
+            cboThuongHieu.addItem(th);
             cboThuongHieu2.addItem(th.getTen());
         }
 
@@ -131,7 +184,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlXuatXu xx : listXx) {
-            cboXuatXu.addItem(xx.getTen());
+            cboXuatXu.addItem(xx);
         }
     }
 
@@ -141,7 +194,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlTheLoai tl : listTl) {
-            cboTheLoai.addItem(tl.getTen());
+            cboTheLoai.addItem(tl);
         }
     }
 
@@ -151,7 +204,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlChatLieuDay cld : listCld) {
-            cboChatLieuDay.addItem(cld.getTen());
+            cboChatLieuDay.addItem(cld);
         }
     }
 
@@ -161,7 +214,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlMauMatSo mms : listMms) {
-            cboMauMatSo.addItem(mms.getTen());
+            cboMauMatSo.addItem(mms);
         }
     }
 
@@ -171,7 +224,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlMauVo mv : listMv) {
-            cboMauVo.addItem(mv.getTen());
+            cboMauVo.addItem(mv);
         }
     }
 
@@ -181,7 +234,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlPhuKien pk : listPk) {
-            cboPhuKien.addItem(pk.getTen());
+            cboPhuKien.addItem(pk);
         }
     }
 
@@ -191,10 +244,9 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
         for (QlTinhNang tn : listTn) {
-            cboTinhNang.addItem(tn.getTen());
+            cboTinhNang.addItem(tn);
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -451,6 +503,11 @@ public class SanPhamJpanel extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(255, 255, 102));
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setBackground(new java.awt.Color(255, 255, 102));
         btnSua.setText("Sửa");
@@ -505,7 +562,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
                     .addComponent(btnReset))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLoad)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         btnTh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -746,7 +803,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
                             .addComponent(cboMauVo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTloai)
                             .addComponent(btnMv)))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
@@ -864,12 +921,12 @@ private void fillCtsp(int index){
     private void txtTimSpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimSpKeyReleased
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Thương hiệu", "Xuất xứ", "Giới tính", "Kiểu máy", "Thể loại", "Phụ kiện", "Tính năng", "Hình dạng mặt", "Chất liệu mặt", "Chất liệu dây", "Màu mặt số", "Màu vỏ", "Kích thước", "Đơn giá", "Năm bảo hành", "Số lượng tồn", "Tình trạng"});
-        List<QlChiTietSanPham> listCtsp = iChiTietSanPhamService.timSps(txtTimSp.getText());
+        List<ChiTietSanPham> listCtsp = iChiTietSanPhamService.timSps(txtTimSp.getText());
         if (listCtsp == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
             return;
         }
-        for (QlChiTietSanPham ctsp : listCtsp) {
+        for (ChiTietSanPham ctsp : listCtsp) {
             model.addRow(new Object[]{ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                 ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                 ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
@@ -888,6 +945,13 @@ private void fillCtsp(int index){
         txtNamBh.setText(null);
         txtSoLuongTon.setText(null);
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+         iChiTietSanPhamService.add(getData());
+        loadTableCtsp();
+                   
+    }//GEN-LAST:event_btnThemActionPerformed
     private void locSpTheoTH() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Thương hiệu", "Xuất xứ", "Giới tính", "Kiểu máy", "Thể loại", "Phụ kiện", "Tính năng", "Hình dạng mặt", "Chất liệu mặt", "Chất liệu dây", "Màu mặt số", "Màu vỏ", "Kích thước", "Đơn giá", "Năm bảo hành", "Số lượng tồn", "Tình trạng"});
@@ -956,18 +1020,18 @@ private void fillCtsp(int index){
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JComboBox<String> cboChatLieuDay;
+    private javax.swing.JComboBox<QlChatLieuDay> cboChatLieuDay;
     private javax.swing.JComboBox<String> cboGioiTinh;
-    private javax.swing.JComboBox<String> cboMauMatSo;
-    private javax.swing.JComboBox<String> cboMauVo;
-    private javax.swing.JComboBox<String> cboPhuKien;
-    private javax.swing.JComboBox<String> cboTen;
-    private javax.swing.JComboBox<String> cboTheLoai;
-    private javax.swing.JComboBox<String> cboThuongHieu;
+    private javax.swing.JComboBox<QlMauMatSo> cboMauMatSo;
+    private javax.swing.JComboBox<QlMauVo> cboMauVo;
+    private javax.swing.JComboBox<QlPhuKien> cboPhuKien;
+    private javax.swing.JComboBox<QlSanPham> cboTen;
+    private javax.swing.JComboBox<QlTheLoai> cboTheLoai;
+    private javax.swing.JComboBox<QlThuongHieu> cboThuongHieu;
     private javax.swing.JComboBox<String> cboThuongHieu2;
-    private javax.swing.JComboBox<String> cboTinhNang;
+    private javax.swing.JComboBox<QlTinhNang> cboTinhNang;
     private javax.swing.JComboBox<String> cboTinhTrang;
-    private javax.swing.JComboBox<String> cboXuatXu;
+    private javax.swing.JComboBox<QlXuatXu> cboXuatXu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
