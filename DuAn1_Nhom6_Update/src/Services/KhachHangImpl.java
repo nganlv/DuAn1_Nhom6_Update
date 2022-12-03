@@ -102,5 +102,19 @@ public class KhachHangImpl implements KhachHangSer {
         }
         return null;
         }
+    @Override
+    public ArrayList<KhachHang> getLOCs(String gt) {
+        try {
+            ArrayList<KhachHang> listk =new ArrayList();
+            for (KhachHang k : KHR.getloc(gt)) {
+                listk.add(new KhachHang(k.getMaKH(),k.getHoTen(),k.getGioiTinh(),k.getNgaysinh(),k.getSdt(),k.getDiaChi(),k.getEmail(),k.getNgayTao(),k.getNgayHetHan(),k.getDiem()));
+                
+            }
+            return listk;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

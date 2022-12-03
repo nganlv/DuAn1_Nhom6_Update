@@ -24,5 +24,7 @@ public interface KhachHangSer {
 
     String update(KhachHang Kh);
      ArrayList<KhachHang> getTim(String ma);
+           ArrayList<KhachHang> getLOCs(String gt);
+
     
 }

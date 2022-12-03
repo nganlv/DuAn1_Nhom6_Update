@@ -133,4 +133,39 @@ public class KhachHangRepo {
 
         return kh;
     }
+     public ArrayList<KhachHang> getloc(String gt) {
+        ArrayList<KhachHang> listKh = new ArrayList<>();
+        String sql = "SELECT Ma, HoTen, GioiTinh, NgaySinh, Sdt, DiaChi, Email, NgayTao, NgayHetHan,Diem FROM     KhachHang where GioiTinh = ? ";
+                                          
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, gt);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                KhachHang nv = new KhachHang();
+                nv.setMaKH(rs.getString("Ma"));
+                nv.setHoTen(rs.getString("HoTen"));
+                nv.setGioiTinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getString("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiaChi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setNgayTao(rs.getString("NgayTao"));
+                nv.setNgayHetHan(rs.getString("NgayHetHan"));
+                nv.setDiem(rs.getString("Diem"));
+                listKh.add(nv);
+
+            }
+            rs.close();
+            ps.close();
+            con.close();
+            return listKh;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

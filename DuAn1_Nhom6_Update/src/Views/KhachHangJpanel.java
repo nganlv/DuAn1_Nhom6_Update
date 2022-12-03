@@ -6,7 +6,9 @@ package Views;
 
 import Services.KhachHangImpl;
 import ViewModels.KhachHang;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +23,14 @@ private final KhachHangImpl KHser = new KhachHangImpl();
      */
     public KhachHangJpanel() {
         initComponents();
+        loadTable();
+        loadComboBox();
+         txtNgaySinh.getSettings().setAllowKeyboardEditing(false);
+         txtNgayTao.getSettings().setAllowKeyboardEditing(false);
+         txtNgayHetHan.getSettings().setAllowKeyboardEditing(false);
+         txtNgaySinh.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayTao.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayHetHan.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
     }
     public void loadTable() {
         ArrayList<KhachHang> listKh = KHser.getView();
@@ -127,6 +137,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
             return dsnv;
         }
     }
+         public void loadComboBox(){
+             String[] gt = {"All","Nam","Nữ"};
+             cboGioiTinh.setModel(new DefaultComboBoxModel<>(gt));
+             
+         }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -344,6 +359,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         jLabel14.setText("Lọc theo giới tính");
 
         cboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboGioiTinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboGioiTinhActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -484,6 +504,20 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         // TODO add your handling code here:
         tim();
     }//GEN-LAST:event_txtTimKeyReleased
+
+    private void cboGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboGioiTinhActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model =new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã nhân viên", "Họ và tên",  "Giới tính", "Ngày sinh","SDT", "Địa chỉ",  "Email", "Ngày tạo", "ngày hết hạn", "Điểm"});
+     
+        ArrayList<KhachHang> listQlnv=KHser.getLOCs(String.valueOf(cboGioiTinh.getItemAt(cboGioiTinh.getSelectedIndex())));
+         
+        for (KhachHang nv : listQlnv) {
+          
+            model.addRow(new Object[]{nv.getMaKH(),nv.getHoTen(),nv.getGioiTinh(),nv.getNgaysinh(),nv.getSdt(),nv.getDiaChi(),nv.getEmail(),nv.getNgayTao(),nv.getNgayHetHan(),nv.getDiem()});
+        }
+        tblKhachHang.setModel(model);
+    }//GEN-LAST:event_cboGioiTinhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
