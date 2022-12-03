@@ -25,7 +25,7 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  SanPham.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+            String sql = "select  ChiTietSP.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
                     + " join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
                     + " join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + " join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
@@ -64,12 +64,12 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  SanPham.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+            String sql = "select  ChiTietSP.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
                     + " join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
                     + " join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + " join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
                     + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
-                    + " where SanPham.Ma=?";              
+                    + " where ChiTietSP.Ma=?";              
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();

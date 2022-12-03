@@ -14,6 +14,10 @@ import java.util.List;
  */
 public interface IHoaDonRepo {
     public List<HoaDon> getAllHd();
+    public List<HoaDon> timHd(String ma);
+    public List<HoaDon> locHdTheoTT(String tt);
+    public List<HoaDon> locHdTheoHTBH(String htbh);
+    public List<HoaDon> locHdTheoHTTT(String httt);
     public Integer updateTT(HoaDon hd);
     public Integer updateTT2(HoaDon hd);
     public Integer updateTKD(HoaDon hd);
