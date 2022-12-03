@@ -5,6 +5,7 @@
 package Repository.Interface;
 
 import DomainModels.ChiTietSanPham;
+import DomainModels.NhanVien;
 import ViewModels.QlChiTietSanPham;
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface IChiTietSanPhamRepo {
     public List<ChiTietSanPham> locSpTheoGT(String gt);
     public List<ChiTietSanPham> locSpTheoTT(String tt);
      public List<QlChiTietSanPham> addsp(QlChiTietSanPham sp);
+      public String updates(QlChiTietSanPham sp);
+      String delete(String masp);
 }

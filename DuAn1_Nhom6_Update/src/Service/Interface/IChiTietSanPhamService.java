@@ -5,6 +5,7 @@
 package Service.Interface;
 
 import DomainModels.ChiTietSanPham;
+import DomainModels.NhanVien;
 import ViewModels.QlChiTietSanPham;
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface IChiTietSanPhamService {
     public List<QlChiTietSanPham> locSpTheoGTs(String gt);
     public List<QlChiTietSanPham> locSpTheoTTs(String tt);
     public List<QlChiTietSanPham> add(QlChiTietSanPham sp);
+     public String update(QlChiTietSanPham sp);
+         public String deleteThs(String maNV);
 }
