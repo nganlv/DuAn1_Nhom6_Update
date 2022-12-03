@@ -5,6 +5,7 @@
 package Views;
 
 import DomainModels.HoaDon;
+import Service.Interface.IChiTietSanPhamService;
 import Service.Interface.IHoaDonChiTietSer;
 import Services.HoaDonChoService;
 import Service.Interface.IHoaDonChoService;
@@ -15,6 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Service.Interface.ISanPham_BanHangService;
+import Services.ChiTietSanPhamService;
 import Services.HoaDonChiTietService;
 import Services.HoaDonService;
 import ViewModels.QlHoaDon;
@@ -33,6 +35,7 @@ import javax.swing.DefaultComboBoxModel;
 public class BanHangJpanel extends javax.swing.JPanel {
 
     private final ISanPham_BanHangService iSanPhamService = new SanPham_BanHangService();
+    private final IChiTietSanPhamService iChiTietSanPhamService=new ChiTietSanPhamService();
     private final IHoaDonChoService iHoaDonChoService = new HoaDonChoService();
     private final IHoaDonChiTietSer iHoaDonChiTietSer = new HoaDonChiTietService();
     private final IHoaDonSer iHoaDonSer=new HoaDonService();
@@ -110,7 +113,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
     private void loadTableGioHang() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Giảm giá", "Số lượng", "Thành tiền"});
-        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtMaSp.getText());
+        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtTim.getText());
         for (QlHoaDonChiTiet hdct : listhdct) {
             model.addRow(new Object[]{hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(), hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()});
 
@@ -152,7 +155,7 @@ private void loadComboboxHtbh() {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
-        txtMaSp = new javax.swing.JTextField();
+        txtTim = new javax.swing.JTextField();
         btnAllSp = new javax.swing.JButton();
         btnThemSp = new javax.swing.JButton();
         txtDonGia = new javax.swing.JTextField();
@@ -314,21 +317,21 @@ private void loadComboboxHtbh() {
         });
         jScrollPane3.setViewportView(tblSanPham);
 
-        txtMaSp.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        txtTim.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtMaSpInputMethodTextChanged(evt);
+                txtTimInputMethodTextChanged(evt);
             }
         });
-        txtMaSp.addActionListener(new java.awt.event.ActionListener() {
+        txtTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaSpActionPerformed(evt);
+                txtTimActionPerformed(evt);
             }
         });
-        txtMaSp.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtTim.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMaSpKeyReleased(evt);
+                txtTimKeyReleased(evt);
             }
         });
 
@@ -363,7 +366,7 @@ private void loadComboboxHtbh() {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtMaSp, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
                                 .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(80, 80, 80)
@@ -377,7 +380,7 @@ private void loadComboboxHtbh() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAllSp)
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
@@ -726,7 +729,7 @@ private void loadComboboxHtbh() {
         txtMaKh.setText(listhdc.get(index).getMaKh());
     }
     private void btnThemSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSpActionPerformed
-        if(txtMaSp.getText().trim().isEmpty()){
+        if(txtTim.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Chưa chọn sản phẩm");
             return;
         }
@@ -750,20 +753,20 @@ private void loadComboboxHtbh() {
     }//GEN-LAST:event_btnAllSpActionPerformed
     private void fillSp(int index) {
         List<QLSanPham_BanHang> listSp = iSanPhamService.getAllSps();
-        txtMaSp.setText(listSp.get(index).getMa());
+        txtTim.setText(listSp.get(index).getTen());
         txtDonGia.setText(String.valueOf(listSp.get(index).getDonGia()));
 
     }
 
     private void fillHd(int index) {
-        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtMaSp.getText());      
+        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtTim.getText());      
         jlbDonGia.setText(String.valueOf(listhdct.get(index).getDonGia()));
         jlbGiamGia.setText(String.valueOf(listhdct.get(index).getGiamGia()));
         jlbThanhTien.setText(String.valueOf(listhdct.get(index).getThanhTien()));
         
     }
     private  void tienThua(int index){
-        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtMaSp.getText());   
+        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdcts(txtTim.getText());   
         double tienKhachDua=Double.parseDouble(txtTienKhachDua.getText());
         jlbTienThua.setText(String.valueOf(tienKhachDua-listhdct.get(index).getThanhTien()));
     }
@@ -808,18 +811,18 @@ private void loadComboboxHtbh() {
         loadTableHdc2();
     }//GEN-LAST:event_btnTaoHdActionPerformed
 
-    private void txtMaSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSpActionPerformed
+    private void txtTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimActionPerformed
         
-    }//GEN-LAST:event_txtMaSpActionPerformed
+    }//GEN-LAST:event_txtTimActionPerformed
 
-    private void txtMaSpInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtMaSpInputMethodTextChanged
+    private void txtTimInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtTimInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaSpInputMethodTextChanged
+    }//GEN-LAST:event_txtTimInputMethodTextChanged
 
-    private void txtMaSpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaSpKeyReleased
+    private void txtTimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKeyReleased
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Đơn giá", "Giảm giá", "Hình dạng mặt số", "Chất liệu mặt kính", "Kích thước", "Màu vỏ", "Thể loại", "Giới tính", "Kiểu máy", "Số lượng tồn"});
-        List<QLSanPham_BanHang> listSp = iSanPhamService.timSpTheoMas(txtMaSp.getText());
+        List<QLSanPham_BanHang> listSp = iSanPhamService.timSpTheoMas(txtTim.getText());
         if (listSp == null) {
             JOptionPane.showMessageDialog(this, "Sản phẩm không tồn tại");
         }
@@ -828,7 +831,7 @@ private void loadComboboxHtbh() {
                 sp.getChatLieuMat(), sp.getKichThuoc(), sp.getMauVo(), sp.getTheLoai(), sp.getGioiTinh(), sp.getKieuMay(), sp.getSoLuong()});
         }
         tblSanPham.setModel(model);
-    }//GEN-LAST:event_txtMaSpKeyReleased
+    }//GEN-LAST:event_txtTimKeyReleased
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
         
@@ -924,9 +927,9 @@ private void loadComboboxHtbh() {
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtGhiChu;
     private javax.swing.JTextField txtMaKh;
-    private javax.swing.JTextField txtMaSp;
     private javax.swing.JTextField txtTenKh;
     private javax.swing.JTextField txtTienKhachDua;
+    private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 
    
