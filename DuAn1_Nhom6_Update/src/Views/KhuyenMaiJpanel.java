@@ -58,6 +58,9 @@ DefaultTableModel model = new DefaultTableModel();
         tbbang = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Mã");
@@ -71,6 +74,7 @@ DefaultTableModel model = new DefaultTableModel();
         jLabel7.setText("Giảm giá");
 
         btnthem.setText("Thêm");
+        btnthem.setBackground(new java.awt.Color(255, 255, 51));
         btnthem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnthemActionPerformed(evt);
@@ -78,6 +82,7 @@ DefaultTableModel model = new DefaultTableModel();
         });
 
         btnsua.setText("Sửa");
+        btnsua.setBackground(new java.awt.Color(255, 255, 51));
         btnsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsuaActionPerformed(evt);
@@ -85,6 +90,7 @@ DefaultTableModel model = new DefaultTableModel();
         });
 
         btnxoa.setText("Xóa");
+        btnxoa.setBackground(new java.awt.Color(255, 255, 51));
         btnxoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnxoaActionPerformed(evt);
@@ -92,6 +98,7 @@ DefaultTableModel model = new DefaultTableModel();
         });
 
         btnload.setText("Load");
+        btnload.setBackground(new java.awt.Color(255, 255, 51));
         btnload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloadActionPerformed(evt);
@@ -167,9 +174,10 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Chương trình khuyến mãi");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         tbbang.setModel(new javax.swing.table.DefaultTableModel(
@@ -203,12 +211,12 @@ DefaultTableModel model = new DefaultTableModel();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Danh sách khuyến mãi");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -237,14 +245,19 @@ DefaultTableModel model = new DefaultTableModel();
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    public void hienTT() {
-        int index = tbbang.getSelectedRow();
-          txtma.setText((String) tbbang.getValueAt(index, 0));
-        txtten.setText((String) tbbang.getValueAt(index, 1));
-        txtngay.setText((String) tbbang.getValueAt(index, 2));
-        txtngaykt.setText((String) tbbang.getValueAt(index, 3));
-        txtgiamgia.setText((String) tbbang.getValueAt(index, 4));
-        
+    public void hienTT(int index) {
+       
+        List<QLKhuyenMai> ds = ikmService.getAlls();
+//          txtma.setText((String) tbbang.getValueAt(index, 0));
+//        txtten.setText((String) tbbang.getValueAt(index, 1));
+//        txtngay.setText((String) tbbang.getValueAt(index, 2));
+//        txtngaykt.setText((String) tbbang.getValueAt(index, 3));
+//        txtgiamgia.setText((String) tbbang.getValueAt(index, 4));
+        txtma.setText(ds.get(index).getMa());
+        txtten.setText(ds.get(index).getTen());
+        txtngay.setText(ds.get(index).getNgayBD());
+        txtngaykt.setText(ds.get(index).getNgayKT());
+        txtgiamgia.setText(ds.get(index).getGiagia());
     }
         public boolean check() {
         if (txtma.getText().isEmpty() || txtten.getText().isEmpty() || txtngay.getText().isEmpty() || txtngaykt.getText().isEmpty() || txtgiamgia.getText().isEmpty()) {
@@ -295,19 +308,23 @@ loadTable();        // TODO add your handling code here:
     }//GEN-LAST:event_btnloadActionPerformed
 
     private void tbbangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbbangMouseClicked
-hienTT();        // TODO add your handling code here:
+int index=tbbang.getSelectedRow();
+        hienTT(index);
     }//GEN-LAST:event_tbbangMouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-them();        // TODO add your handling code here:
+them();     
+loadTable();// TODO add your handling code here:
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        sua();        // TODO add your handling code here:
+        sua();   
+        loadTable();// TODO add your handling code here:
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
-        xoa();        // TODO add your handling code here:
+        xoa();     
+        loadTable();// TODO add your handling code here:
     }//GEN-LAST:event_btnxoaActionPerformed
 
      public void loadTable() {

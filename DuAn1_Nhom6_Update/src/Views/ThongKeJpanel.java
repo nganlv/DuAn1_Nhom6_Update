@@ -55,12 +55,15 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         cbthang = new javax.swing.JComboBox<>();
         btnseach = new javax.swing.JButton();
-        btnthang = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtnam = new javax.swing.JTextField();
-        btnnam = new javax.swing.JButton();
         btnthongke = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -94,6 +97,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -127,6 +131,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -160,6 +165,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -192,6 +198,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 204));
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         tbbang.setModel(new javax.swing.table.DefaultTableModel(
@@ -212,6 +219,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jLabel10.setText("Lọc Tháng");
 
         cbthang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbthang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbthangActionPerformed(evt);
+            }
+        });
 
         btnseach.setText("Seach");
         btnseach.addActionListener(new java.awt.event.ActionListener() {
@@ -220,19 +232,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
             }
         });
 
-        btnthang.setText("OK");
-        btnthang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthangActionPerformed(evt);
-            }
-        });
-
         jLabel11.setText("Lọc Năm");
 
-        btnnam.setText("OK");
-        btnnam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnamActionPerformed(evt);
+        txtnam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnamKeyReleased(evt);
             }
         });
 
@@ -254,15 +258,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
                         .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnthang)
-                        .addGap(18, 18, 18)
+                        .addGap(79, 79, 79)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnnam)
-                        .addGap(0, 16, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -275,10 +275,8 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                     .addComponent(jLabel10)
                     .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnseach)
-                    .addComponent(btnthang)
                     .addComponent(jLabel11)
-                    .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnnam))
+                    .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addContainerGap())
@@ -297,7 +295,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -316,6 +314,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btnthongke.setBackground(new java.awt.Color(255, 255, 51));
         btnthongke.setText("Thống Kê");
         btnthongke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,10 +342,6 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnnamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnamActionPerformed
-        nam();      // TODO add your handling code here:
-    }//GEN-LAST:event_btnnamActionPerformed
-
     private void btnthongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthongkeActionPerformed
 layds();        // TODO add your handling code here:
     }//GEN-LAST:event_btnthongkeActionPerformed
@@ -355,9 +350,13 @@ layds();        // TODO add your handling code here:
         tim();   // TODO add your handling code here:
     }//GEN-LAST:event_btnseachActionPerformed
 
-    private void btnthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthangActionPerformed
-thang1();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnthangActionPerformed
+    private void cbthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbthangActionPerformed
+        thang1();  
+    }//GEN-LAST:event_cbthangActionPerformed
+
+    private void txtnamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnamKeyReleased
+        nam();
+    }//GEN-LAST:event_txtnamKeyReleased
  public List<QuanLyThongKe> layds() {
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
         model.setRowCount(0);
@@ -472,9 +471,7 @@ thang1();        // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnnam;
     private javax.swing.JButton btnseach;
-    private javax.swing.JButton btnthang;
     private javax.swing.JButton btnthongke;
     private javax.swing.JComboBox<String> cbthang;
     private javax.swing.JLabel jLabel1;
