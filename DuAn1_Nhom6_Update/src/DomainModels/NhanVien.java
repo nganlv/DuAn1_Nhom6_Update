@@ -21,12 +21,12 @@ public class NhanVien {
    private String email;
    private String idtk;
    private String idcv;
-   private int trangthai;
+   private String trangthai;
 
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String idtk, String idcv, int trangthai) {
+    public NhanVien(String id, String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String idtk, String idcv, String trangthai) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -120,12 +120,13 @@ public class NhanVien {
         this.idcv = idcv;
     }
 
-    public int getTrangthai() {
+    public String getTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(int trangthai) {
+    public void setTrangthai(String trangthai) {
         this.trangthai = trangthai;
     }
-   
+
+    
 }

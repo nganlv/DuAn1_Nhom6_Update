@@ -127,6 +127,34 @@ public class INhanVien implements QLNhanVien{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public List<QuanLyNhanVien> getLOCGTs(String GT) {
+ try {
+            List<QuanLyNhanVien> listNV=new ArrayList();
+            for (QuanLyNhanVien qlnv : nvRepo.getlocGT(GT)) {
+                listNV.add(new QuanLyNhanVien(qlnv.getMa(),qlnv.getTen(),qlnv.getGioitinh(),qlnv.getNgaysinh(),qlnv.getSdt(),qlnv.getDiachi(),qlnv.getEmail(),qlnv.getTaikhoan(),qlnv.getChucvu(),qlnv.getTrangthai()));
+                
+            }
+            return listNV;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    }
+
+    @Override
+    public List<QuanLyNhanVien> getLOCTT(String TT) {
+try {
+            List<QuanLyNhanVien> listNV=new ArrayList();
+            for (QuanLyNhanVien qlnv : nvRepo.getlocTT(TT)) {
+                listNV.add(new QuanLyNhanVien(qlnv.getMa(),qlnv.getTen(),qlnv.getGioitinh(),qlnv.getNgaysinh(),qlnv.getSdt(),qlnv.getDiachi(),qlnv.getEmail(),qlnv.getTaikhoan(),qlnv.getChucvu(),qlnv.getTrangthai()));
+                
+            }
+            return listNV;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    }    
+
 
 
 }
