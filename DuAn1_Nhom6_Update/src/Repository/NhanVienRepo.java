@@ -32,7 +32,7 @@ public class NhanVienRepo {
             while (rs.next()) {
                 listNV.add(new QuanLyNhanVien(rs.getString("Ma"), rs.getString("HoTen"),
                         rs.getString("GioiTinh"), rs.getDate("NgaySinh"), rs.getString("Sdt"), rs.getString("DiaChi"),
-                        rs.getString("Email"), rs.getString("TaiKhoan"), rs.getString("ChucVu"), rs.getInt("TrangThai")));
+                        rs.getString("Email"), rs.getString("TaiKhoan"), rs.getString("ChucVu"), rs.getString("TrangThai")));
             }
 
             return listNV;
@@ -69,7 +69,7 @@ public class NhanVienRepo {
             ps.setString(7, nv.getEmail());
             ps.setString(8, nv.getIdtk());
             ps.setString(9, nv.getIdcv());
-            ps.setInt(10, nv.getTrangthai());
+            ps.setString(10, nv.getTrangthai());
             return ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -152,7 +152,7 @@ public class NhanVienRepo {
                 nv.setEmail(rs.getString("Email"));
                 nv.setIdtk(rs.getString("TaiKhoan"));
                 nv.setIdcv(rs.getString("ChucVu"));
-                nv.setTrangthai(rs.getInt("TrangThai"));
+                nv.setTrangthai(rs.getString("TrangThai"));
                 listTNV.add(nv);
 
             }
@@ -190,7 +190,7 @@ public class NhanVienRepo {
                 nv.setEmail(rs.getString("Email"));
                 nv.setTaikhoan(rs.getString("TaiKhoan"));
                 nv.setChucvu(rs.getString("ChucVu"));
-                nv.setTrangthai(rs.getInt("TrangThai"));
+                nv.setTrangthai(rs.getString("TrangThai"));
                 listTNV.add(nv);
 
             }
@@ -225,11 +225,89 @@ public class NhanVienRepo {
                 tnv.setEmail(rs.getString("Email"));
                 tnv.setIdtk(rs.getString("TaiKhoan"));
                 tnv.setIdcv(rs.getString("ChucVu"));
-                tnv.setTrangthai(rs.getInt("TrangThai"));
+                tnv.setTrangthai(rs.getString("TrangThai"));
                 listTNV.add(tnv);
 
             }
 
+            return listTNV;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public List<QuanLyNhanVien> getlocGT(String GT) {
+        List<QuanLyNhanVien> listTNV = new ArrayList<>();
+        String sql = """
+                     
+                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id \n
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id \n
+                                          where GioiTinh = ?  """;
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, GT);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                QuanLyNhanVien nv = new QuanLyNhanVien();
+                nv.setMa(rs.getString("Ma"));
+                nv.setTen(rs.getString("HoTen"));
+                nv.setGioitinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getDate("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiachi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setTaikhoan(rs.getString("TaiKhoan"));
+                nv.setChucvu(rs.getString("ChucVu"));
+                nv.setTrangthai(rs.getString("TrangThai"));
+                listTNV.add(nv);
+
+            }
+            rs.close();
+            ps.close();
+            con.close();
+            return listTNV;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public List<QuanLyNhanVien> getlocTT(String TT) {
+        List<QuanLyNhanVien> listTNV = new ArrayList<>();
+        String sql = """
+                     
+                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id \n
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id \n
+                                          where TrangThai = ?  """;
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, TT);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                QuanLyNhanVien nv = new QuanLyNhanVien();
+                nv.setMa(rs.getString("Ma"));
+                nv.setTen(rs.getString("HoTen"));
+                nv.setGioitinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getDate("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiachi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setTaikhoan(rs.getString("TaiKhoan"));
+                nv.setChucvu(rs.getString("ChucVu"));
+                nv.setTrangthai(rs.getString("TrangThai"));
+                listTNV.add(nv);
+
+            }
+            rs.close();
+            ps.close();
+            con.close();
             return listTNV;
 
         } catch (Exception e) {

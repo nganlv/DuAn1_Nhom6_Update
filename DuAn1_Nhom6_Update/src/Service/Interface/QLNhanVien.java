@@ -23,6 +23,8 @@ public interface QLNhanVien {
 
 //       List<QuanLyNhanVien> getTimTens(String ten);
        List<QuanLyNhanVien> getLOCs(String cv);
+       List<QuanLyNhanVien> getLOCGTs(String GT);
+       List<QuanLyNhanVien> getLOCTT(String TT);
 
 
        List<QuanLyNhanVien> getTimTens(String ten);

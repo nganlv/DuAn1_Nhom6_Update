@@ -21,12 +21,12 @@ public class QuanLyNhanVien {
 
    private String taikhoan;
       private String chucvu;
-   private int trangthai;
+   private String trangthai;
 
     public QuanLyNhanVien() {
     }
 
-    public QuanLyNhanVien(String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String taikhoan, String chucvu, int trangthai) {
+    public QuanLyNhanVien(String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String taikhoan, String chucvu, String trangthai) {
         this.ma = ma;
         this.ten = ten;
         this.gioitinh = gioitinh;
@@ -111,12 +111,12 @@ public class QuanLyNhanVien {
         this.chucvu = chucvu;
     }
 
-    public int getTrangthai() {
+    public String getTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(int trangthai) {
+    public void setTrangthai(String trangthai) {
         this.trangthai = trangthai;
     }
-   
+
 }
