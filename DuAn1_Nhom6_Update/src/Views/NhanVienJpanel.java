@@ -73,7 +73,7 @@ public void LoadTable(){
 private void loadCombobox1() {
         
         String[] gioiTinh = {"Nam", "Nữ"};
-        String[]tinhTrang={"Đang Làm Việc","Đã  Nghỉ  Việc"};
+        String[]tinhTrang={"Đang làm việc","Đã nghỉ việc"};
         cboGioiTinh.setModel(new DefaultComboBoxModel<>(gioiTinh));
         cboTrangThai.setModel(new DefaultComboBoxModel<>(tinhTrang));
     }
@@ -120,9 +120,9 @@ private void loadCombobox1() {
         nv.setIdcv(cv.getId());
         
         if(rdDanglam.isSelected()){
-            nv.setTrangthai("Đang Làm Việc");
+            nv.setTrangthai("Đang làm việc");
       }else{
-         nv.setTrangthai("Đã  Nghỉ  Việc");
+         nv.setTrangthai("Đã nghỉ việc");
       }
       
       return nv;
