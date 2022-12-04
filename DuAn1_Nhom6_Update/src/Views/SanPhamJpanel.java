@@ -511,9 +511,19 @@ public class SanPhamJpanel extends javax.swing.JPanel {
 
         btnSua.setBackground(new java.awt.Color(255, 255, 102));
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setBackground(new java.awt.Color(255, 255, 102));
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnReset.setBackground(new java.awt.Color(255, 255, 102));
         btnReset.setText("Làm mới");
@@ -952,6 +962,22 @@ private void fillCtsp(int index){
         loadTableCtsp();
                    
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        iChiTietSanPhamService.update(getData());
+        
+        loadTableCtsp();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+            if(chon == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(this, iChiTietSanPhamService.deleteThs(txtMa.getText().trim()));
+                loadTableCtsp();
+            }
+    }//GEN-LAST:event_btnXoaActionPerformed
     private void locSpTheoTH() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Thương hiệu", "Xuất xứ", "Giới tính", "Kiểu máy", "Thể loại", "Phụ kiện", "Tính năng", "Hình dạng mặt", "Chất liệu mặt", "Chất liệu dây", "Màu mặt số", "Màu vỏ", "Kích thước", "Đơn giá", "Năm bảo hành", "Số lượng tồn", "Tình trạng"});
