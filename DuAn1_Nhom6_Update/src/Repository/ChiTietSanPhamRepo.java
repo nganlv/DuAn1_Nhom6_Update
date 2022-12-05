@@ -406,7 +406,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
     }
 
     @Override
-    public List<QlChiTietSanPham> addsp(QlChiTietSanPham sp) {
+    public List<ChiTietSanPham> addsp(ChiTietSanPham sp) {
  String sql = """
         insert into ChiTietSP
                     (Ma
@@ -466,9 +466,69 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
     public List<ChiTietSanPham> timSp(String ma) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+ @Override
+    public List<QlChiTietSanPham> addsps(QlChiTietSanPham sp) {
+ String sql = """
+        insert into ChiTietSP
+                    (Ma
+                    ,IdSp
+                    ,IdThuongHieu
+                    ,IdXuatxu
+                      ,IdTheLoai
+                         ,IdChatLieuDay
+                           ,IdMauMatSo
+                          ,IdMauVo
+                           ,IdPhuKien
+                         ,IdTinhNang
+                      ,HinhDangMatSo
+                     ,ChatLieuMatKinh
+                    ,GioiTinh
+                    ,KieuMay
+                      ,NamBH
+                         ,KichThuoc
+                        ,SoLuongTon
+                           ,DonGia
+                         ,TinhTrang)
+                    values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) """;
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, sp.getMa());
+            ps.setString(2, sp.getTen());
+            ps.setString(3, sp.getThuongHieu());
+            ps.setString(4, sp.getXuatXu());
+            ps.setString(5, sp.getTheLoai());
+            ps.setString(6, sp.getChatLieuDay());
+            ps.setString(7, sp.getMauMat());
+            ps.setString(8, sp.getMauVo());
+            ps.setString(9, sp.getPhuKien());
+            ps.setString(10, sp.getTinhNang());
+            ps.setString(11, sp.getHinhDangMat());
+            ps.setString(12, sp.getChatLieuMat());
+            ps.setString(13, sp.getGioiTinh());
+            ps.setString(14, sp.getKieuMay());
+            ps.setInt(15, sp.getNamBh());
+            ps.setString(16, sp.getKichThuoc());
+            ps.setInt(17, sp.getSoLuong());
+            ps.setString(18, sp.getDonGia());
+            ps.setString(19, sp.getTinhTrang());
+           ps.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+//    @Override
+//    public List<ChiTietSanPham> getAllCtsp() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    @Override
+//    public List<ChiTietSanPham> timSp(String ma) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
     @Override
-    public String updates(QlChiTietSanPham sp) {
+    public String updates(ChiTietSanPham sp) {
  String sql = """
         update ChiTietSP  
                    set  IdSp= ?
@@ -489,27 +549,78 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                         ,SoLuongTon = ?
                            ,DonGia = ?
                          ,TinhTrang = ?
-              where ChiTietSP.Ma = ?""";
+              where Ma = ?""";
      try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
-            ps.setObject(19, sp.getMa());
-            ps.setObject(1, sp.getTen());
-            ps.setObject(2, sp.getThuongHieu());
-            ps.setObject(3, sp.getXuatXu());
-            ps.setObject(4, sp.getTheLoai());
-            ps.setObject(5, sp.getChatLieuDay());
-            ps.setObject(6, sp.getMauMat());
-            ps.setObject(7, sp.getMauVo());
-            ps.setObject(8, sp.getPhuKien());
-            ps.setObject(9, sp.getTinhNang());
-            ps.setObject(10, sp.getHinhDangMat());
-            ps.setObject(11, sp.getChatLieuMat());
-            ps.setObject(12, sp.getGioiTinh());
-            ps.setObject(13, sp.getKieuMay());
+            ps.setString(19, sp.getMa());
+            ps.setString(1, sp.getTen());
+            ps.setString(2, sp.getThuongHieu());
+            ps.setString(3, sp.getXuatXu());
+            ps.setString(4, sp.getTheLoai());
+            ps.setString(5, sp.getChatLieuDay());
+            ps.setString(6, sp.getMauMat());
+            ps.setString(7, sp.getMauVo());
+            ps.setString(8, sp.getPhuKien());
+            ps.setString(9, sp.getTinhNang());
+            ps.setString(10, sp.getHinhDangMat());
+            ps.setString(11, sp.getChatLieuMat());
+            ps.setString(12, sp.getGioiTinh());
+            ps.setString(13, sp.getKieuMay());
             ps.setInt(14, sp.getNamBh());
-            ps.setObject(15, sp.getKichThuoc());
+            ps.setString(15, sp.getKichThuoc());
             ps.setInt(16, sp.getSoLuong());
-            ps.setObject(17, sp.getDonGia());
-            ps.setObject(18, sp.getTinhTrang());
+            ps.setString(17, sp.getDonGia());
+            ps.setString(18, sp.getTinhTrang());
+          ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+      @Override
+    public String updatess(QlChiTietSanPham sp) {
+ String sql = """
+        update ChiTietSP  
+                   set  IdSp= ?
+                    ,IdThuongHieu = ?
+                    ,IdXuatxu = ?
+                      ,IdTheLoai= ?
+                         ,IdChatLieuDay = ?
+                           ,IdMauMatSo = ?
+                          ,IdMauVo = ?
+                           ,IdPhuKien = ?
+                         ,IdTinhNang= ?
+                      ,HinhDangMatSo= ?
+                     ,ChatLieuMatKinh= ?
+                    ,GioiTinh = ?
+                    ,KieuMay = ?
+                      ,NamBH = ?
+                         ,KichThuoc = ?
+                        ,SoLuongTon = ?
+                           ,DonGia = ?
+                         ,TinhTrang = ?
+              where Ma = ?""";
+     try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(19, sp.getMa());
+            ps.setString(1, sp.getTen());
+            ps.setString(2, sp.getThuongHieu());
+            ps.setString(3, sp.getXuatXu());
+            ps.setString(4, sp.getTheLoai());
+            ps.setString(5, sp.getChatLieuDay());
+            ps.setString(6, sp.getMauMat());
+            ps.setString(7, sp.getMauVo());
+            ps.setString(8, sp.getPhuKien());
+            ps.setString(9, sp.getTinhNang());
+            ps.setString(10, sp.getHinhDangMat());
+            ps.setString(11, sp.getChatLieuMat());
+            ps.setString(12, sp.getGioiTinh());
+            ps.setString(13, sp.getKieuMay());
+            ps.setInt(14, sp.getNamBh());
+            ps.setString(15, sp.getKichThuoc());
+            ps.setInt(16, sp.getSoLuong());
+            ps.setString(17, sp.getDonGia());
+            ps.setString(18, sp.getTinhTrang());
           ps.executeUpdate();
 
         } catch (SQLException ex) {

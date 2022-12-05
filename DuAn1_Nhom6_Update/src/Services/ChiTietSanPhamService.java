@@ -109,22 +109,26 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
     }
 
     @Override
-    public List<QlChiTietSanPham> add(QlChiTietSanPham sp) {
+    public List<ChiTietSanPham> add(ChiTietSanPham sp) {
         return iChiTietSanPhamRepo.addsp(sp);
+    }
+     @Override
+    public List<QlChiTietSanPham> adds(QlChiTietSanPham sp) {
+        return iChiTietSanPhamRepo.addsps(sp);
     }
 
     @Override
-     public String update(QlChiTietSanPham sp) {
+     public String update(ChiTietSanPham sp) {
 return  iChiTietSanPhamRepo.updates(sp);
+    } 
+     
+    @Override
+     public String updates(QlChiTietSanPham sp) {
+return  iChiTietSanPhamRepo.updatess(sp);
     } 
 
     @Override
     public String deleteThs(String maNV) {
-        try {
-            return iChiTietSanPhamRepo.delete(maNV);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "xoa thanh cong";
-    }
+       return  iChiTietSanPhamRepo.delete(maNV);
+    }     
 }

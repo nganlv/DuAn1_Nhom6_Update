@@ -4,7 +4,16 @@
  */
 package Views;
 
+import DomainModels.ChatLieuDay;
 import DomainModels.ChiTietSanPham;
+import DomainModels.MauMatSo;
+import DomainModels.MauVo;
+import DomainModels.PhuKien;
+import DomainModels.SanPham;
+import DomainModels.TheLoai;
+import DomainModels.ThuongHieu;
+import DomainModels.TinhNang;
+import DomainModels.XuatXu;
 import Service.Interface.IChatLieuDaySer;
 import Services.ChiTietSanPhamService;
 import Service.Interface.IChiTietSanPhamService;
@@ -247,6 +256,98 @@ public class SanPhamJpanel extends javax.swing.JPanel {
             cboTinhNang.addItem(tn);
         }
     }
+    public void loadTextField(){
+         int index=tblChiTietSp.getSelectedRow();
+         txtMa.setText(tblChiTietSp.getValueAt(index, 0).toString());
+             for (int i = 0; i < cboTen.getItemCount(); i++) {
+         QlSanPham ch =cboTen.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 1).toString())) {
+               cboTen.setSelectedIndex(i);
+                break;
+            }
+        }
+                 for (int i = 0; i <cboThuongHieu.getItemCount(); i++) {
+            QlThuongHieu ch =cboThuongHieu.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 2).toString())) {
+              cboThuongHieu.setSelectedIndex(i);
+                break;
+            }
+        }
+        for (int i = 0; i < cboXuatXu.getItemCount(); i++) {
+           QlXuatXu ch =cboXuatXu.getItemAt(i);
+           if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 3).toString())) {
+               cboXuatXu.setSelectedIndex(i);
+                break;
+            }
+        }
+        if(tblChiTietSp.getValueAt(index, 4).toString().equalsIgnoreCase("Nam")){
+            rdoGioiTinh.setSelected(true);
+        }else{
+            rdNU.setSelected(true);
+        }
+             txtKieuMay.setText(tblChiTietSp.getValueAt(index, 5).toString());
+        for (int i = 0; i < cboTheLoai.getItemCount(); i++) {
+          QlTheLoai ch =cboTheLoai.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 6).toString())) {
+               cboTheLoai.setSelectedIndex(i);
+                break;
+            }
+        }
+         for (int i = 0; i < cboPhuKien.getItemCount(); i++) {
+          QlPhuKien ch =cboPhuKien.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 7).toString())) {
+              cboPhuKien.setSelectedIndex(i);
+                break;
+            }
+        }
+         for (int i = 0; i < cboTinhNang.getItemCount(); i++) {
+          QlTinhNang ch =cboTinhNang.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 8).toString())) {
+              cboTinhNang.setSelectedIndex(i);
+                break;
+            }
+        }
+//         for (int i = 0; i < cboTinhNang.getItemCount(); i++) {
+//          TinhNang ch =cboTinhNang.getItemAt(i);
+//            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 9).toString())) {
+//              cboTinhNang.setSelectedIndex(i);
+//                break;
+//            }
+//        }
+          txtHinhDangMat.setText(tblChiTietSp.getValueAt(index, 9).toString());
+           txtChatLieuMat.setText(tblChiTietSp.getValueAt(index, 10).toString());
+           for (int i = 0; i < cboChatLieuDay.getItemCount(); i++) {
+         QlChatLieuDay ch = cboChatLieuDay.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 11).toString())) {
+               cboChatLieuDay.setSelectedIndex(i);
+                break;
+            }
+        }
+            for (int i = 0; i < cboMauMatSo.getItemCount(); i++) {
+        QlMauMatSo ch = cboMauMatSo.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 12).toString())) {
+               cboMauMatSo.setSelectedIndex(i);
+                break;
+            }
+        }
+        for (int i = 0; i < cboMauVo.getItemCount(); i++) {
+        QlMauVo ch = cboMauVo.getItemAt(i);
+            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 13).toString())) {
+               cboMauVo.setSelectedIndex(i);
+                break;
+            }
+        }     
+         txtKichThuoc.setText(tblChiTietSp.getValueAt(index, 14).toString());
+          txtDonGia.setText(tblChiTietSp.getValueAt(index, 15).toString());
+           txtNamBh.setText(tblChiTietSp.getValueAt(index, 16).toString());
+            txtSoLuongTon.setText(tblChiTietSp.getValueAt(index, 17).toString());
+            if(tblChiTietSp.getValueAt(index, 18).toString().equalsIgnoreCase("Còn kinh doanh")){
+            rdoTinhTrang.setSelected(true);
+        }else{
+            rdNgung.setSelected(true);
+        }
+     
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -285,7 +386,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         cboThuongHieu = new javax.swing.JComboBox<>();
         cboXuatXu = new javax.swing.JComboBox<>();
         rdoGioiTinh = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdNU = new javax.swing.JRadioButton();
         cboTheLoai = new javax.swing.JComboBox<>();
         txtKichThuoc = new javax.swing.JTextField();
         txtDonGia = new javax.swing.JTextField();
@@ -297,7 +398,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         cboMauVo = new javax.swing.JComboBox<>();
         txtSoLuongTon = new javax.swing.JTextField();
         rdoTinhTrang = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rdNgung = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblChiTietSp = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -373,8 +474,8 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         buttonGroup1.add(rdoGioiTinh);
         rdoGioiTinh.setText("Nam");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
+        buttonGroup1.add(rdNU);
+        rdNU.setText("Nữ");
 
         txtSoLuongTon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,8 +486,8 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         buttonGroup2.add(rdoTinhTrang);
         rdoTinhTrang.setText("Kinh doanh");
 
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setText("Ngừng kinh doanh");
+        buttonGroup2.add(rdNgung);
+        rdNgung.setText("Ngừng kinh doanh");
 
         tblChiTietSp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -668,7 +769,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(rdoGioiTinh)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
+                                .addComponent(rdNU))
                             .addComponent(cboXuatXu, 0, 132, Short.MAX_VALUE)
                             .addComponent(cboThuongHieu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboTen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -721,7 +822,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
                                         .addGap(38, 38, 38)
                                         .addComponent(rdoTinhTrang)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton4))
+                                        .addComponent(rdNgung))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel23)
@@ -790,12 +891,12 @@ public class SanPhamJpanel extends javax.swing.JPanel {
                     .addComponent(jLabel18)
                     .addComponent(jLabel11)
                     .addComponent(rdoGioiTinh)
-                    .addComponent(jRadioButton2)
+                    .addComponent(rdNU)
                     .addComponent(cboChatLieuDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCld)
                     .addComponent(jLabel24)
                     .addComponent(rdoTinhTrang)
-                    .addComponent(jRadioButton4))
+                    .addComponent(rdNgung))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -958,15 +1059,15 @@ private void fillCtsp(int index){
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-         iChiTietSanPhamService.add(getData());
+         iChiTietSanPhamService.adds(getData());
         loadTableCtsp();
                    
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        iChiTietSanPhamService.update(getData());
-        
+        iChiTietSanPhamService.updates(getData());
+        JOptionPane.showMessageDialog(this, "sua thanh cong");
         loadTableCtsp();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -1086,10 +1187,10 @@ private void fillCtsp(int index){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton rdNU;
+    private javax.swing.JRadioButton rdNgung;
     private javax.swing.JRadioButton rdoGioiTinh;
     private javax.swing.JRadioButton rdoTinhTrang;
     private javax.swing.JTable tblChiTietSp;
