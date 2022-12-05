@@ -1021,8 +1021,9 @@ private void fillCtsp(int index){
     txtSoLuongTon.setText(String.valueOf(listCtsp.get(index).getSoLuong()));
 }
     private void tblChiTietSpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietSpMouseClicked
-        int index=tblChiTietSp.getSelectedRow();
-        fillCtsp(index);
+//        int index=tblChiTietSp.getSelectedRow();
+//        fillCtsp(index);
+loadTextField();
     }//GEN-LAST:event_tblChiTietSpMouseClicked
 
     private void cboTinhTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTinhTrangActionPerformed
