@@ -118,7 +118,62 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         }
        tblChiTietSp.setModel(model);
    }    
-
+ public  boolean CheckValidate(){
+        if(txtChatLieuMat.getText().isBlank()||txtDonGia.getText().isBlank()||txtHinhDangMat.getText().isBlank()||txtKichThuoc.getText().isBlank()||txtKieuMay.getText().isBlank()||txtMa.getText().isBlank()||txtNamBh.getText().isBlank()||txtSoLuongTon.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Không được để trống dữ liệu ");
+         return false;
+        }
+        if(txtMa.getText().trim().length()>10){
+         JOptionPane.showMessageDialog(this, "mã san pham không quá 10 ký tu");
+         return false;
+           
+    }
+         if(!rdoGioiTinh.isSelected()&&!rdNU.isSelected()){
+         JOptionPane.showMessageDialog(this,"Phải chọn 1 giới tính");
+         return false;
+     }
+          
+         if(!rdoTinhTrang.isSelected()&&!rdNgung.isSelected()){
+         JOptionPane.showMessageDialog(this,"Phải chọn 1 trang thái");
+         return false;
+     }
+          try {
+            int namBH = Integer.parseInt(txtNamBh.getText());
+            if (namBH < 0 || namBH > 10) {
+                JOptionPane.showMessageDialog(this, "Năm bảo hành không được nhỏ hơn 0 hoặc lớn hơn 10");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Năm bảo hành phải là số nguyên");
+            return false;
+        }
+          try {
+            int kt = Integer.parseInt(txtSoLuongTon.getText());
+            if (kt < 0 ) {
+                JOptionPane.showMessageDialog(this, "so luong ton phai lon hon 0");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "so luong ton phải là số nguyên");
+            return false;
+        }
+          try {
+            int kt = Integer.parseInt(txtDonGia.getText());
+            if (kt < 0 ) {
+                JOptionPane.showMessageDialog(this, "so luong ton phai lon hon 0");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "don gia phải là số !");
+            return false;
+        }
+          
+        if (txtMa.getText().trim().length() > 10) {
+            JOptionPane.showMessageDialog(this, "mã không quá 10 ký tu!");
+            return false;
+        }
+          return true;
+    }
     public QlChiTietSanPham getData(){
     QlChiTietSanPham sp=new QlChiTietSanPham();
     sp.setMa(txtMa.getText().trim());
@@ -1060,25 +1115,41 @@ loadTextField();
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-         iChiTietSanPhamService.adds(getData());
-        loadTableCtsp();
+         if(CheckValidate()){
+            if(iChiTietSanPhamService.checkMa(txtMa.getText().trim())){
+                JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
+                        
+            }else{
+                iChiTietSanPhamService.adds(getData());
+                 JOptionPane.showMessageDialog(this,"thêm thanh công!");
+                loadTableCtsp();
+            }
+        }
                    
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        iChiTietSanPhamService.updates(getData());
-        JOptionPane.showMessageDialog(this, "sua thanh cong");
-        loadTableCtsp();
+        if(CheckValidate()){
+            if(!iChiTietSanPhamService.checkMa(txtMa.getText().trim())){
+                JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
+                        
+            }else{
+                iChiTietSanPhamService.updates(getData());
+                 JOptionPane.showMessageDialog(this,"sua thanh công!");
+                loadTableCtsp();
+            }
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
-            if(chon == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(this, iChiTietSanPhamService.deleteThs(txtMa.getText().trim()));
-                loadTableCtsp();
-            }
+        if(chon == JOptionPane.YES_OPTION){
+            iChiTietSanPhamService.deleteThs(txtMa.getText().trim());
+            JOptionPane.showMessageDialog(this,"xóa thanh công!");
+            loadTableCtsp();
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
     private void locSpTheoTH() {
         DefaultTableModel model = new DefaultTableModel();

@@ -24,4 +24,6 @@ public interface IChiTietSanPhamService {
      public String update(ChiTietSanPham sp);
      public String updates(QlChiTietSanPham sp);
          public String deleteThs(String maNV);
+         Boolean checkMa(String maSp);
+         Boolean checkMas(String maSp);
 }

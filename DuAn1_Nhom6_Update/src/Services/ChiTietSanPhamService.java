@@ -9,6 +9,7 @@ import DomainModels.ChiTietSanPham;
 import Repository.ChiTietSanPhamRepo;
 import Repository.Interface.IChiTietSanPhamRepo;
 import ViewModels.QlChiTietSanPham;
+import ViewModels.QuanLyNhanVien;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,4 +132,25 @@ return  iChiTietSanPhamRepo.updatess(sp);
     public String deleteThs(String maNV) {
        return  iChiTietSanPhamRepo.delete(maNV);
     }     
+
+    @Override
+    public Boolean checkMa(String maSp) {
+List<QlChiTietSanPham> listNV = iChiTietSanPhamRepo.getAllCtsps();
+        for (QlChiTietSanPham nv : listNV) {
+            if(nv.getMa().equalsIgnoreCase(maSp)){
+                return true;
+            }
+        } 
+        return false;
+    }
+     @Override
+    public Boolean checkMas(String maSp) {
+List<ChiTietSanPham> listNV = iChiTietSanPhamRepo.getAllCtsp();
+        for (ChiTietSanPham nv : listNV) {
+            if(nv.getMa().equalsIgnoreCase(maSp)){
+                return true;
+            }
+        } 
+        return false;
+    }
 }
