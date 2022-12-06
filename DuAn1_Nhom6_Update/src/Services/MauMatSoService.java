@@ -30,6 +30,18 @@ public class MauMatSoService implements IMauMatSoSer{
         }
         return null;
     }
+     @Override
+    public List<MauMatSo> getAllMms(){
+        try {
+            List<MauMatSo> listMms=new ArrayList<>();
+            for(MauMatSo mms:iMauMatSoRepo.getAllMms()){
+                listMms.add(new MauMatSo(mms.getId(),mms.getMa(),mms.getTen()));
+            }
+            return listMms;
+        } catch (Exception e) {
+        }
+        return null;
+    }
     @Override
     public Integer addMmss(QlMauMatSo mms){
         try {

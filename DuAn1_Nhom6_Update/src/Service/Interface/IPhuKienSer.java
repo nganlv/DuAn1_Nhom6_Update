@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.PhuKien;
 import ViewModels.QlPhuKien;
 import ViewModels.QlSanPham;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface IPhuKienSer {
     public List<QlPhuKien> getAllPks();
+    public List<PhuKien> getAllPk();
     public Integer addPks(QlPhuKien pk);
     public Integer updatePks(QlPhuKien pk);
     public Integer deletePks(String ma);

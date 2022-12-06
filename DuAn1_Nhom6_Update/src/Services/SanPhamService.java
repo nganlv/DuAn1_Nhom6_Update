@@ -33,6 +33,19 @@ public class SanPhamService implements ISanPhamSer {
         }
         return null;
     }
+     @Override
+    public List<SanPham> getAllSp() {
+        try {
+            List<SanPham> listSp = new ArrayList<>();
+            for (SanPham sp : iSanPhamRepo.getAllSp()) {
+                listSp.add(new SanPham(sp.getId(), sp.getMa(), sp.getTen()));
+            }
+            return listSp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addSps(QlSanPham sp) {

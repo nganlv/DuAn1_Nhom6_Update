@@ -33,6 +33,19 @@ public class ThuongHieuService implements IThuongHieuSer {
         }
         return null;
     }
+      @Override
+    public List<ThuongHieu> getAllTh() {
+        try {
+            List<ThuongHieu> listTh = new ArrayList<>();
+            for (ThuongHieu th : iThuongHieuRepo.getAllTh()) {
+                listTh.add(new ThuongHieu(th.getId(), th.getMa(), th.getTen()));
+            }
+            return listTh;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addThs(QlThuongHieu th) {

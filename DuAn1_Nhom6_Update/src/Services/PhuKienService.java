@@ -33,6 +33,19 @@ public class PhuKienService implements IPhuKienSer {
         }
         return null;
     }
+    @Override
+    public List<PhuKien> getAllPk() {
+        try {
+            List<PhuKien> listPk = new ArrayList<>();
+            for (PhuKien pk : iPhuKienRepo.getAllPk()) {
+                listPk.add(new PhuKien(pk.getId(), pk.getMa(), pk.getTen()));
+            }
+            return listPk;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addPks(QlPhuKien pk) {
