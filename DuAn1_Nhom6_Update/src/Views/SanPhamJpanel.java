@@ -1115,7 +1115,7 @@ loadTextField();
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-         if(CheckValidate()){
+      if(CheckValidate()){
             if(iChiTietSanPhamService.checkMa(txtMa.getText().trim())){
                 JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
                         
@@ -1123,8 +1123,9 @@ loadTextField();
                 iChiTietSanPhamService.adds(getData());
                  JOptionPane.showMessageDialog(this,"thêm thanh công!");
                 loadTableCtsp();
-            }
-        }
+      }
+    }
+      
                    
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -1140,6 +1141,7 @@ loadTextField();
                 loadTableCtsp();
             }
         }
+    
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

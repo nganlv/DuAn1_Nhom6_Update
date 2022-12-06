@@ -242,6 +242,10 @@ private void loadCombobox1() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -288,8 +292,8 @@ private void loadCombobox1() {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Thiết lập thông tin nhân viên");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -306,8 +310,10 @@ private void loadCombobox1() {
 
         jLabel7.setText("Địa chỉ");
 
+        buttonGroup3.add(rdNam);
         rdNam.setText("Nam");
 
+        buttonGroup3.add(rdNu);
         rdNu.setText("Nữ");
 
         jLabel8.setText("Email");
@@ -318,28 +324,30 @@ private void loadCombobox1() {
 
         jLabel12.setText("Trạng thái");
 
+        buttonGroup2.add(rdDanglam);
         rdDanglam.setText("Đang làm");
 
+        buttonGroup2.add(rdDaNghi);
         rdDaNghi.setText("Đã nghỉ việc");
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 51));
         btnThem.setText("Thêm");
+        btnThem.setBackground(new java.awt.Color(255, 255, 51));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(255, 255, 51));
         btnSua.setText("Sửa");
+        btnSua.setBackground(new java.awt.Color(255, 255, 51));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnReset.setBackground(new java.awt.Color(255, 255, 51));
         btnReset.setText("Làm mới");
+        btnReset.setBackground(new java.awt.Color(255, 255, 51));
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -364,8 +372,8 @@ private void loadCombobox1() {
             }
         });
 
-        btnLoad.setBackground(new java.awt.Color(255, 255, 51));
         btnLoad.setText("Load");
+        btnLoad.setBackground(new java.awt.Color(255, 255, 51));
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -586,8 +594,8 @@ private void loadCombobox1() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Thông tin nhân viên");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -761,6 +769,10 @@ private void loadCombobox1() {
     private javax.swing.JButton btntk;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JComboBox<ChucVu> cbCV;
     private javax.swing.JComboBox<ChucVu> cbLoc;
     private javax.swing.JComboBox<TaiKhoan> cbTK;
