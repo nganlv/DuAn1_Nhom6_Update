@@ -176,8 +176,8 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         btnSua = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         txtNgaySinh = new com.github.lgooddatepicker.components.DatePicker();
-        txtNgayHetHan = new com.github.lgooddatepicker.components.DatePicker();
         txtNgayTao = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgayHetHan = new com.github.lgooddatepicker.components.DatePicker();
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -219,14 +219,19 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
         jLabel11.setText("Điểm");
 
-        btnThem.setText("Thêm");
         btnThem.setBackground(new java.awt.Color(255, 255, 51));
+        btnThem.setText("Thêm");
 
-        btnSua.setText("Sửa");
         btnSua.setBackground(new java.awt.Color(255, 255, 51));
+        btnSua.setText("Sửa");
 
-        btnReset.setText("Làm mới");
         btnReset.setBackground(new java.awt.Color(255, 255, 51));
+        btnReset.setText("Làm mới");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,7 +246,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtMa, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtHoTen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
@@ -249,8 +254,8 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                         .addComponent(rdoNam)
                         .addGap(18, 18, 18)
                         .addComponent(rdoNu))
-                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSdt, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(146, 146, 146)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -263,8 +268,8 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(txtDiem)
                     .addComponent(txtDiaChi)
-                    .addComponent(txtNgayHetHan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNgayTao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNgayHetHan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -308,7 +313,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                         .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel10)
@@ -326,11 +331,11 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Thiết lập thông tin khách hàng");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Thiết lập thông tin khách hàng");
 
-        jLabel12.setText("Thông tin khách hàng");
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setText("Thông tin khách hàng");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -518,6 +523,23 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         }
         tblKhachHang.setModel(model);
     }//GEN-LAST:event_cboGioiTinhActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtMa.setText("");
+        txtHoTen.setText("");
+        txtNgaySinh.setText("");
+        txtDiaChi.setText("");
+        txtEmail.setText("");
+        txtSdt.setText("");
+        txtNgayTao.setText("");
+        txtNgayHetHan.setText("");
+        txtDiem.setText("");
+        rdoNam.setSelected(false);
+        rdoNu.setSelected(false);
+        
+        
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
