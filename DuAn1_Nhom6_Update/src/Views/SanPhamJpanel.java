@@ -214,6 +214,46 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
     return sp;
 }
+     public ChiTietSanPham getData1(){
+    ChiTietSanPham sp=new ChiTietSanPham();
+    sp.setMa(txtMa.getText().trim());
+    sp.setKieuMay(txtKieuMay.getText().trim());
+    sp.setHinhDangMat(txtHinhDangMat.getText().trim());
+    sp.setChatLieuMat(txtChatLieuMat.getText().trim());
+    sp.setKichThuoc(txtKichThuoc.getText().trim());
+    sp.setDonGia(txtDonGia.getText().trim());
+    sp.setSoLuong(Integer.parseInt(txtSoLuongTon.getText().trim()));
+    SanPham sp122=(SanPham) cboTen.getSelectedItem();
+    ThuongHieu th=(ThuongHieu)cboThuongHieu.getSelectedItem();
+    XuatXu xx=(XuatXu) cboXuatXu.getSelectedItem();
+    TheLoai tl=(TheLoai) cboTheLoai.getSelectedItem();
+    PhuKien pk=(PhuKien) cboPhuKien.getSelectedItem();
+    TinhNang tn=(TinhNang)  cboTinhNang.getSelectedItem();
+    ChatLieuDay cld=(ChatLieuDay) cboChatLieuDay.getSelectedItem();
+    MauMatSo mms=(MauMatSo) cboMauMatSo.getSelectedItem();
+    MauVo mv=(MauVo) cboMauVo.getSelectedItem();
+    sp.setTen(sp122.getId());
+    sp.setThuongHieu(th.getId());
+    sp.setXuatXu(xx.getId());
+    sp.setTheLoai(tl.getId());
+    sp.setPhuKien(pk.getId());
+    sp.setTinhNang(tn.getId());
+    sp.setChatLieuDay(cld.getId());
+    sp.setMauMat(mms.getId());
+    sp.setMauVo(mv.getId());
+       
+        if(rdoGioiTinh.isSelected()){
+            sp.setGioiTinh("Nam");
+        }else{
+            sp.setGioiTinh("Nữ");
+        }
+    if(rdoTinhTrang.isSelected()){
+        sp.setTinhTrang("Còn kinh doanh");
+    }else{
+    sp.setTinhTrang("Ngừng kinh doanh");
+    }
+    return sp;
+}
     private void loadCombobox() {
         
         String[] gioiTinh = {"Nam", "Nữ"};
@@ -223,19 +263,19 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
 
     private void loadCbSp() {
-        List<QlSanPham> listSp = iSanPhamSer.getAllSps();
+        List<SanPham> listSp = iSanPhamSer.getAllSp();
         
-        for (QlSanPham sp : listSp) {
+        for (SanPham sp : listSp) {
             cboTen.addItem(sp);
         }
     }
 
     private void loadCbTh() {
-        List<QlThuongHieu> listTh = iThuongHieuSer.getAllThs();
+        List<ThuongHieu> listTh = iThuongHieuSer.getAllTh();
         if (listTh == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlThuongHieu th : listTh) {
+        for (ThuongHieu th : listTh) {
             cboThuongHieu.addItem(th);
             cboThuongHieu2.addItem(th.getTen());
         }
@@ -243,71 +283,71 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
 
     private void loadCbXx() {
-        List<QlXuatXu> listXx = iXuatXuSer.getAllXxs();
+        List<XuatXu> listXx = iXuatXuSer.getAllXx();
         if (listXx == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlXuatXu xx : listXx) {
+        for (XuatXu xx : listXx) {
             cboXuatXu.addItem(xx);
         }
     }
 
     private void loadCbTl() {
-        List<QlTheLoai> listTl = iTheLoaiSer.getAllTls();
+        List<TheLoai> listTl = iTheLoaiSer.getAllTl();
         if (listTl == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlTheLoai tl : listTl) {
+        for (TheLoai tl : listTl) {
             cboTheLoai.addItem(tl);
         }
     }
 
     private void loadCbCld() {
-        List<QlChatLieuDay> listCld = iChatLieuDaySer.getAllClds();
+        List<ChatLieuDay> listCld = iChatLieuDaySer.getAllCld();
         if (listCld == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlChatLieuDay cld : listCld) {
+        for (ChatLieuDay cld : listCld) {
             cboChatLieuDay.addItem(cld);
         }
     }
 
     private void loadCbMms() {
-        List<QlMauMatSo> listMms = iMauMatSoSer.getAllMmss();
+        List<MauMatSo> listMms = iMauMatSoSer.getAllMms();
         if (listMms == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlMauMatSo mms : listMms) {
+        for (MauMatSo mms : listMms) {
             cboMauMatSo.addItem(mms);
         }
     }
 
     private void loadCbMv() {
-        List<QlMauVo> listMv = iMauVoSer.getAllMvs();
+        List<MauVo> listMv = iMauVoSer.getAllMv();
         if (listMv == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlMauVo mv : listMv) {
+        for (MauVo mv : listMv) {
             cboMauVo.addItem(mv);
         }
     }
 
     private void loadCbPk() {
-        List<QlPhuKien> listPk = iPhuKienSer.getAllPks();
+        List<PhuKien> listPk = iPhuKienSer.getAllPk();
         if (listPk == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlPhuKien pk : listPk) {
+        for (PhuKien pk : listPk) {
             cboPhuKien.addItem(pk);
         }
     }
 
     private void loadCbTn() {
-        List<QlTinhNang> listTn = iTinhNangSer.getAllTns();
+        List<TinhNang> listTn = iTinhNangSer.getAllTn();
         if (listTn == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (QlTinhNang tn : listTn) {
+        for (TinhNang tn : listTn) {
             cboTinhNang.addItem(tn);
         }
     }
@@ -315,21 +355,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
          int index=tblChiTietSp.getSelectedRow();
          txtMa.setText(tblChiTietSp.getValueAt(index, 0).toString());
              for (int i = 0; i < cboTen.getItemCount(); i++) {
-         QlSanPham ch =cboTen.getItemAt(i);
+         SanPham ch =cboTen.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 1).toString())) {
                cboTen.setSelectedIndex(i);
                 break;
             }
         }
                  for (int i = 0; i <cboThuongHieu.getItemCount(); i++) {
-            QlThuongHieu ch =cboThuongHieu.getItemAt(i);
+            ThuongHieu ch =cboThuongHieu.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 2).toString())) {
               cboThuongHieu.setSelectedIndex(i);
                 break;
             }
         }
         for (int i = 0; i < cboXuatXu.getItemCount(); i++) {
-           QlXuatXu ch =cboXuatXu.getItemAt(i);
+           XuatXu ch =cboXuatXu.getItemAt(i);
            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 3).toString())) {
                cboXuatXu.setSelectedIndex(i);
                 break;
@@ -342,21 +382,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         }
              txtKieuMay.setText(tblChiTietSp.getValueAt(index, 5).toString());
         for (int i = 0; i < cboTheLoai.getItemCount(); i++) {
-          QlTheLoai ch =cboTheLoai.getItemAt(i);
+          TheLoai ch =cboTheLoai.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 6).toString())) {
                cboTheLoai.setSelectedIndex(i);
                 break;
             }
         }
          for (int i = 0; i < cboPhuKien.getItemCount(); i++) {
-          QlPhuKien ch =cboPhuKien.getItemAt(i);
+          PhuKien ch =cboPhuKien.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 7).toString())) {
               cboPhuKien.setSelectedIndex(i);
                 break;
             }
         }
          for (int i = 0; i < cboTinhNang.getItemCount(); i++) {
-          QlTinhNang ch =cboTinhNang.getItemAt(i);
+          TinhNang ch =cboTinhNang.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 8).toString())) {
               cboTinhNang.setSelectedIndex(i);
                 break;
@@ -372,21 +412,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
           txtHinhDangMat.setText(tblChiTietSp.getValueAt(index, 9).toString());
            txtChatLieuMat.setText(tblChiTietSp.getValueAt(index, 10).toString());
            for (int i = 0; i < cboChatLieuDay.getItemCount(); i++) {
-         QlChatLieuDay ch = cboChatLieuDay.getItemAt(i);
+         ChatLieuDay ch = cboChatLieuDay.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 11).toString())) {
                cboChatLieuDay.setSelectedIndex(i);
                 break;
             }
         }
             for (int i = 0; i < cboMauMatSo.getItemCount(); i++) {
-        QlMauMatSo ch = cboMauMatSo.getItemAt(i);
+        MauMatSo ch = cboMauMatSo.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 12).toString())) {
                cboMauMatSo.setSelectedIndex(i);
                 break;
             }
         }
         for (int i = 0; i < cboMauVo.getItemCount(); i++) {
-        QlMauVo ch = cboMauVo.getItemAt(i);
+        MauVo ch = cboMauVo.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 13).toString())) {
                cboMauVo.setSelectedIndex(i);
                 break;
@@ -1120,7 +1160,7 @@ loadTextField();
                 JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
                         
             }else{
-                iChiTietSanPhamService.adds(getData());
+                iChiTietSanPhamService.add(getData1());
                  JOptionPane.showMessageDialog(this,"thêm thanh công!");
                 loadTableCtsp();
             }
@@ -1135,7 +1175,7 @@ loadTextField();
                 JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
                         
             }else{
-                iChiTietSanPhamService.updates(getData());
+                iChiTietSanPhamService.update(getData1());
                  JOptionPane.showMessageDialog(this,"sua thanh công!");
                 loadTableCtsp();
             }
@@ -1219,18 +1259,18 @@ loadTextField();
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JComboBox<QlChatLieuDay> cboChatLieuDay;
+    private javax.swing.JComboBox<ChatLieuDay> cboChatLieuDay;
     private javax.swing.JComboBox<String> cboGioiTinh;
-    private javax.swing.JComboBox<QlMauMatSo> cboMauMatSo;
-    private javax.swing.JComboBox<QlMauVo> cboMauVo;
-    private javax.swing.JComboBox<QlPhuKien> cboPhuKien;
-    private javax.swing.JComboBox<QlSanPham> cboTen;
-    private javax.swing.JComboBox<QlTheLoai> cboTheLoai;
-    private javax.swing.JComboBox<QlThuongHieu> cboThuongHieu;
+    private javax.swing.JComboBox<MauMatSo> cboMauMatSo;
+    private javax.swing.JComboBox<MauVo> cboMauVo;
+    private javax.swing.JComboBox<PhuKien> cboPhuKien;
+    private javax.swing.JComboBox<SanPham> cboTen;
+    private javax.swing.JComboBox<TheLoai> cboTheLoai;
+    private javax.swing.JComboBox<ThuongHieu> cboThuongHieu;
     private javax.swing.JComboBox<String> cboThuongHieu2;
-    private javax.swing.JComboBox<QlTinhNang> cboTinhNang;
+    private javax.swing.JComboBox<TinhNang> cboTinhNang;
     private javax.swing.JComboBox<String> cboTinhTrang;
-    private javax.swing.JComboBox<QlXuatXu> cboXuatXu;
+    private javax.swing.JComboBox<XuatXu> cboXuatXu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
