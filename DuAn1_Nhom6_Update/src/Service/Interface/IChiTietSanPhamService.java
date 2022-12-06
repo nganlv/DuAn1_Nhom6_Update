@@ -19,7 +19,11 @@ public interface IChiTietSanPhamService {
     public List<QlChiTietSanPham> locSpTheoTHs(String th);
     public List<QlChiTietSanPham> locSpTheoGTs(String gt);
     public List<QlChiTietSanPham> locSpTheoTTs(String tt);
-    public List<QlChiTietSanPham> add(QlChiTietSanPham sp);
-     public String update(QlChiTietSanPham sp);
+    public List<ChiTietSanPham> add(ChiTietSanPham sp);
+    public List<QlChiTietSanPham> adds(QlChiTietSanPham sp);
+     public String update(ChiTietSanPham sp);
+     public String updates(QlChiTietSanPham sp);
          public String deleteThs(String maNV);
+         Boolean checkMa(String maSp);
+         Boolean checkMas(String maSp);
 }
