@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.XuatXu;
 import ViewModels.QlSanPham;
 import ViewModels.QlXuatXu;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface IXuatXuSer {
     public List<QlXuatXu> getAllXxs();
+    public List<XuatXu> getAllXx();
     public Integer addXxs(QlXuatXu xx);
     public Integer updateXxs(QlXuatXu xx);
     public Integer deleteXxs(String ma);

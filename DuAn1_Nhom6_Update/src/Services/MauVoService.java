@@ -33,6 +33,19 @@ public class MauVoService implements IMauVoSer {
         }
         return null;
     }
+      @Override
+    public List<MauVo> getAllMv() {
+        try {
+            List<MauVo> listMv = new ArrayList<>();
+            for (MauVo mv : iMauVoRepo.getAllMv()) {
+                listMv.add(new MauVo(mv.getId(), mv.getMa(), mv.getTen()));
+            }
+            return listMv;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addMvs(QlMauVo mv) {

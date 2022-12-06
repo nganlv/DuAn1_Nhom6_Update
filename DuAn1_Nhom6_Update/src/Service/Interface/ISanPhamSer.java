@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.SanPham;
 import ViewModels.QlSanPham;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public interface ISanPhamSer {
     public List<QlSanPham> getAllSps();
+    public List<SanPham> getAllSp();
     public Integer addSps(QlSanPham sp);
     public Integer updateSps(QlSanPham sp);
     public Integer deleteSps(String ma);
