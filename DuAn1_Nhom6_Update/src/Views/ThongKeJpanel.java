@@ -447,7 +447,7 @@ layds();        // TODO add your handling code here:
 
          
 
-            String month = cbthang.getSelectedItem().toString();
+            String month = (String) cbthang.getSelectedItem();
             model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
         model.setRowCount(0);
         List<QuanLyThongKe> dsnv = service.thang(month);
