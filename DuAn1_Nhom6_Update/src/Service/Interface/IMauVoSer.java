@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.MauVo;
 import ViewModels.QlMauVo;
 import ViewModels.QlSanPham;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface IMauVoSer {
     public List<QlMauVo> getAllMvs();
+    public List<MauVo> getAllMv();
     public Integer addMvs(QlMauVo mv);
     public Integer updateMvs(QlMauVo mv);
     public Integer deleteMvs(String ma);

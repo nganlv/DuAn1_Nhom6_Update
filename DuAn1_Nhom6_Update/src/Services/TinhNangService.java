@@ -33,6 +33,19 @@ public class TinhNangService implements ITinhNangSer {
         }
         return null;
     }
+      @Override
+    public List<TinhNang> getAllTn() {
+        try {
+            List<TinhNang> listTn = new ArrayList<>();
+            for (TinhNang tn : iTinhNangRepo.getAllTn()) {
+                listTn.add(new TinhNang(tn.getId(), tn.getMa(), tn.getTen()));
+            }
+            return listTn;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addTns(QlTinhNang tn) {

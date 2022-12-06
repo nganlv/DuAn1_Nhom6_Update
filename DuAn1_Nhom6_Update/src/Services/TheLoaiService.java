@@ -32,6 +32,19 @@ public class TheLoaiService implements ITheLoaiSer{
         return null;
     }
     @Override
+    public List<TheLoai> getAllTl(){
+        try {
+            List<TheLoai> listTl=new ArrayList<>();
+        for(TheLoai tl:iTheLoaiRepo.getAllTl()){
+            listTl.add(new TheLoai(tl.getId(), tl.getMa(), tl.getTen()));
+        }
+        return listTl;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
     public Integer addTls(QlTheLoai tl){
         try {
             return iTheLoaiRepo.addTl(new TheLoai(tl.getId(), tl.getMa(), tl.getTen()));

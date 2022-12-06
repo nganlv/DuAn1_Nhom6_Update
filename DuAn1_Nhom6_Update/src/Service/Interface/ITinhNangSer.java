@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.TinhNang;
 import ViewModels.QlSanPham;
 import ViewModels.QlTinhNang;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface ITinhNangSer {
     public List<QlTinhNang> getAllTns();
+    public List<TinhNang> getAllTn();
     public Integer addTns(QlTinhNang tn);
     public Integer updateTns(QlTinhNang tn);
     public Integer deleteTns(String ma);

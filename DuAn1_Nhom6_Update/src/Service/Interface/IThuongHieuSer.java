@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.ThuongHieu;
 import ViewModels.QlThuongHieu;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public interface IThuongHieuSer {
     public List<QlThuongHieu> getAllThs();
+    public List<ThuongHieu> getAllTh();
     public Integer addThs(QlThuongHieu th);
     public Integer updateThs(QlThuongHieu th);
     public Integer deleteThs(String ma);
