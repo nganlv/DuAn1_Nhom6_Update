@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.MauMatSo;
 import ViewModels.QlMauMatSo;
 import ViewModels.QlSanPham;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface IMauMatSoSer {
     public List<QlMauMatSo> getAllMmss();
+    public List<MauMatSo> getAllMms();
     public Integer addMmss(QlMauMatSo mms);
     public Integer updateMmss(QlMauMatSo mms);
     public Integer deleteMmss(String ma);

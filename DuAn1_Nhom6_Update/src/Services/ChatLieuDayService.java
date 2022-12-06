@@ -33,6 +33,19 @@ public class ChatLieuDayService implements IChatLieuDaySer {
         }
         return null;
     }
+    @Override
+    public List<ChatLieuDay> getAllCld() {
+        try {
+            List<ChatLieuDay> listCld = new ArrayList<>();
+            for (ChatLieuDay cld : iChatLieuDayRepo.getAllCld()) {
+                listCld.add(new ChatLieuDay(cld.getId(), cld.getMa(), cld.getTen()));
+            }
+            return listCld;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Integer addClds(QlChatLieuDay cld) {

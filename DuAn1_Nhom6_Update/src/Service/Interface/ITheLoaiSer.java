@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.TheLoai;
 import ViewModels.QlSanPham;
 import ViewModels.QlTheLoai;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface ITheLoaiSer {
     public List<QlTheLoai> getAllTls();
+    public List<TheLoai> getAllTl();
     public Integer addTls(QlTheLoai tl);
     public Integer updateTls(QlTheLoai tl);
     public Integer deleteTls(String ma);

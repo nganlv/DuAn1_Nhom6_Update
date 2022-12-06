@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.ChatLieuDay;
 import ViewModels.QlChatLieuDay;
 import ViewModels.QlSanPham;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public interface IChatLieuDaySer {
     public List<QlChatLieuDay> getAllClds();
+    public List<ChatLieuDay> getAllCld();
     public Integer addClds(QlChatLieuDay cld);
     public Integer updateClds(QlChatLieuDay cld);
     public Integer deleteClds(String ma);

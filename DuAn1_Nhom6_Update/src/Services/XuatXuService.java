@@ -32,6 +32,19 @@ public class XuatXuService implements IXuatXuSer{
         return null;
     }
     @Override
+    public List<XuatXu> getAllXx(){
+        try {
+            List<XuatXu> listXx=new ArrayList<>();
+            for(XuatXu xx: iXuatXuRepo.getAllXx()){
+                listXx.add(new XuatXu(xx.getId(), xx.getMa(), xx.getTen()));
+            }
+            return listXx;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
     public Integer addXxs(QlXuatXu xx){
         try {
             return iXuatXuRepo.addXx(new XuatXu(xx.getId(), xx.getMa(), xx.getTen()));
