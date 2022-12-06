@@ -138,7 +138,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         }
     }
          public void loadComboBox(){
-             String[] gt = {"All","Nam","Nữ"};
+             String[] gt = {"Nam","Nữ"};
              cboGioiTinh.setModel(new DefaultComboBoxModel<>(gt));
              
          }
@@ -187,6 +187,7 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         txtTim = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cboGioiTinh = new javax.swing.JComboBox<>();
+        btnAll = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -370,6 +371,13 @@ private final KhachHangImpl KHser = new KhachHangImpl();
             }
         });
 
+        btnAll.setText("All");
+        btnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -390,7 +398,9 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                                 .addGap(28, 28, 28)
                                 .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(119, 119, 119)
-                                .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnAll)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -403,8 +413,9 @@ private final KhachHangImpl KHser = new KhachHangImpl();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel13)
+                    .addComponent(btnAll))
+                .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -524,8 +535,13 @@ private final KhachHangImpl KHser = new KhachHangImpl();
         tblKhachHang.setModel(model);
     }//GEN-LAST:event_cboGioiTinhActionPerformed
 
+    private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
+        loadTable();
+    }//GEN-LAST:event_btnAllActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAll;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
