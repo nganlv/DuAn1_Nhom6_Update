@@ -92,7 +92,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     private void locHdTheoHHTT() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoTTs(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
+        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoHTTTs(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
         for (QlHoaDon hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
