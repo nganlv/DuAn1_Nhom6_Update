@@ -349,12 +349,12 @@ int ix = tbbang.getRowCount();
 //        TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(tbbang.getSelectedRow(), 5).toString());
 //        JOptionPane.showMessageDialog(this,"tong"+TongTien);
         TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(i, 5).toString());
-        String[] splits = String.valueOf(TongTien).split(".0$");
-            StringBuilder stringBuilder1 = new StringBuilder();
-            for (String x : splits) {
-                stringBuilder1.append(x);
-            }
-            txttong.setText(stringBuilder1.toString() + " VNĐ");
+//        String[] splits = String.valueOf(TongTien).split(".0$");
+//            StringBuilder stringBuilder1 = new StringBuilder();
+//            for (String x : splits) {
+//                stringBuilder1.append(x);
+//            }
+            txttong.setText(TongTien + " VNĐ");
     }
 double TongSoluong=0;
 //int ix = tbbang.getRowCount();
