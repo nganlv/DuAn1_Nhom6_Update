@@ -18,6 +18,7 @@ public interface IHoaDonSer {
   public  List<QlHoaDon> locHdTheoTTs(String tt);
   public  List<QlHoaDon> locHdTheoHTBHs(String htbh);
   public  List<QlHoaDon> locHdTheoHTTTs(String httt);
+  public Integer addHdcs(QlHoaDon hd);
     public Integer updateTTs(QlHoaDon hd);
     public Integer updateTT2s(QlHoaDon hd);
     public Integer updateTKDs(QlHoaDon hd);

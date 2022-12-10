@@ -9,12 +9,13 @@ package DomainModels;
  * @author levan
  */
 public class KhachHang_BanHang {
-    private String ma, hoTen, gioiTinh, ngaySinh, sdt, diaChi,email, ngayTao, ngayHh, diem;
+    private String id,ma, hoTen, gioiTinh, ngaySinh, sdt, diaChi,email, ngayTao, ngayHh, diem;
 
     public KhachHang_BanHang() {
     }
 
-    public KhachHang_BanHang(String ma, String hoTen, String gioiTinh, String ngaySinh, String sdt, String diaChi, String email, String ngayTao, String ngayHh, String diem) {
+    public KhachHang_BanHang(String id, String ma, String hoTen, String gioiTinh, String ngaySinh, String sdt, String diaChi, String email, String ngayTao, String ngayHh, String diem) {
+        this.id = id;
         this.ma = ma;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -26,7 +27,15 @@ public class KhachHang_BanHang {
         this.ngayHh = ngayHh;
         this.diem = diem;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getMa() {
         return ma;
     }
@@ -106,5 +115,7 @@ public class KhachHang_BanHang {
     public void setDiem(String diem) {
         this.diem = diem;
     }
+
+    
     
 }

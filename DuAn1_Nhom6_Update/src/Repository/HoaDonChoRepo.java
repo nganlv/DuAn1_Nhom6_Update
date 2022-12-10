@@ -20,54 +20,54 @@ import java.util.ArrayList;
  */
 public class HoaDonChoRepo implements IHoaDonChoRepo {
 
-    @Override
-    public List<HoaDonCho> getHd() {
-        try {
-            List<HoaDonCho> listHd = new ArrayList<>();
-            Connection conn = DBContext.getConnection();
-            String sql = "select HoaDon.Ma as MaHD, HoaDon.NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
-                    + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
-                    + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
-                    + " where HoaDon.Ma='hd000'";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                HoaDonCho hdc = new HoaDonCho();
-                hdc.setMaHd(rs.getString("MaHD"));
-                hdc.setNgayTao(rs.getString("NgayTao"));
-                hdc.setMaNv(rs.getString("MaNV"));
-                hdc.setMaKh(rs.getString("MaKH"));
-                hdc.setTenKh(rs.getString("HoTen"));
-                listHd.add(hdc);
-            }
-            rs.close();
-            ps.close();
-            conn.close();
-            return listHd;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    @Override
+//    public List<HoaDonCho> getHd() {
+//        try {
+//            List<HoaDonCho> listHd = new ArrayList<>();
+//            Connection conn = DBContext.getConnection();
+//            String sql = "select HoaDon.Ma as MaHD, HoaDon.NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
+//                    + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
+//                    + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
+//                    + " where HoaDon.Ma='hd000'";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                HoaDonCho hdc = new HoaDonCho();
+//                hdc.setMaHd(rs.getString("MaHD"));
+//                hdc.setNgayTao(rs.getString("NgayTao"));
+//                hdc.setMaNv(rs.getString("MaNV"));
+//                hdc.setMaKh(rs.getString("MaKH"));
+//                hdc.setTenKh(rs.getString("HoTen"));
+//                listHd.add(hdc);
+//            }
+//            rs.close();
+//            ps.close();
+//            conn.close();
+//            return listHd;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     @Override
-    public List<HoaDonCho> getHd2(String ma) {
+    public List<HoaDonCho> getHd2(String tenKh) {
         try {
             List<HoaDonCho> listHd = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  HoaDon.Ma as MaHD, GETDATE() as NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
+            String sql = "select  HoaDon.Ma as MaHD, GETDATE() as NgayTao, NhanVien.HoTen as TenNV, KhachHang.HoTen from HoaDon \n"
                     + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
                     + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
-                    + " where KhachHang.Ma=?";
+                    + " where KhachHang.HoTen=?";
+                    
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, ma);
+            ps.setString(1, tenKh);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 HoaDonCho hdc = new HoaDonCho();
-                hdc.setMaHd(rs.getString("MaHD"));
+                hdc.setMaHd(rs.getInt("MaHD"));
                 hdc.setNgayTao(rs.getString("NgayTao"));
-                hdc.setMaNv(rs.getString("MaNV"));
-                hdc.setMaKh(rs.getString("MaKH"));
+                hdc.setTenNv(rs.getString("TenNV"));
                 hdc.setTenKh(rs.getString("HoTen"));
                 listHd.add(hdc);
             }

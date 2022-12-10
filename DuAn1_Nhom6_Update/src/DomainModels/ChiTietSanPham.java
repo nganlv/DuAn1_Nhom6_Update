@@ -13,14 +13,14 @@ import java.math.BigDecimal;
 public class ChiTietSanPham {
 
     private String ma, ten, thuongHieu, xuatXu, gioiTinh, kieuMay, theLoai, phuKien, tinhNang, hinhDangMat, chatLieuMat,
-            chatLieuDay, mauMat, mauVo, kichThuoc, donGia;
+            chatLieuDay, mauMat, mauVo, kichThuoc, donGia, giamGia;
     private int namBh, soLuong;
     private String tinhTrang;
     
     public ChiTietSanPham() {
     }
 
-    public ChiTietSanPham(String ma, String ten, String thuongHieu, String xuatXu, String gioiTinh, String kieuMay, String theLoai, String phuKien, String tinhNang, String hinhDangMat, String chatLieuMat, String chatLieuDay, String mauMat, String mauVo, String kichThuoc, String donGia, int namBh, int soLuong, String tinhTrang) {
+    public ChiTietSanPham(String ma, String ten, String thuongHieu, String xuatXu, String gioiTinh, String kieuMay, String theLoai, String phuKien, String tinhNang, String hinhDangMat, String chatLieuMat, String chatLieuDay, String mauMat, String mauVo, String kichThuoc, String donGia, String giamGia, int namBh, int soLuong, String tinhTrang) {
         this.ma = ma;
         this.ten = ten;
         this.thuongHieu = thuongHieu;
@@ -37,6 +37,7 @@ public class ChiTietSanPham {
         this.mauVo = mauVo;
         this.kichThuoc = kichThuoc;
         this.donGia = donGia;
+        this.giamGia = giamGia;
         this.namBh = namBh;
         this.soLuong = soLuong;
         this.tinhTrang = tinhTrang;
@@ -170,6 +171,14 @@ public class ChiTietSanPham {
         this.donGia = donGia;
     }
 
+    public String getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(String giamGia) {
+        this.giamGia = giamGia;
+    }
+
     public int getNamBh() {
         return namBh;
     }
@@ -193,6 +202,8 @@ public class ChiTietSanPham {
     public void setTinhTrang(String tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
+
+   
 
    
 }

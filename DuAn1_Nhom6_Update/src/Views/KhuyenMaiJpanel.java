@@ -4,7 +4,7 @@
  */
 package Views;
 import Service.Interface.IKhuyenMaiService;
-import ViewModels.QLKhuyenMai;
+import ViewModels.QlKhuyenMai;
 import Services.KhuyenMaiService;
 import java.time.LocalDate;
 import java.time.Month;
@@ -247,7 +247,7 @@ DefaultTableModel model = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
     public void hienTT(int index) {
        
-        List<QLKhuyenMai> ds = ikmService.getAlls();
+        List<QlKhuyenMai> ds = ikmService.getAlls();
 //          txtma.setText((String) tbbang.getValueAt(index, 0));
 //        txtten.setText((String) tbbang.getValueAt(index, 1));
 //        txtngay.setText((String) tbbang.getValueAt(index, 2));
@@ -267,8 +267,8 @@ DefaultTableModel model = new DefaultTableModel();
         return true;
         
     }
-            public QLKhuyenMai getText1() {
-        QLKhuyenMai cv = new QLKhuyenMai();
+            public QlKhuyenMai getText1() {
+        QlKhuyenMai cv = new QlKhuyenMai();
         cv.setMa(txtma.getText());
         cv.setTen(txtten.getText());
         cv.setNgayBD(txtngay.getText());
@@ -279,13 +279,13 @@ DefaultTableModel model = new DefaultTableModel();
        
     public void them() {
         if(check()){
-        QLKhuyenMai vc = getText1();
+        QlKhuyenMai vc = getText1();
         ikmService.add(vc);}
         
     }
     public void sua() {
         if(check()){
-        QLKhuyenMai vc = getText1();
+        QlKhuyenMai vc = getText1();
         ikmService.update(vc);}
         
     }
@@ -330,8 +330,8 @@ loadTable();// TODO add your handling code here:
      public void loadTable() {
         model.setColumnIdentifiers(new String[]{"Mã", "Tên ","Ngày Bắt Đầu","Ngày Kết Thúc","Giảm Giá"});
         model.setRowCount(0);
-        List<QLKhuyenMai> ds = ikmService.getAlls();
-        for (QLKhuyenMai d : ds) {
+        List<QlKhuyenMai> ds = ikmService.getAlls();
+        for (QlKhuyenMai d : ds) {
             Object[] row = new Object[]{
                 d.getMa(),
                 d.getTen(),

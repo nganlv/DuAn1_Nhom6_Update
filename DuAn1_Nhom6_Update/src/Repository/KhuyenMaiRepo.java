@@ -22,14 +22,13 @@ public class KhuyenMaiRepo implements IKhuyenMai {
     public List<KhuyenMai> getAll() {
         try {
             List<KhuyenMai> ds = new ArrayList<>();
-            String sql = "SELECT Ma, Ten, NgayBatDau, NgayKetThuc, GiamGia\n"
-                    + "FROM     KhuyenMai";
+            String sql = "select * from KhuyenMai";
             Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhuyenMai sp = new KhuyenMai();
-
+                sp.setId(rs.getString("Id"));
                 sp.setMa(rs.getString("Ma"));
                 sp.setTen(rs.getString("Ten"));
                 sp.setNgayBD(rs.getString("NgayBatDau"));

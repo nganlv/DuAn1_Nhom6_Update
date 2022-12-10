@@ -18,25 +18,13 @@ import java.util.List;
  */
 public class HoaDonChoService implements IHoaDonChoService{
     private final IHoaDonChoRepo iHoaDonChoRepo=new HoaDonChoRepo();
+   
     @Override
-    public List<QlHoaDonCho> getHds(){
+    public List<QlHoaDonCho> getHd2s(String tenKh){
         try {
             List<QlHoaDonCho> listQlHd=new ArrayList<>();
-            for(HoaDonCho hdc: iHoaDonChoRepo.getHd()){
-                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(),hdc.getMaKh(), hdc.getTenKh()));
-            }
-            return listQlHd;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    @Override
-    public List<QlHoaDonCho> getHd2s(String ma){
-        try {
-            List<QlHoaDonCho> listQlHd=new ArrayList<>();
-            for(HoaDonCho hdc: iHoaDonChoRepo.getHd2(ma)){
-                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(),hdc.getMaKh(), hdc.getTenKh()));
+            for(HoaDonCho hdc: iHoaDonChoRepo.getHd2(tenKh)){
+                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getTenNv(), hdc.getTenKh()));
             }
             return listQlHd;
         } catch (Exception e) {

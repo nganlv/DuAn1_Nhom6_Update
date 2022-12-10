@@ -21,9 +21,9 @@ public interface IChiTietSanPhamRepo {
     public List<ChiTietSanPham> locSpTheoTH(String th);
     public List<ChiTietSanPham> locSpTheoGT(String gt);
     public List<ChiTietSanPham> locSpTheoTT(String tt);
-     public List<ChiTietSanPham> addsp(ChiTietSanPham sp);
+//     public List<ChiTietSanPham> addsp(ChiTietSanPham sp);
      public List<QlChiTietSanPham> addsps(QlChiTietSanPham sp);
-      public String updates(ChiTietSanPham sp);
+      public String updates(QlChiTietSanPham sp);
       public String updatess(QlChiTietSanPham sp);
       String delete(String masp);
 }
