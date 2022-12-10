@@ -18,6 +18,7 @@ private final TaiKhoanService taiKhoanSer=new TaiKhoanService();
     /**
      * Creates new form FormDangNhap
      */
+public static String userName;
     public FormDangNhap() {
         initComponents();
         setTitle("Đăng nhập hệ thống");
@@ -131,12 +132,15 @@ private final TaiKhoanService taiKhoanSer=new TaiKhoanService();
         TaiKhoan1 tk =taiKhoanSer.getAllTks(username, password);
         if (tk != null) {
             JOptionPane.showMessageDialog(this, " Đăng nhập thành công");
+//            new BanHangJpanel(txtTen.getText());
+                userName=txtTen.getText();
             new FormMain().setVisible(true);
             this.dispose();
 
         } else {
             JOptionPane.showMessageDialog(this, "Tên tài khoản hoặc mật khẩu không chính xác");
         }
+        
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**

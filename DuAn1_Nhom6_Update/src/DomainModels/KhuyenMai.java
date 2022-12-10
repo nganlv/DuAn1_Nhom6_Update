@@ -9,25 +9,34 @@ package DomainModels;
  * @author pc
  */
 public class KhuyenMai {
-  String Ma,ten,NgayBD,NgayKT,Giagia;
+  String id,ma,ten,NgayBD,NgayKT,Giagia;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String Ma, String ten, String NgayBD, String NgayKT, String Giagia) {
-        this.Ma = Ma;
+    public KhuyenMai(String id, String ma, String ten, String NgayBD, String NgayKT, String Giagia) {
+        this.id = id;
+        this.ma = ma;
         this.ten = ten;
         this.NgayBD = NgayBD;
         this.NgayKT = NgayKT;
         this.Giagia = Giagia;
     }
 
-    public String getMa() {
-        return Ma;
+    public String getId() {
+        return id;
     }
 
-    public void setMa(String Ma) {
-        this.Ma = Ma;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     public String getTen() {
@@ -61,5 +70,7 @@ public class KhuyenMai {
     public void setGiagia(String Giagia) {
         this.Giagia = Giagia;
     }
+
+    
   
 }

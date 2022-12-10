@@ -42,6 +42,7 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
                 hdct.setSoLuong(rs.getInt("SoLuong"));
                 hdct.setThanhTien(rs.getDouble("ThanhTien"));
                 listHdct.add(hdct);
+                
             }
             rs.close();
             ps.close();
@@ -52,6 +53,7 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
         }
         return null;
     }
+
     @Override
     public List<HoaDonChiTiet> getAllHdct2(Double tt) {
         try {
@@ -102,8 +104,9 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
         }
         return null;
     }
+
     @Override
-    public List<HoaDonChiTiet> delete(){
+    public List<HoaDonChiTiet> delete() {
         try {
             List<HoaDonChiTiet> listHdct = new ArrayList<>();
             Connection conn = DBContext.getConnection();

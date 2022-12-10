@@ -36,6 +36,10 @@ public class FormMain extends javax.swing.JFrame {
         controller.setEvent(listItem);
         chuChay();
     }
+
+//    FormMain(String text) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 private void chuChay() {
         new Thread() {
             @Override

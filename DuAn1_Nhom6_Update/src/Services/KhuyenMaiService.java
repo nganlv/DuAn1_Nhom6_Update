@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Services;
-import ViewModels.QLKhuyenMai;
+import ViewModels.QlKhuyenMai;
 import DomainModels.KhuyenMai;
 import java.util.*;
 import Repository.KhuyenMaiRepo;
@@ -18,11 +18,11 @@ public class KhuyenMaiService implements IKhuyenMaiService{
      private final IKhuyenMai iKmRepo = new KhuyenMaiRepo();
 
     @Override
-    public List<QLKhuyenMai> getAlls() {
+    public List<QlKhuyenMai> getAlls() {
         try {
-            List<QLKhuyenMai> listSp = new ArrayList<>();
+            List<QlKhuyenMai> listSp = new ArrayList<>();
             for (KhuyenMai sp : iKmRepo.getAll()) {
-                listSp.add(new QLKhuyenMai( sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
+                listSp.add(new QlKhuyenMai( sp.getId(),sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
             }
             return listSp;
         } catch (Exception e) {
@@ -32,9 +32,9 @@ public class KhuyenMaiService implements IKhuyenMaiService{
     }
 
     @Override
-    public void add(QLKhuyenMai sp) {
+    public void add(QlKhuyenMai sp) {
         try {
-             iKmRepo.addDongSp(new KhuyenMai( sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
+             iKmRepo.addDongSp(new KhuyenMai(sp.getId(), sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,9 +42,9 @@ public class KhuyenMaiService implements IKhuyenMaiService{
     }
 
     @Override
-    public void update(QLKhuyenMai sp) {
+    public void update(QlKhuyenMai sp) {
         try {
-             iKmRepo.updateSp(new KhuyenMai( sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
+             iKmRepo.updateSp(new KhuyenMai( sp.getId(),sp.getMa(), sp.getTen(), sp.getNgayBD(), sp.getNgayKT(), sp.getGiagia()));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,19 +9,21 @@ package DomainModels;
  * @author levan
  */
 public class HoaDon {
-    private String maHd, ngayTao, ngayTT, maKh, tenKh;
+    private int maHd;
+    private String ngayTao, ngayTT, maKh, tenKh, tenNv;
     private double donGia,tongTien, tienKhachDua, tienThua;
     private String hinhThucBh, hinhThucTT, tinhTrang, ghiChu;
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHd, String ngayTao, String ngayTT, String maKh, String tenKh, double donGia, double tongTien, double tienKhachDua, double tienThua, String hinhThucBh, String hinhThucTT, String tinhTrang, String ghiChu) {
+    public HoaDon(int maHd, String ngayTao, String ngayTT, String maKh, String tenKh, String tenNv, double donGia, double tongTien, double tienKhachDua, double tienThua, String hinhThucBh, String hinhThucTT, String tinhTrang, String ghiChu) {
         this.maHd = maHd;
         this.ngayTao = ngayTao;
         this.ngayTT = ngayTT;
         this.maKh = maKh;
         this.tenKh = tenKh;
+        this.tenNv = tenNv;
         this.donGia = donGia;
         this.tongTien = tongTien;
         this.tienKhachDua = tienKhachDua;
@@ -32,11 +34,11 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
 
-    public String getMaHd() {
+    public int getMaHd() {
         return maHd;
     }
 
-    public void setMaHd(String maHd) {
+    public void setMaHd(int maHd) {
         this.maHd = maHd;
     }
 
@@ -70,6 +72,14 @@ public class HoaDon {
 
     public void setTenKh(String tenKh) {
         this.tenKh = tenKh;
+    }
+
+    public String getTenNv() {
+        return tenNv;
+    }
+
+    public void setTenNv(String tenNv) {
+        this.tenNv = tenNv;
     }
 
     public double getDonGia() {
@@ -135,6 +145,10 @@ public class HoaDon {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
+
+    
+
+    
 
     
     
