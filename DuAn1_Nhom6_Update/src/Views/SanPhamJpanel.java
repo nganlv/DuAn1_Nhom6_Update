@@ -187,6 +187,7 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     sp.setChatLieuMat(txtChatLieuMat.getText().trim());
     sp.setKichThuoc(txtKichThuoc.getText().trim());
     sp.setDonGia(txtDonGia.getText().trim());
+    sp.setNamBh(Integer.parseInt(txtNamBh.getText().trim()));
     sp.setSoLuong(Integer.parseInt(txtSoLuongTon.getText().trim()));
     QlSanPham sp1=(QlSanPham) cboTen.getSelectedItem();
     QlThuongHieu th=(QlThuongHieu)cboThuongHieu.getSelectedItem();
@@ -270,19 +271,19 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
 
     private void loadCbSp() {
-        List<SanPham> listSp = iSanPhamSer.getAllSp();
+        List<QlSanPham> listSp = iSanPhamSer.getAllSps();
         
-        for (SanPham sp : listSp) {
+        for (QlSanPham sp : listSp) {
             cboTen.addItem(sp);
         }
     }
 
     private void loadCbTh() {
-        List<ThuongHieu> listTh = iThuongHieuSer.getAllTh();
+        List<QlThuongHieu> listTh = iThuongHieuSer.getAllThs();
         if (listTh == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (ThuongHieu th : listTh) {
+        for (QlThuongHieu th : listTh) {
             cboThuongHieu.addItem(th);
             cboThuongHieu2.addItem(th.getTen());
         }
@@ -290,21 +291,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
 
     private void loadCbXx() {
-        List<XuatXu> listXx = iXuatXuSer.getAllXx();
+        List<QlXuatXu> listXx = iXuatXuSer.getAllXxs();
         if (listXx == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (XuatXu xx : listXx) {
+        for (QlXuatXu xx : listXx) {
             cboXuatXu.addItem(xx);
         }
     }
 
     private void loadCbTl() {
-        List<TheLoai> listTl = iTheLoaiSer.getAllTl();
+        List<QlTheLoai> listTl = iTheLoaiSer.getAllTls();
         if (listTl == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (TheLoai tl : listTl) {
+        for (QlTheLoai tl : listTl) {
             cboTheLoai.addItem(tl);
         }
     }
@@ -319,51 +320,51 @@ public class SanPhamJpanel extends javax.swing.JPanel {
     }
 
     private void loadCbCld() {
-        List<ChatLieuDay> listCld = iChatLieuDaySer.getAllCld();
+        List<QlChatLieuDay> listCld = iChatLieuDaySer.getAllClds();
         if (listCld == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (ChatLieuDay cld : listCld) {
+        for (QlChatLieuDay cld : listCld) {
             cboChatLieuDay.addItem(cld);
         }
     }
 
     private void loadCbMms() {
-        List<MauMatSo> listMms = iMauMatSoSer.getAllMms();
+        List<QlMauMatSo> listMms = iMauMatSoSer.getAllMmss();
         if (listMms == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (MauMatSo mms : listMms) {
+        for (QlMauMatSo mms : listMms) {
             cboMauMatSo.addItem(mms);
         }
     }
 
     private void loadCbMv() {
-        List<MauVo> listMv = iMauVoSer.getAllMv();
+        List<QlMauVo> listMv = iMauVoSer.getAllMvs();
         if (listMv == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (MauVo mv : listMv) {
+        for (QlMauVo mv : listMv) {
             cboMauVo.addItem(mv);
         }
     }
 
     private void loadCbPk() {
-        List<PhuKien> listPk = iPhuKienSer.getAllPk();
+        List<QlPhuKien> listPk = iPhuKienSer.getAllPks();
         if (listPk == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (PhuKien pk : listPk) {
+        for (QlPhuKien pk : listPk) {
             cboPhuKien.addItem(pk);
         }
     }
 
     private void loadCbTn() {
-        List<TinhNang> listTn = iTinhNangSer.getAllTn();
+        List<QlTinhNang> listTn = iTinhNangSer.getAllTns();
         if (listTn == null) {
             JOptionPane.showMessageDialog(this, "Rỗng");
         }
-        for (TinhNang tn : listTn) {
+        for (QlTinhNang tn : listTn) {
             cboTinhNang.addItem(tn);
         }
     }
@@ -371,21 +372,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
          int index=tblChiTietSp.getSelectedRow();
          txtMa.setText(tblChiTietSp.getValueAt(index, 0).toString());
              for (int i = 0; i < cboTen.getItemCount(); i++) {
-         SanPham ch =cboTen.getItemAt(i);
+         QlSanPham ch =cboTen.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 1).toString())) {
                cboTen.setSelectedIndex(i);
                 break;
             }
         }
                  for (int i = 0; i <cboThuongHieu.getItemCount(); i++) {
-            ThuongHieu ch =cboThuongHieu.getItemAt(i);
+            QlThuongHieu ch =cboThuongHieu.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 2).toString())) {
               cboThuongHieu.setSelectedIndex(i);
                 break;
             }
         }
         for (int i = 0; i < cboXuatXu.getItemCount(); i++) {
-           XuatXu ch =cboXuatXu.getItemAt(i);
+           QlXuatXu ch =cboXuatXu.getItemAt(i);
            if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 3).toString())) {
                cboXuatXu.setSelectedIndex(i);
                 break;
@@ -398,21 +399,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
         }
              txtKieuMay.setText(tblChiTietSp.getValueAt(index, 5).toString());
         for (int i = 0; i < cboTheLoai.getItemCount(); i++) {
-          TheLoai ch =cboTheLoai.getItemAt(i);
+          QlTheLoai ch =cboTheLoai.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 6).toString())) {
                cboTheLoai.setSelectedIndex(i);
                 break;
             }
         }
          for (int i = 0; i < cboPhuKien.getItemCount(); i++) {
-          PhuKien ch =cboPhuKien.getItemAt(i);
+          QlPhuKien ch =cboPhuKien.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 7).toString())) {
               cboPhuKien.setSelectedIndex(i);
                 break;
             }
         }
          for (int i = 0; i < cboTinhNang.getItemCount(); i++) {
-          TinhNang ch =cboTinhNang.getItemAt(i);
+          QlTinhNang ch =cboTinhNang.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 8).toString())) {
               cboTinhNang.setSelectedIndex(i);
                 break;
@@ -428,21 +429,21 @@ public class SanPhamJpanel extends javax.swing.JPanel {
           txtHinhDangMat.setText(tblChiTietSp.getValueAt(index, 9).toString());
            txtChatLieuMat.setText(tblChiTietSp.getValueAt(index, 10).toString());
            for (int i = 0; i < cboChatLieuDay.getItemCount(); i++) {
-         ChatLieuDay ch = cboChatLieuDay.getItemAt(i);
+         QlChatLieuDay ch = cboChatLieuDay.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 11).toString())) {
                cboChatLieuDay.setSelectedIndex(i);
                 break;
             }
         }
             for (int i = 0; i < cboMauMatSo.getItemCount(); i++) {
-        MauMatSo ch = cboMauMatSo.getItemAt(i);
+        QlMauMatSo ch = cboMauMatSo.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 12).toString())) {
                cboMauMatSo.setSelectedIndex(i);
                 break;
             }
         }
         for (int i = 0; i < cboMauVo.getItemCount(); i++) {
-        MauVo ch = cboMauVo.getItemAt(i);
+        QlMauVo ch = cboMauVo.getItemAt(i);
             if (ch.getTen().equalsIgnoreCase(tblChiTietSp.getValueAt(index, 13).toString())) {
                cboMauVo.setSelectedIndex(i);
                 break;
@@ -1208,7 +1209,7 @@ loadTextField();
                 JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
                         
             }else{
-                iChiTietSanPhamService.add(getData1());
+                iChiTietSanPhamService.adds(getData());
                  JOptionPane.showMessageDialog(this,"thêm thanh công!");
                 loadTableCtsp();
       }
@@ -1224,7 +1225,7 @@ loadTextField();
                 JOptionPane.showMessageDialog(this,"Mã San pham đã tồn tại");
                         
             }else{
-                iChiTietSanPhamService.update(getData1());
+                iChiTietSanPhamService.updates(getData());
                  JOptionPane.showMessageDialog(this,"sua thanh công!");
                 loadTableCtsp();
             }
@@ -1314,21 +1315,19 @@ loadTextField();
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-
     private javax.swing.JComboBox<QlChatLieuDay> cboChatLieuDay;
     private javax.swing.JComboBox<QlKhuyenMai> cboGiamGia;
-
     private javax.swing.JComboBox<String> cboGioiTinh;
-    private javax.swing.JComboBox<MauMatSo> cboMauMatSo;
-    private javax.swing.JComboBox<MauVo> cboMauVo;
-    private javax.swing.JComboBox<PhuKien> cboPhuKien;
-    private javax.swing.JComboBox<SanPham> cboTen;
-    private javax.swing.JComboBox<TheLoai> cboTheLoai;
-    private javax.swing.JComboBox<ThuongHieu> cboThuongHieu;
+    private javax.swing.JComboBox<QlMauMatSo> cboMauMatSo;
+    private javax.swing.JComboBox<QlMauVo> cboMauVo;
+    private javax.swing.JComboBox<QlPhuKien> cboPhuKien;
+    private javax.swing.JComboBox<QlSanPham> cboTen;
+    private javax.swing.JComboBox<QlTheLoai> cboTheLoai;
+    private javax.swing.JComboBox<QlThuongHieu> cboThuongHieu;
     private javax.swing.JComboBox<String> cboThuongHieu2;
-    private javax.swing.JComboBox<TinhNang> cboTinhNang;
+    private javax.swing.JComboBox<QlTinhNang> cboTinhNang;
     private javax.swing.JComboBox<String> cboTinhTrang;
-    private javax.swing.JComboBox<XuatXu> cboXuatXu;
+    private javax.swing.JComboBox<QlXuatXu> cboXuatXu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
