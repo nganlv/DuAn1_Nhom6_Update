@@ -5,6 +5,7 @@
 package Repository.Interface;
 
 import DomainModels.HoaDon;
+import DomainModels.HoaDon2;
 import DomainModels.HoaDonChiTiet;
 import ViewModels.QlHoaDon;
 import java.util.List;
@@ -14,13 +15,16 @@ import java.util.List;
  * @author levan
  */
 public interface IHoaDonRepo {
-    public List<HoaDon> getAllHd();
+    public List<HoaDon2> getAllHd();
+    public List<HoaDon> getAllHd1();
+    public List<HoaDon> getAllHdc(String ten);
     public Integer addHdc(QlHoaDon hd);
-    public List<HoaDon> timHd(String ma);
-    public List<HoaDon> locHdTheoTT(String tt);
-    public List<HoaDon> locHdTheoHTBH(String htbh);
-    public List<HoaDon> locHdTheoHTTT(String httt);
+    public List<HoaDon2> timHd(Integer ma);
+    public List<HoaDon2> locHdTheoTT(String tt);
+    public List<HoaDon2> locHdTheoHTBH(String htbh);
+    public List<HoaDon2> locHdTheoHTTT(String httt);
     public Integer updateTT(HoaDon hd);
     public Integer updateTT2(HoaDon hd);
     public Integer updateTKD(HoaDon hd);
+    public Integer addHdct(HoaDon hd);
 }

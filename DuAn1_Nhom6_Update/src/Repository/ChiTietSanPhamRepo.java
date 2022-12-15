@@ -28,7 +28,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
             List<QlChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
             String sql
-                    = " select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia, GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
+                    = " select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay.Ten as KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
                     + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + "join ThuongHieu on ChiTietSP.IdThuongHieu=ThuongHieu.Id\n"
                     + "join XuatXu on ChiTietSP.IdXuatxu=XuatXu.Id\n"
@@ -38,7 +38,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + "join MauVo on ChiTietSP.IdMauVo=MauVo.Id\n"
                     + "join PhuKien on ChiTietSP.IdPhuKien=PhuKien.Id\n"
                     + "join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id";
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -54,8 +57,8 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setMauVo(rs.getString("MauVo"));
                 ctsp.setPhuKien(rs.getString("PhuKien"));
                 ctsp.setTinhNang(rs.getString("TinhNang"));
-                ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
-                ctsp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                ctsp.setHinhDangMat(rs.getString("HinhDangMat"));
+                ctsp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 ctsp.setGioiTinh(rs.getString("GioiTinh"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
                 ctsp.setNamBh(rs.getInt("NamBH"));
@@ -187,7 +190,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<QlChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay.Ten as KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
                     + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + "join ThuongHieu on ChiTietSP.IdThuongHieu=ThuongHieu.Id\n"
                     + "join XuatXu on ChiTietSP.IdXuatxu=XuatXu.Id\n"
@@ -197,7 +200,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + "join MauVo on ChiTietSP.IdMauVo=MauVo.Id\n"
                     + "join PhuKien on ChiTietSP.IdPhuKien=PhuKien.Id\n"
                     + "join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id"
                     + " where ChiTietSP.Ma=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
@@ -210,7 +216,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setXuatXu(rs.getString("XuatXu"));
                 ctsp.setTheLoai(rs.getString("TheLoai"));
                 ctsp.setChatLieuDay(rs.getString("ChatLieuDay"));
-                ctsp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                ctsp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 ctsp.setMauMat(rs.getString("MauMatSo"));
                 ctsp.setMauVo(rs.getString("MauVo"));
                 ctsp.setGioiTinh(rs.getString("GioiTinh"));
@@ -218,7 +224,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setTinhNang(rs.getString("TinhNang"));
                 ctsp.setNamBh(rs.getInt("NamBH"));
                 ctsp.setDonGia(rs.getString("DonGia"));
-                ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                ctsp.setHinhDangMat(rs.getString("HinhDangMat"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
                 ctsp.setTinhTrang(rs.getString("TinhTrang"));
@@ -241,7 +247,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay.Ten as KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
                     + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + "join ThuongHieu on ChiTietSP.IdThuongHieu=ThuongHieu.Id\n"
                     + "join XuatXu on ChiTietSP.IdXuatxu=XuatXu.Id\n"
@@ -251,7 +257,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + "join MauVo on ChiTietSP.IdMauVo=MauVo.Id\n"
                     + "join PhuKien on ChiTietSP.IdPhuKien=PhuKien.Id\n"
                     + "join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id"
                     + " where ThuongHieu.Ten=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, th);
@@ -264,7 +273,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setXuatXu(rs.getString("XuatXu"));
                 ctsp.setTheLoai(rs.getString("TheLoai"));
                 ctsp.setChatLieuDay(rs.getString("ChatLieuDay"));
-                ctsp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                ctsp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 ctsp.setMauMat(rs.getString("MauMatSo"));
                 ctsp.setMauVo(rs.getString("MauVo"));
                 ctsp.setGioiTinh(rs.getString("GioiTinh"));
@@ -272,7 +281,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setTinhNang(rs.getString("TinhNang"));
                 ctsp.setNamBh(rs.getInt("NamBH"));
                 ctsp.setDonGia(rs.getString("DonGia"));
-                ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                ctsp.setHinhDangMat(rs.getString("HinhDangMat"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
                 ctsp.setTinhTrang(rs.getString("TinhTrang"));
@@ -295,7 +304,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay.Ten as KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
                     + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + "join ThuongHieu on ChiTietSP.IdThuongHieu=ThuongHieu.Id\n"
                     + "join XuatXu on ChiTietSP.IdXuatxu=XuatXu.Id\n"
@@ -305,7 +314,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + "join MauVo on ChiTietSP.IdMauVo=MauVo.Id\n"
                     + "join PhuKien on ChiTietSP.IdPhuKien=PhuKien.Id\n"
                     + "join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id"
                     + " where GioiTinh=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, gt);
@@ -318,7 +330,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setXuatXu(rs.getString("XuatXu"));
                 ctsp.setTheLoai(rs.getString("TheLoai"));
                 ctsp.setChatLieuDay(rs.getString("ChatLieuDay"));
-                ctsp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                ctsp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 ctsp.setMauMat(rs.getString("MauMatSo"));
                 ctsp.setMauVo(rs.getString("MauVo"));
                 ctsp.setGioiTinh(rs.getString("GioiTinh"));
@@ -326,7 +338,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setTinhNang(rs.getString("TinhNang"));
                 ctsp.setNamBh(rs.getInt("NamBH"));
                 ctsp.setDonGia(rs.getString("DonGia"));
-                ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                ctsp.setHinhDangMat(rs.getString("HinhDangMat"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
                 ctsp.setTinhTrang(rs.getString("TinhTrang"));
@@ -349,7 +361,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         try {
             List<ChiTietSanPham> listCtsp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMatSo, ChatLieuMatKinh, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, ThuongHieu.Ten as ThuongHieu, XuatXu.Ten as XuatXu, GioiTinh, KieuMay.Ten as KieuMay, TheLoai.Ten as TheLoai, PhuKien.Ten as PhuKien, TinhNang.Ten as TinhNang, HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, ChatLieuDay.Ten as ChatLieuDay, MauMatSo.Ten as MauMatSo, MauVo.Ten as MauVo, KichThuoc,FORMAT(DonGia, 'c', 'vi-VN') as DonGia,FORMAT(KhuyenMai.GiamGia, 'c', 'vi-VN') as GiamGia, NamBH, SoLuongTon,  TinhTrang from ChiTietSP\n"
                     + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + "join ThuongHieu on ChiTietSP.IdThuongHieu=ThuongHieu.Id\n"
                     + "join XuatXu on ChiTietSP.IdXuatxu=XuatXu.Id\n"
@@ -359,7 +371,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                     + "join MauVo on ChiTietSP.IdMauVo=MauVo.Id\n"
                     + "join PhuKien on ChiTietSP.IdPhuKien=PhuKien.Id\n"
                     + "join TinhNang on ChiTietSP.IdTinhNang=TinhNang.Id\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id"
                     + " where TinhTrang=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tt);
@@ -372,7 +387,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setXuatXu(rs.getString("XuatXu"));
                 ctsp.setTheLoai(rs.getString("TheLoai"));
                 ctsp.setChatLieuDay(rs.getString("ChatLieuDay"));
-                ctsp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                ctsp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 ctsp.setMauMat(rs.getString("MauMatSo"));
                 ctsp.setMauVo(rs.getString("MauVo"));
                 ctsp.setGioiTinh(rs.getString("GioiTinh"));
@@ -380,7 +395,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                 ctsp.setTinhNang(rs.getString("TinhNang"));
                 ctsp.setNamBh(rs.getInt("NamBH"));
                 ctsp.setDonGia(rs.getString("DonGia"));
-                ctsp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                ctsp.setHinhDangMat(rs.getString("HinhDangMat"));
                 ctsp.setSoLuong(rs.getInt("SoLuongTon"));
                 ctsp.setKieuMay(rs.getString("KieuMay"));
                 ctsp.setTinhTrang(rs.getString("TinhTrang"));
@@ -449,7 +464,6 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
 //        }
 //        return null;
 //    }
-
     @Override
     public List<ChiTietSanPham> getAllCtsp() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -474,10 +488,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                           ,IdMauVo
                            ,IdPhuKien
                          ,IdTinhNang
-                      ,HinhDangMatSo
-                     ,ChatLieuMatKinh
+                      ,IdHinhDangMat
+                     ,IdChatLieuMat
                     ,GioiTinh
-                    ,KieuMay
+                    ,IdKieuMay
                       ,NamBH
                          ,KichThuoc
                         ,SoLuongTon
@@ -528,7 +542,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
         update ChiTietSP  set SoLuongTon =  ? where Ma = ?""";
         try (Connection con = DBContext.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(2, sp.getMa());
-            ps.setInt(1, sp.getSoLuong());     
+            ps.setInt(1, sp.getSoLuong());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -539,7 +553,7 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
 
     @Override
     public String updatess(QlChiTietSanPham sp) {
-       String sql = """
+        String sql = """
         update ChiTietSP  
                    set  IdKm=?,IdSp= ?
                     ,IdThuongHieu = ?
@@ -550,10 +564,10 @@ public class ChiTietSanPhamRepo implements IChiTietSanPhamRepo {
                           ,IdMauVo = ?
                            ,IdPhuKien = ?
                          ,IdTinhNang= ?
-                      ,HinhDangMatSo= ?
-                     ,ChatLieuMatKinh= ?
+                      ,IdHinhDangMat= ?
+                     ,IdChatLieuMat= ?
                     ,GioiTinh = ?
-                    ,KieuMay = ?
+                    ,IdKieuMay = ?
                       ,NamBH = ?
                          ,KichThuoc = ?
                         ,SoLuongTon = ?

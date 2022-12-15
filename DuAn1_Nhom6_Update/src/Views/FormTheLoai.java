@@ -228,6 +228,7 @@ private void loadTable() {
             }
             QlTheLoai xx=new QlTheLoai();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iTheLoaiSer.updateTls(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTable();

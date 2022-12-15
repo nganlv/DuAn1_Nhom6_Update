@@ -9,22 +9,29 @@ package ViewModels;
  * @author levan
  */
 public class QlHoaDon {
+  private String idHd,idCtsp;
     private int maHd;
+    private String maSp;
     private String ngayTao, ngayTT, maKh, tenKh, tenNv;
-    private double donGia,tongTien, tienKhachDua, tienThua;
+    private double donGia,giamGia,tongTien, tienKhachDua, tienThua;
     private String hinhThucBh, hinhThucTT, tinhTrang, ghiChu;
+    private int soLuong;
 
     public QlHoaDon() {
     }
 
-    public QlHoaDon(int maHd, String ngayTao, String ngayTT, String maKh, String tenKh, String tenNv, double donGia, double tongTien, double tienKhachDua, double tienThua, String hinhThucBh, String hinhThucTT, String tinhTrang, String ghiChu) {
+    public QlHoaDon(String idHd, String idCtsp, int maHd, String maSp, String ngayTao, String ngayTT, String maKh, String tenKh, String tenNv, double donGia, double giamGia, double tongTien, double tienKhachDua, double tienThua, String hinhThucBh, String hinhThucTT, String tinhTrang, String ghiChu, int soLuong) {
+        this.idHd = idHd;
+        this.idCtsp = idCtsp;
         this.maHd = maHd;
+        this.maSp = maSp;
         this.ngayTao = ngayTao;
         this.ngayTT = ngayTT;
         this.maKh = maKh;
         this.tenKh = tenKh;
         this.tenNv = tenNv;
         this.donGia = donGia;
+        this.giamGia = giamGia;
         this.tongTien = tongTien;
         this.tienKhachDua = tienKhachDua;
         this.tienThua = tienThua;
@@ -32,6 +39,23 @@ public class QlHoaDon {
         this.hinhThucTT = hinhThucTT;
         this.tinhTrang = tinhTrang;
         this.ghiChu = ghiChu;
+        this.soLuong = soLuong;
+    }
+
+    public String getIdHd() {
+        return idHd;
+    }
+
+    public void setIdHd(String idHd) {
+        this.idHd = idHd;
+    }
+
+    public String getIdCtsp() {
+        return idCtsp;
+    }
+
+    public void setIdCtsp(String idCtsp) {
+        this.idCtsp = idCtsp;
     }
 
     public int getMaHd() {
@@ -40,6 +64,14 @@ public class QlHoaDon {
 
     public void setMaHd(int maHd) {
         this.maHd = maHd;
+    }
+
+    public String getMaSp() {
+        return maSp;
+    }
+
+    public void setMaSp(String maSp) {
+        this.maSp = maSp;
     }
 
     public String getNgayTao() {
@@ -88,6 +120,14 @@ public class QlHoaDon {
 
     public void setDonGia(double donGia) {
         this.donGia = donGia;
+    }
+
+    public double getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(double giamGia) {
+        this.giamGia = giamGia;
     }
 
     public double getTongTien() {
@@ -146,6 +186,12 @@ public class QlHoaDon {
         this.ghiChu = ghiChu;
     }
 
-    
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
     
 }

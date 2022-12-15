@@ -20,7 +20,8 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String maSp, String tenSp, double donGia, double giamGia, int soLuong, double thanhTien) {
+    public HoaDonChiTiet( String maSp, String tenSp, double donGia, double giamGia, int soLuong, double thanhTien) {
+        
         this.maSp = maSp;
         this.tenSp = tenSp;
         this.donGia = donGia;
@@ -28,6 +29,8 @@ public class HoaDonChiTiet {
         this.soLuong = soLuong;
         this.thanhTien = thanhTien;
     }
+
+  
 
     public String getMaSp() {
         return maSp;
@@ -76,7 +79,6 @@ public class HoaDonChiTiet {
     public void setThanhTien(double thanhTien) {
         this.thanhTien = thanhTien;
     }
-
     
     
 }

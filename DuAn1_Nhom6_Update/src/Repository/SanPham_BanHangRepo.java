@@ -25,22 +25,27 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  ChiTietSP.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
-                    + " join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
+            String sql = " select  ChiTietSP.Id, ChiTietSP.Ma, SanPham.Ten,  DonGia, GiamGia,  HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay.Ten as KieuMay, SoLuongTon from ChiTietSP\n"
+                    + " join SanPham on SanPham.Id=ChiTietSP.IdSP\n"
                     + " join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + " join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
-                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id";
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id\n"
+                    + "where TinhTrang=N'Còn kinh doanh'";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 SanPham_BanHang sp = new SanPham_BanHang();
+                sp.setId(rs.getString("Id"));
                 sp.setMa(rs.getString("Ma"));
                 sp.setTen(rs.getString("Ten"));
                 sp.setDonGia(rs.getDouble("DonGia"));
                 sp.setGiamGia(rs.getDouble("GiamGia"));
-                sp.setHinhDangMat(rs.getString("HinhDangMatSo"));
-                sp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                sp.setHinhDangMat(rs.getString("HinhDangMat"));
+                sp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 sp.setKichThuoc(rs.getString("KichThuoc"));
                 sp.setMauVo(rs.getString("MauVo"));
                 sp.setTheLoai(rs.getString("TheLoai"));
@@ -64,12 +69,15 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  ChiTietSP.Ma, SanPham.Ten,  DonGia,  GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
-                    + " join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
+            String sql = "select  ChiTietSP.Ma, SanPham.Ten,  DonGia, GiamGia,  HinhDangMat.Ten as HinhDangMat, ChatLieuMat.Ten as ChatLieuMat, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay.Ten as KieuMay, SoLuongTon from ChiTietSP\n"
+                    + " join SanPham on SanPham.Id=ChiTietSP.IdSP\n"
                     + " join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + " join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
-                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
-                    + " where ChiTietSP.Ma=?";              
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HinhDangMat on ChiTietSP.IdHinhDangMat=HinhDangMat.Id\n"
+                    + "join ChatLieuMat on ChiTietSP.IdChatLieuMat=ChatLieuMat.Id\n"
+                    + "join KieuMay on ChiTietSP.IdKieuMay=KieuMay.Id\n"
+                    + "where TinhTrang=N'Còn kinh doanh' and SanPham.Ma =?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
@@ -79,8 +87,8 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                 sp.setTen(rs.getString("Ten"));
                 sp.setDonGia(rs.getDouble("DonGia"));
                 sp.setGiamGia(rs.getDouble("GiamGia"));
-                sp.setHinhDangMat(rs.getString("HinhDangMatSo"));
-                sp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
+                sp.setHinhDangMat(rs.getString("HinhDangMat"));
+                sp.setChatLieuMat(rs.getString("ChatLieuMat"));
                 sp.setKichThuoc(rs.getString("KichThuoc"));
                 sp.setMauVo(rs.getString("MauVo"));
                 sp.setTheLoai(rs.getString("TheLoai"));

@@ -228,6 +228,7 @@ private void loadTable() {
             }
             QlMauVo xx=new QlMauVo();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iMauVoSer.updateMvs(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTable();
