@@ -228,6 +228,7 @@ private void loadTable() {
             }
             QlMauMatSo xx=new QlMauMatSo();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iMauMatSoSer.updateMmss(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTable();

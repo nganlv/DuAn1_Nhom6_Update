@@ -26,6 +26,7 @@ DefaultTableModel model = new DefaultTableModel();
          txtngay.getSettings().setAllowKeyboardEditing(false);
          txtngaykt.getSettings().setAllowKeyboardEditing(false);
         txtngay.getSettings().setDateRangeLimits(LocalDate.of(1989, Month.JULY, 1), LocalDate.now());
+        loadTable();
     }
 
     /**

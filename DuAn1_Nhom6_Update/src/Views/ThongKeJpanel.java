@@ -23,6 +23,8 @@ public class ThongKeJpanel extends javax.swing.JPanel {
     public ThongKeJpanel() {
         initComponents();
          thang();
+         layds();
+         doanhthu();
     }
     
 

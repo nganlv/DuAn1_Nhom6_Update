@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author levan
  */
 public class QlHoaDonChiTiet {
-     private String maSp, tenSp;
+    private String maSp, tenSp;
     private double donGia, giamGia;
     private int soLuong;
     private double thanhTien;
@@ -19,7 +19,8 @@ public class QlHoaDonChiTiet {
     public QlHoaDonChiTiet() {
     }
 
-    public QlHoaDonChiTiet(String maSp, String tenSp, double donGia, double giamGia, int soLuong, double thanhTien) {
+    public QlHoaDonChiTiet( String maSp, String tenSp, double donGia, double giamGia, int soLuong, double thanhTien) {
+        
         this.maSp = maSp;
         this.tenSp = tenSp;
         this.donGia = donGia;
@@ -28,6 +29,7 @@ public class QlHoaDonChiTiet {
         this.thanhTien = thanhTien;
     }
 
+   
     public String getMaSp() {
         return maSp;
     }
@@ -75,4 +77,6 @@ public class QlHoaDonChiTiet {
     public void setThanhTien(double thanhTien) {
         this.thanhTien = thanhTien;
     }
+    
+    
 }

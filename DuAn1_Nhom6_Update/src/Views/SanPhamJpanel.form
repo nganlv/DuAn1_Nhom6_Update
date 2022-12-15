@@ -76,6 +76,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -98,11 +100,19 @@
                                       <Component id="cboTen" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtMa" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cboTheLoai" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtKieuMay" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboKieuMay" alignment="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnSp" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnTh" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnXx" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="btnKieuMay" max="32767" attributes="0"/>
+                                              <Component id="btnTloai" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
@@ -113,15 +123,6 @@
                                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnSp" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnTh" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnXx" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnTloai" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -130,18 +131,20 @@
                                       <Component id="cboChatLieuDay" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cboTinhNang" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cboMauVo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtHinhDangMat" max="32767" attributes="0"/>
-                                      <Component id="txtChatLieuMat" max="32767" attributes="0"/>
+                                      <Component id="cboHinhDangMat" max="32767" attributes="0"/>
+                                      <Component id="cboChatLieuMat" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnPk" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnTn" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnCld" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnMms" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnMv" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnPk" max="32767" attributes="0"/>
+                                      <Component id="btnTn" max="32767" attributes="0"/>
+                                      <Component id="btnCld" max="32767" attributes="0"/>
+                                      <Component id="btnMms" max="32767" attributes="0"/>
+                                      <Component id="btnMv" max="32767" attributes="0"/>
+                                      <Component id="btnHinhDangMat" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnChatLieuMat" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -185,13 +188,8 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="jPanel5" min="-2" pref="343" max="-2" attributes="0"/>
+                                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -231,7 +229,8 @@
                               <Component id="txtNamBh" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnTh" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtHinhDangMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboHinhDangMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHinhDangMat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -241,7 +240,8 @@
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtSoLuongTon" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnXx" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtChatLieuMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboChatLieuMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnChatLieuMat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -262,7 +262,8 @@
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboMauMatSo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnMms" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtKieuMay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboKieuMay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnKieuMay" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -272,22 +273,17 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboTheLoai" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboMauVo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnTloai" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnMv" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboTheLoai" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboMauVo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTloai" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMv" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="212" max="-2" attributes="0"/>
@@ -581,16 +577,16 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                       <Component id="cboTinhTrang" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="txtTimSp" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <EmptySpace pref="126" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtTimSp" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -605,7 +601,6 @@
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -613,6 +608,7 @@
                                   <Component id="cboGioiTinh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTimSp" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboTinhTrang" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -710,23 +706,22 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnThem" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnThem" max="32767" attributes="0"/>
+                                  <Component id="btnLoad" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnSua" max="32767" attributes="0"/>
+                                  <Component id="btnCopy" pref="113" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="btnSua" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnReset" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnXoa" max="32767" attributes="0"/>
+                                  <Component id="btnReset" pref="110" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -738,10 +733,13 @@
                                   <Component id="btnThem" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnReset" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnLoad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCopy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnReset" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -800,6 +798,17 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCopy">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="66" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Copy"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCopyActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -913,12 +922,6 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;QlSanPham&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtKieuMay">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtHinhDangMat">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtChatLieuMat">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n m&#xe3;i"/>
@@ -937,12 +940,75 @@
                 <Component class="javax.swing.JButton" name="btnThemKm">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
+                      <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="+"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemKmActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cboHinhDangMat">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;QlHinhDangMat&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cboChatLieuMat">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;QlChatLieuMat&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cboKieuMay">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;QlKieuMay&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnHinhDangMat">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="+"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHinhDangMatActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnChatLieuMat">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="+"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChatLieuMatActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnKieuMay">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="+"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKieuMayActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
