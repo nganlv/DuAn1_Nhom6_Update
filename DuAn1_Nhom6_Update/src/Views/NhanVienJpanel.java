@@ -128,7 +128,7 @@ private void loadCombobox1() {
       return nv;
    }
  public void loadTextField(){
-        int index = tblNhanVien.getSelectedRow();
+       int index = tblNhanVien.getSelectedRow();
         txtMa.setText(tblNhanVien.getValueAt(index, 0).toString());
         txtTen.setText(tblNhanVien.getValueAt(index, 1).toString());
        
@@ -162,7 +162,7 @@ private void loadCombobox1() {
             }
         }
         
-        if(tblNhanVien.getValueAt(index, 9).toString().equalsIgnoreCase("dang lam")){
+        if(tblNhanVien.getValueAt(index, 9).toString().equalsIgnoreCase("Đang Làm Việc")){
             rdDanglam.setSelected(true);
         }else{
             rdDaNghi.setSelected(true);
@@ -379,6 +379,7 @@ private void loadCombobox1() {
                 btnLoadActionPerformed(evt);
             }
         });
+
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -667,8 +668,15 @@ private void loadCombobox1() {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, nvService.delete(txtMa.getText().trim()));
-        LoadTable();
+       if(tblNhanVien.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(this, "Hãy chọn 1 dòng để xóa");
+        }else{
+            int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+            if(chon == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(this, nvService.delete(txtMa.getText().trim()));
+                LoadTable();
+            }
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
