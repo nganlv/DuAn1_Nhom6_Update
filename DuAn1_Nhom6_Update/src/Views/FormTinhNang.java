@@ -228,6 +228,7 @@ private void loadTable() {
             }
             QlTinhNang xx=new QlTinhNang();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iTinhNangSer.updateTns(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTable();

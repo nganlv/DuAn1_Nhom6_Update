@@ -9,12 +9,13 @@ import Service.Interface.IHoaDonSer;
 import Services.HoaDonChiTietService;
 import Services.HoaDonService;
 import ViewModels.QlHoaDon;
+import ViewModels.QlHoaDon2;
 import ViewModels.QlHoaDonChiTiet;
+import ViewModels.QlHoaDonChiTiet2;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author levan
@@ -36,8 +37,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     private void loadTableHd() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.getAllHds();
-        for (QlHoaDon hd : listHd) {
+        List<QlHoaDon2> listHd = iHoaDonSer.getAllHds();
+        for (QlHoaDon2 hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
                 hd.getTinhTrang(), hd.getGhiChu()});
@@ -47,10 +48,10 @@ public class HoaDonJpanel extends javax.swing.JPanel {
 
     private void loadTableHdCt() {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Giảm giá", "Số lượng", "Thành tiền"});
-        List<QlHoaDonChiTiet> listhdct = iHoaDonChiTietSer.getAllHdct2s(Double.parseDouble(txtTongTien.getText()));
-        for (QlHoaDonChiTiet hdct : listhdct) {
-            model.addRow(new Object[]{hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(), hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()});
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn","Mã sản phẩm", "Tên sản phẩm", "Đơn giá",  "Số lượng","Giảm giá", "Thành tiền"});
+        List<QlHoaDonChiTiet2> listhdct = iHoaDonChiTietSer.getAllHdct2s(Integer.parseInt(txtMaHd.getText()));
+        for (QlHoaDonChiTiet2 hdct : listhdct) {
+            model.addRow(new Object[]{hdct.getMaHd(),hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(), hdct.getSoLuong(), hdct.getGiamGia(), hdct.getThanhTien()});
 
         }
         tblHoaDonChiTiet.setModel(model);
@@ -68,8 +69,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     private void locHdTheoTT() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoTTs(cboTinhTrang.getItemAt(cboTinhTrang.getSelectedIndex()));
-        for (QlHoaDon hd : listHd) {
+        List<QlHoaDon2> listHd = iHoaDonSer.locHdTheoTTs(cboTinhTrang.getItemAt(cboTinhTrang.getSelectedIndex()));
+        for (QlHoaDon2 hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
                 hd.getTinhTrang(), hd.getGhiChu()});
@@ -80,8 +81,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     private void locHdTheoHTBH() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoHTBHs(cboHinhThucBh.getItemAt(cboHinhThucBh.getSelectedIndex()));
-        for (QlHoaDon hd : listHd) {
+        List<QlHoaDon2> listHd = iHoaDonSer.locHdTheoHTBHs(cboHinhThucBh.getItemAt(cboHinhThucBh.getSelectedIndex()));
+        for (QlHoaDon2 hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
                 hd.getTinhTrang(), hd.getGhiChu()});
@@ -92,8 +93,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     private void locHdTheoHHTT() {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.locHdTheoHTTTs(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
-        for (QlHoaDon hd : listHd) {
+        List<QlHoaDon2> listHd = iHoaDonSer.locHdTheoHTTTs(cboHinhThucTT.getItemAt(cboHinhThucTT.getSelectedIndex()));
+        for (QlHoaDon2 hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
                 hd.getTinhTrang(), hd.getGhiChu()});
@@ -128,7 +129,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHoaDonChiTiet = new javax.swing.JTable();
-        txtTongTien = new javax.swing.JTextField();
+        txtMaHd = new javax.swing.JTextField();
         btnLoad = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 204));
@@ -334,6 +335,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblHoaDonChiTiet);
 
+        txtMaHd.setEnabled(false);
+
         btnLoad.setText("Hiển thị");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +354,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMaHd, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLoad)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -362,7 +365,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtMaHd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnLoad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,8 +394,8 @@ public class HoaDonJpanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 private void fillHd(int index) {
-        List<QlHoaDon> listHd = iHoaDonSer.getAllHds();
-        txtTongTien.setText(String.valueOf(listHd.get(index).getTongTien()));
+        List<QlHoaDon2> listHd = iHoaDonSer.getAllHds();
+        txtMaHd.setText(String.valueOf(listHd.get(index).getMaHd()));
     }
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         int index = tblHoaDon.getSelectedRow();
@@ -422,8 +425,8 @@ private void fillHd(int index) {
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Ngày thanh toán", "Mã khách hàng", "Tên khách hàng", "Tổng tiền", "Tiền khách đưa", "Tiền thừa", "Hình thức bán hàng", "Hình thức thanh toán", "Trạng thái", "Ghi chú"});
-        List<QlHoaDon> listHd = iHoaDonSer.timHds(txtTimKiem.getText());
-        for (QlHoaDon hd : listHd) {
+        List<QlHoaDon2> listHd = iHoaDonSer.timHds(Integer.parseInt(txtTimKiem.getText()));
+        for (QlHoaDon2 hd : listHd) {
             model.addRow(new Object[]{hd.getMaHd(), hd.getNgayTao(), hd.getNgayTT(), hd.getMaKh(), hd.getTenKh(),
                 hd.getTongTien(), hd.getTienKhachDua(), hd.getTienThua(), hd.getHinhThucBh(), hd.getHinhThucTT(),
                 hd.getTinhTrang(), hd.getGhiChu()});
@@ -451,7 +454,7 @@ private void fillHd(int index) {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JTable tblHoaDonChiTiet;
+    private javax.swing.JTextField txtMaHd;
     private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }

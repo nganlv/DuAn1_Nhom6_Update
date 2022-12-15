@@ -701,7 +701,7 @@ private void loadCombobox1() {
 
     private void btntkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkActionPerformed
         // TODO add your handling code here:
-        new TaiKhoanForm().setVisible(true);
+        new FormTaiKhoan().setVisible(true);
     }//GEN-LAST:event_btntkActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

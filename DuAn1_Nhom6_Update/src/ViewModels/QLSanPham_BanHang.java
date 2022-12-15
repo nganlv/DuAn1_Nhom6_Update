@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author levan
  */
 public class QLSanPham_BanHang {
-    private String ma, ten;
+    private String id,ma, ten;
     private double donGia, giamGia;
     private String hinhDangMat, chatLieuMat, kichThuoc, mauVo, theLoai, gioiTinh, kieuMay;
     private int soLuong;
@@ -19,7 +19,8 @@ public class QLSanPham_BanHang {
     public QLSanPham_BanHang() {
     }
 
-    public QLSanPham_BanHang(String ma, String ten, double donGia, double giamGia, String hinhDangMat, String chatLieuMat, String kichThuoc, String mauVo, String theLoai, String gioiTinh, String kieuMay, int soLuong) {
+    public QLSanPham_BanHang(String id, String ma, String ten, double donGia, double giamGia, String hinhDangMat, String chatLieuMat, String kichThuoc, String mauVo, String theLoai, String gioiTinh, String kieuMay, int soLuong) {
+        this.id = id;
         this.ma = ma;
         this.ten = ten;
         this.donGia = donGia;
@@ -32,6 +33,14 @@ public class QLSanPham_BanHang {
         this.gioiTinh = gioiTinh;
         this.kieuMay = kieuMay;
         this.soLuong = soLuong;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMa() {
@@ -129,6 +138,7 @@ public class QLSanPham_BanHang {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
+
     
    
 }

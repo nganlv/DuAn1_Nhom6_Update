@@ -232,6 +232,7 @@ public class FormXuatXu extends javax.swing.JFrame {
             }
             QlXuatXu xx = new QlXuatXu();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iXuatXuSer.updateXxs(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTableXx();

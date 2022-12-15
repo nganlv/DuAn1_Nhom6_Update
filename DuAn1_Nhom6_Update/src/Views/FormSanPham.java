@@ -232,6 +232,7 @@ public class FormSanPham extends javax.swing.JFrame {
             }
             QlSanPham sp = new QlSanPham();
             sp.setTen(txtTen.getText());
+            sp.setMa(txtMa.getText());
             iSanPhamSer.updateSps(sp);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTableSp();

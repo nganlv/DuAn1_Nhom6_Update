@@ -228,6 +228,7 @@ private void loadTableTh() {
             }
             QlThuongHieu th=new QlThuongHieu();
             th.setTen(txtTen.getText());
+            th.setMa(txtMa.getText());
             iThuongHieuSer.addThs(th);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTableTh();

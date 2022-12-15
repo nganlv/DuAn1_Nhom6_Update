@@ -5,11 +5,13 @@
 package Services;
 
 import DomainModels.HoaDonChiTiet;
+import DomainModels.HoaDonChiTiet2;
 import Repository.HoaDonChiTietRepo;
 import Repository.Interface.IHoaDonChiTietRepo;
 import Repository.Interface.IHoaDonChoRepo;
 import Service.Interface.IHoaDonChiTietSer;
 import ViewModels.QlHoaDonChiTiet;
+import ViewModels.QlHoaDonChiTiet2;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +35,11 @@ public class HoaDonChiTietService implements IHoaDonChiTietSer{
         return null;
     }
     @Override
-    public List<QlHoaDonChiTiet> getAllHdct2s(Double tt){
+    public List<QlHoaDonChiTiet2> getAllHdct2s(Integer maHd){
         try {
-            List<QlHoaDonChiTiet> listHdct=new ArrayList<>();
-            for(HoaDonChiTiet hdct:iHoaDonChiTietRepo.getAllHdct2(tt)){
-                listHdct.add(new QlHoaDonChiTiet(hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(),hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()));
+            List<QlHoaDonChiTiet2> listHdct=new ArrayList<>();
+            for(HoaDonChiTiet2 hdct:iHoaDonChiTietRepo.getAllHdct2(maHd)){
+                listHdct.add(new QlHoaDonChiTiet2(hdct.getMaHd(),hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(), hdct.getSoLuong(), hdct.getGiamGia(), hdct.getThanhTien()));
             }
             return listHdct;
         } catch (Exception e) {

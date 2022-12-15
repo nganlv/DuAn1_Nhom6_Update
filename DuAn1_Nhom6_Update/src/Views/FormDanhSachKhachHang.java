@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormDanhSachKhachHang extends javax.swing.JFrame {
 
     private final IKhachHang_BanHangService iKhachHang_BanHangService = new KhachHang_BanHangService();
-    public static String maKh;
+    public static String idKh;
     public static String tenKh;
     /**
      * Creates new form FormDanhSachKhachHang
@@ -438,7 +438,7 @@ private void loadTableKh() {
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
 int index=tblKh.getSelectedRow();
 List<QlKhachHang_BanHang> listQlKh = iKhachHang_BanHangService.getAllKhs();
-maKh=listQlKh.get(index).getMa();
+idKh=listQlKh.get(index).getId();
 tenKh=listQlKh.get(index).getHoTen();
 this.dispose();
     }//GEN-LAST:event_btnChonActionPerformed

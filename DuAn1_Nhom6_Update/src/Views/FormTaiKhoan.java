@@ -15,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class TaiKhoanForm extends javax.swing.JFrame {
+public class FormTaiKhoan extends javax.swing.JFrame {
     final ITaiKhoan tkService = new ITaiKhoan();
 
     /**
      * Creates new form QLChucVu
      */
-    public TaiKhoanForm() {
+    public FormTaiKhoan() {
         initComponents();
         setLocationRelativeTo(null);
         loadTable();
@@ -33,17 +33,17 @@ public class TaiKhoanForm extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnCount(0);
         model.setRowCount(0);
-        model.setColumnIdentifiers(new String[]{"Mã chức vụ", "Tên chức vụ"});
+        model.setColumnIdentifiers(new String[]{"Mã tài khoản", "Tên tài khoản"});
         for (QuanLyTaiKhoan cv : listCV) {
             model.addRow(new Object[]{cv.getMa(), cv.getTen()});
         }
-        tblChucVu.setModel(model);
+        tblTaiKhoan.setModel(model);
     }
     
     public void loadTextField(){
-        int index = tblChucVu.getSelectedRow();
-        txtMaChucVu.setText(tblChucVu.getValueAt(index, 0).toString());
-        txtTenChucVu.setText(tblChucVu.getValueAt(index, 1).toString());
+        int index = tblTaiKhoan.getSelectedRow();
+        txtMaChucVu.setText(tblTaiKhoan.getValueAt(index, 0).toString());
+        txtTenChucVu.setText(tblTaiKhoan.getValueAt(index, 1).toString());
     }
     
     public TaiKhoan getData(){
@@ -86,7 +86,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
         txtMaChucVu = new javax.swing.JTextField();
         txtTenChucVu = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblChucVu = new javax.swing.JTable();
+        tblTaiKhoan = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -96,13 +96,13 @@ public class TaiKhoanForm extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("tai khoan");
+        jLabel1.setText("Tài khoản");
 
-        jLabel2.setText("Mã chức vụ");
+        jLabel2.setText("Mã tài khoản");
 
-        jLabel3.setText("Tên chức vụ");
+        jLabel3.setText("Tên tài khoản");
 
-        tblChucVu.setModel(new javax.swing.table.DefaultTableModel(
+        tblTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,12 +113,12 @@ public class TaiKhoanForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblChucVu.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblChucVuMouseClicked(evt);
+                tblTaiKhoanMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblChucVu);
+        jScrollPane1.setViewportView(tblTaiKhoan);
 
         btnAdd.setText("Thêm");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMaChucVu)
                                     .addComponent(txtTenChucVu, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))))
-                        .addGap(0, 64, Short.MAX_VALUE)))
+                        .addGap(0, 55, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -209,10 +209,10 @@ public class TaiKhoanForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblChucVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChucVuMouseClicked
+    private void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
         // TODO add your handling code here:
         loadTextField();
-    }//GEN-LAST:event_tblChucVuMouseClicked
+    }//GEN-LAST:event_tblTaiKhoanMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -242,7 +242,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if(tblChucVu.getSelectedRow() < 0){
+        if(tblTaiKhoan.getSelectedRow() < 0){
             JOptionPane.showConfirmDialog(this, "Mời chọn 1 dòng");
         }else{
             int chon = JOptionPane.showConfirmDialog(this, "Bạn chắn chắn muốn xóa", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
@@ -278,14 +278,22 @@ public class TaiKhoanForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -298,7 +306,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaiKhoanForm().setVisible(true);
+                new FormTaiKhoan().setVisible(true);
             }
         });
     }
@@ -312,7 +320,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblChucVu;
+    private javax.swing.JTable tblTaiKhoan;
     private javax.swing.JTextField txtMaChucVu;
     private javax.swing.JTextField txtTenChucVu;
     // End of variables declaration//GEN-END:variables

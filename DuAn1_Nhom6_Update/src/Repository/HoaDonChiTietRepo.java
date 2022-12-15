@@ -5,6 +5,7 @@
 package Repository;
 
 import DomainModels.HoaDonChiTiet;
+import DomainModels.HoaDonChiTiet2;
 import Repository.Interface.IHoaDonChiTietRepo;
 import Utilities.DBContext;
 import java.sql.Connection;
@@ -42,7 +43,7 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
                 hdct.setSoLuong(rs.getInt("SoLuong"));
                 hdct.setThanhTien(rs.getDouble("ThanhTien"));
                 listHdct.add(hdct);
-                
+
             }
             rs.close();
             ps.close();
@@ -55,26 +56,28 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
     }
 
     @Override
-    public List<HoaDonChiTiet> getAllHdct2(Double tt) {
+    public List<HoaDonChiTiet2> getAllHdct2(Integer maHd) {
         try {
-            List<HoaDonChiTiet> listHdct = new ArrayList<>();
+            List<HoaDonChiTiet2> listHdct = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong, KhuyenMai.GiamGia, (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as ThanhTien from ChiTietSP\n"
-                    + " join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
-                    + " join HoaDonChiTiet on ChiTietSP.Id=HoaDonChiTiet.IdChiTietSP\n"
-                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
-                    + " where (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong=?";
+            String sql = "select HoaDon.Ma as MaHd, ChiTietSP.Ma as MaSp, SanPham.Ten, format(HoaDonChiTiet.DonGia,'c','vi-VN')as DonGia, HoaDonChiTiet.SoLuong, format(KhuyenMai.GiamGia,'c','vi-VN') as GiamGia, format((HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong,'c','vi-VN') as ThanhTien from ChiTietSP\n"
+                    + "join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
+                    + "join HoaDonChiTiet on ChiTietSP.Id=HoaDonChiTiet.IdChiTietSP\n"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + "join HoaDon on HoaDonChiTiet.IdHoaDon=HoaDon.Id\n"
+                    + "where  HoaDon.Ma=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setDouble(1, tt);
+            ps.setInt(1, maHd);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                HoaDonChiTiet hdct = new HoaDonChiTiet();
-                hdct.setMaSp(rs.getString("Ma"));
+                HoaDonChiTiet2 hdct = new HoaDonChiTiet2();
+                hdct.setMaHd(rs.getInt("MaHd"));
+                hdct.setMaSp(rs.getString("MaSp"));
                 hdct.setTenSp(rs.getString("Ten"));
-                hdct.setDonGia(rs.getDouble("DonGia"));
-                hdct.setGiamGia(rs.getDouble("GiamGia"));
+                hdct.setDonGia(rs.getString("DonGia"));
+                hdct.setGiamGia(rs.getString("GiamGia"));
                 hdct.setSoLuong(rs.getInt("SoLuong"));
-                hdct.setThanhTien(rs.getDouble("ThanhTien"));
+                hdct.setThanhTien(rs.getString("ThanhTien"));
                 listHdct.add(hdct);
             }
             rs.close();

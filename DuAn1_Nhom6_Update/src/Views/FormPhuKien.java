@@ -228,6 +228,7 @@ private void loadTable() {
             }
             QlPhuKien xx=new QlPhuKien();
             xx.setTen(txtTen.getText());
+            xx.setMa(txtMa.getText());
             iPhuKienSer.updatePks(xx);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTable();
