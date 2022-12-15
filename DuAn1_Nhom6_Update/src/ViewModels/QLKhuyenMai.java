@@ -10,26 +10,35 @@ import DomainModels.*;
  *
  * @author pc
  */
-public class QLKhuyenMai {
-  String Ma,ten,NgayBD,NgayKT,Giagia;
+public class QlKhuyenMai {
+  String id,ma,ten,NgayBD,NgayKT,Giagia;
 
-    public QLKhuyenMai() {
+    public QlKhuyenMai() {
     }
 
-    public QLKhuyenMai(String Ma, String ten, String NgayBD, String NgayKT, String Giagia) {
-        this.Ma = Ma;
+    public QlKhuyenMai(String id, String ma, String ten, String NgayBD, String NgayKT, String Giagia) {
+        this.id = id;
+        this.ma = ma;
         this.ten = ten;
         this.NgayBD = NgayBD;
         this.NgayKT = NgayKT;
         this.Giagia = Giagia;
     }
 
-    public String getMa() {
-        return Ma;
+    public String getId() {
+        return id;
     }
 
-    public void setMa(String Ma) {
-        this.Ma = Ma;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     public String getTen() {
@@ -63,5 +72,9 @@ public class QLKhuyenMai {
     public void setGiagia(String Giagia) {
         this.Giagia = Giagia;
     }
-  
+
+  @Override
+  public String toString(){
+      return Giagia;
+  }
 }

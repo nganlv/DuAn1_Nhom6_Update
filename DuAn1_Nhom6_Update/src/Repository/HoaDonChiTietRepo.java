@@ -21,17 +21,17 @@ import java.util.List;
 public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
 
     @Override
-    public List<HoaDonChiTiet> getAllHdct(String ma) {
+    public List<HoaDonChiTiet> getAllHdct(String ten) {
         try {
             List<HoaDonChiTiet> listHdct = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong, KhuyenMai.GiamGia, (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as ThanhTien from ChiTietSP\n"
+            String sql = "select ChiTietSP.Ma, SanPham.Ten, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong, KhuyenMai.GiamGia, (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as ThanhTien from ChiTietSP\n"
                     + " join SanPham on ChiTietSP.IdSp=SanPham.Id\n"
                     + " join HoaDonChiTiet on ChiTietSP.Id=HoaDonChiTiet.IdChiTietSP\n"
                     + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
-                    + " where SanPham.Ma=?";
+                    + " where SanPham.Ten=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, ma);
+            ps.setString(1, ten);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
@@ -42,6 +42,7 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
                 hdct.setSoLuong(rs.getInt("SoLuong"));
                 hdct.setThanhTien(rs.getDouble("ThanhTien"));
                 listHdct.add(hdct);
+                
             }
             rs.close();
             ps.close();
@@ -52,6 +53,7 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
         }
         return null;
     }
+
     @Override
     public List<HoaDonChiTiet> getAllHdct2(Double tt) {
         try {
@@ -102,8 +104,9 @@ public class HoaDonChiTietRepo implements IHoaDonChiTietRepo {
         }
         return null;
     }
+
     @Override
-    public List<HoaDonChiTiet> delete(){
+    public List<HoaDonChiTiet> delete() {
         try {
             List<HoaDonChiTiet> listHdct = new ArrayList<>();
             Connection conn = DBContext.getConnection();

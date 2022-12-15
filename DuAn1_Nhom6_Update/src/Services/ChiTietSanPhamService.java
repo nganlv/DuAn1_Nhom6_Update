@@ -32,7 +32,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
                 listCtsp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
-                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
+                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(),ctsp.getGiamGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
             }
             return listCtsp;
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
                 timSp.add(new ChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
-                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
+                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(),ctsp.getGiamGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
             }
             return timSp;
         } catch (Exception e) {
@@ -66,7 +66,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
                 listSp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
-                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
+                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(),ctsp.getGiamGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
             }
             return listSp;
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
                 listSp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
-                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
+                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(),ctsp.getGiamGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
             }
             return listSp;
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
                 listSp.add(new QlChiTietSanPham(ctsp.getMa(), ctsp.getTen(), ctsp.getThuongHieu(), ctsp.getXuatXu(),
                         ctsp.getGioiTinh(), ctsp.getKieuMay(), ctsp.getTheLoai(), ctsp.getPhuKien(), ctsp.getTinhNang(),
                         ctsp.getHinhDangMat(), ctsp.getChatLieuMat(), ctsp.getChatLieuDay(), ctsp.getMauMat(),
-                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
+                        ctsp.getMauVo(), ctsp.getKichThuoc(), ctsp.getDonGia(),ctsp.getGiamGia(), ctsp.getNamBh(), ctsp.getSoLuong(), ctsp.getTinhTrang()));
             }
             return listSp;
         } catch (Exception e) {
@@ -108,18 +108,18 @@ public class ChiTietSanPhamService implements IChiTietSanPhamService {
         }
         return null;
     }
-
-    @Override
-    public List<ChiTietSanPham> add(ChiTietSanPham sp) {
-        return iChiTietSanPhamRepo.addsp(sp);
-    }
+//
+//    @Override
+//    public List<ChiTietSanPham> add(ChiTietSanPham sp) {
+//        return iChiTietSanPhamRepo.addsp(sp);
+//    }
      @Override
     public List<QlChiTietSanPham> adds(QlChiTietSanPham sp) {
         return iChiTietSanPhamRepo.addsps(sp);
     }
 
     @Override
-     public String update(ChiTietSanPham sp) {
+     public String update(QlChiTietSanPham sp) {
 return  iChiTietSanPhamRepo.updates(sp);
     } 
      

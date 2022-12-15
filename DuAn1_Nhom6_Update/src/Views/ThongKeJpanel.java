@@ -24,6 +24,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         initComponents();
          thang();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,16 +38,16 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txttong = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        txthoadon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txtkhachhang = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbbang = new javax.swing.JTable();
@@ -55,21 +56,24 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         cbthang = new javax.swing.JComboBox<>();
         btnseach = new javax.swing.JButton();
-        btnthang = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtnam = new javax.swing.JTextField();
-        btnnam = new javax.swing.JButton();
         btnthongke = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Doanh thu");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("0");
+        txttong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txttong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txttong.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,7 +85,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txttong, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -90,19 +94,20 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jLabel5)
+                .addComponent(txttong)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Số hóa đơn");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("0");
+        txthoadon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txthoadon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txthoadon.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -114,7 +119,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txthoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -123,10 +128,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jLabel6)
+                .addComponent(txthoadon)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -160,14 +166,15 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Tổng khách hàng");
+        jLabel4.setText("Tổng Số Lượng Sản Phẩm");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("0");
+        txtkhachhang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtkhachhang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtkhachhang.setText("0");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -179,8 +186,8 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(txtkhachhang, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,10 +195,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(45, 45, 45)
-                .addComponent(jLabel8)
+                .addComponent(txtkhachhang)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 204));
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         tbbang.setModel(new javax.swing.table.DefaultTableModel(
@@ -212,6 +220,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jLabel10.setText("Lọc Tháng");
 
         cbthang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbthang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbthangActionPerformed(evt);
+            }
+        });
 
         btnseach.setText("Seach");
         btnseach.addActionListener(new java.awt.event.ActionListener() {
@@ -220,19 +233,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
             }
         });
 
-        btnthang.setText("OK");
-        btnthang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthangActionPerformed(evt);
-            }
-        });
-
         jLabel11.setText("Lọc Năm");
 
-        btnnam.setText("OK");
-        btnnam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnamActionPerformed(evt);
+        txtnam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnamKeyReleased(evt);
             }
         });
 
@@ -254,15 +259,11 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
                         .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnthang)
-                        .addGap(18, 18, 18)
+                        .addGap(79, 79, 79)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnnam)
-                        .addGap(0, 16, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -275,10 +276,8 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                     .addComponent(jLabel10)
                     .addComponent(cbthang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnseach)
-                    .addComponent(btnthang)
                     .addComponent(jLabel11)
-                    .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnnam))
+                    .addComponent(txtnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addContainerGap())
@@ -297,7 +296,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -316,6 +315,7 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btnthongke.setBackground(new java.awt.Color(255, 255, 51));
         btnthongke.setText("Thống Kê");
         btnthongke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,22 +342,68 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+public void doanhthu(){
+double TongTien=0;
+int ix = tbbang.getRowCount();
+    for (int i = 0; i < ix; i++) {
+//        TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(tbbang.getSelectedRow(), 5).toString());
+//        JOptionPane.showMessageDialog(this,"tong"+TongTien);
+        TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(i, 5).toString());
+//        String[] splits = String.valueOf(TongTien).split(".0$");
+//            StringBuilder stringBuilder1 = new StringBuilder();
+//            for (String x : splits) {
+//                stringBuilder1.append(x);
+//            }
+            txttong.setText(TongTien + " VNĐ");
+    }
+double TongSoluong=0;
+//int ix = tbbang.getRowCount();
+    for (int i = 0; i < ix; i++) {
+//        TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(tbbang.getSelectedRow(), 5).toString());
+//        JOptionPane.showMessageDialog(this,"tong"+TongTien);
+        TongSoluong=TongSoluong+Double.parseDouble(tbbang.getValueAt(i, 3).toString());
+        String[] splits = String.valueOf(TongSoluong).split("");
+            StringBuilder stringBuilder1 = new StringBuilder();
+            for (String x : splits) {
+                stringBuilder1.append(x);
+            }
+            txtkhachhang.setText(stringBuilder1.toString());
+    }
+double TongHD=0;
+//int ix = tbbang.getRowCount();
+    for (int i = 0; i < ix; i++) {
+//        TongTien=TongTien+Double.parseDouble(tbbang.getValueAt(tbbang.getSelectedRow(), 5).toString());
+//        JOptionPane.showMessageDialog(this,"tong"+TongTien);
+    //    TongHD=TongTien+Double.parseDouble(tbbang.getValueAt(i, 5).toString());
+    TongHD= ix;
+        String[] splits = String.valueOf(TongHD).split("");
+            StringBuilder stringBuilder1 = new StringBuilder();
+            for (String x : splits) {
+                stringBuilder1.append(x);
+            }
+            txthoadon.setText(stringBuilder1.toString());
+    }
 
-    private void btnnamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnamActionPerformed
-        nam();      // TODO add your handling code here:
-    }//GEN-LAST:event_btnnamActionPerformed
-
+}
     private void btnthongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthongkeActionPerformed
-layds();        // TODO add your handling code here:
+layds();  
+doanhthu();// TODO add your handling code here:
     }//GEN-LAST:event_btnthongkeActionPerformed
 
     private void btnseachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseachActionPerformed
-        tim();   // TODO add your handling code here:
+        tim(); 
+        doanhthu();// TODO add your handling code here:
     }//GEN-LAST:event_btnseachActionPerformed
 
-    private void btnthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthangActionPerformed
-thang1();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnthangActionPerformed
+    private void cbthangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbthangActionPerformed
+        thang1(); 
+        doanhthu();
+    }//GEN-LAST:event_cbthangActionPerformed
+
+    private void txtnamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnamKeyReleased
+        nam();
+        doanhthu();
+    }//GEN-LAST:event_txtnamKeyReleased
  public List<QuanLyThongKe> layds() {
         model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
         model.setRowCount(0);
@@ -448,7 +494,7 @@ thang1();        // TODO add your handling code here:
 
          
 
-            String month = cbthang.getSelectedItem().toString();
+            String month = (String) cbthang.getSelectedItem();
             model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
         model.setRowCount(0);
         List<QuanLyThongKe> dsnv = service.thang(month);
@@ -472,9 +518,7 @@ thang1();        // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnnam;
     private javax.swing.JButton btnseach;
-    private javax.swing.JButton btnthang;
     private javax.swing.JButton btnthongke;
     private javax.swing.JComboBox<String> cbthang;
     private javax.swing.JLabel jLabel1;
@@ -483,10 +527,7 @@ thang1();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -496,7 +537,10 @@ thang1();        // TODO add your handling code here:
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbbang;
+    private javax.swing.JLabel txthoadon;
+    private javax.swing.JLabel txtkhachhang;
     private javax.swing.JTextField txtnam;
     private javax.swing.JTextField txtseach;
+    private javax.swing.JLabel txttong;
     // End of variables declaration//GEN-END:variables
 }

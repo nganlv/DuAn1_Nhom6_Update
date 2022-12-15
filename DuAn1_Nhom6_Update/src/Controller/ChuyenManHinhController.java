@@ -48,6 +48,7 @@ public class ChuyenManHinhController {
         root.validate();
         root.repaint();
         root.add(new BanHangJpanel());
+        
     }
 
     public void setEvent(List<DanhMucBean> listItem) {

@@ -8,6 +8,7 @@ import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
 import Repository.Interface.IHoaDonRepo;
 import Utilities.DBContext;
+import ViewModels.QlHoaDon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +39,7 @@ public class HoaDonRepo implements IHoaDonRepo {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 HoaDon hd=new HoaDon();
-                hd.setMaHd(rs.getString("MaHd"));
+                hd.setMaHd(rs.getInt("MaHd"));
                 hd.setNgayTao(rs.getString("NgayTao"));
                 hd.setNgayTT(rs.getString("NgayThanhToan"));
                 hd.setMaKh(rs.getString("MaKh"));
@@ -62,6 +63,191 @@ public class HoaDonRepo implements IHoaDonRepo {
         return null;
     }
     @Override
+    public List<HoaDon> timHd(String ma) {
+        try {
+            List<HoaDon> listHd = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select HoaDon.Ma as MaHd, HoaDon.NgayTao, HoaDon.NgayThanhToan, KhachHang.Ma as MaKh, KhachHang.HoTen as TenKh, \n"
+                    + " (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as TongTien, \n"
+                    + " HoaDonChiTiet.TienKhachDua, HoaDonChiTiet.TienKhachDua-((HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong) as TienThua, \n"
+                    + " HoaDon.HinhThucBH, HoaDon.HinhThucTT, HoaDon.TinhTrang, HoaDon.GhiChu from HoaDon\n"
+                    + " join HoaDonChiTiet on HoaDon.Id=HoaDonChiTiet.IdHoaDon\n"
+                    + " join ChiTietSP on HoaDonChiTiet.IdChiTietSP=ChiTietSP.Id\n"
+                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + " join KhachHang on HoaDon.IdKH=KhachHang.Id "
+                    + " where HoaDon.Ma=?";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                HoaDon hd=new HoaDon();
+                hd.setMaHd(rs.getInt("MaHd"));
+                hd.setNgayTao(rs.getString("NgayTao"));
+                hd.setNgayTT(rs.getString("NgayThanhToan"));
+                hd.setMaKh(rs.getString("MaKh"));
+                hd.setTenKh(rs.getString("TenKh"));
+                hd.setTongTien(rs.getDouble("TongTien"));
+                hd.setTienKhachDua(rs.getDouble("TienKhachDua"));
+                hd.setTienThua(rs.getDouble("TienThua"));
+                hd.setHinhThucBh(rs.getString("HinhThucBH"));
+                hd.setHinhThucTT(rs.getString("HinhThucTT"));
+                hd.setTinhTrang(rs.getString("TinhTrang"));
+                hd.setGhiChu(rs.getString("GhiChu"));
+                listHd.add(hd);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listHd;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public List<HoaDon> locHdTheoTT(String tt) {
+        try {
+            List<HoaDon> listHd = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select HoaDon.Ma as MaHd, HoaDon.NgayTao, HoaDon.NgayThanhToan, KhachHang.Ma as MaKh, KhachHang.HoTen as TenKh, \n"
+                    + " (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as TongTien, \n"
+                    + " HoaDonChiTiet.TienKhachDua, HoaDonChiTiet.TienKhachDua-((HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong) as TienThua, \n"
+                    + " HoaDon.HinhThucBH, HoaDon.HinhThucTT, HoaDon.TinhTrang, HoaDon.GhiChu from HoaDon\n"
+                    + " join HoaDonChiTiet on HoaDon.Id=HoaDonChiTiet.IdHoaDon\n"
+                    + " join ChiTietSP on HoaDonChiTiet.IdChiTietSP=ChiTietSP.Id\n"
+                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + " join KhachHang on HoaDon.IdKH=KhachHang.Id"
+                    + " where HoaDon.TinhTrang=?";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, tt);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                HoaDon hd=new HoaDon();
+                hd.setMaHd(rs.getInt("MaHd"));
+                hd.setNgayTao(rs.getString("NgayTao"));
+                hd.setNgayTT(rs.getString("NgayThanhToan"));
+                hd.setMaKh(rs.getString("MaKh"));
+                hd.setTenKh(rs.getString("TenKh"));
+                hd.setTongTien(rs.getDouble("TongTien"));
+                hd.setTienKhachDua(rs.getDouble("TienKhachDua"));
+                hd.setTienThua(rs.getDouble("TienThua"));
+                hd.setHinhThucBh(rs.getString("HinhThucBH"));
+                hd.setHinhThucTT(rs.getString("HinhThucTT"));
+                hd.setTinhTrang(rs.getString("TinhTrang"));
+                hd.setGhiChu(rs.getString("GhiChu"));
+                listHd.add(hd);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listHd;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public List<HoaDon> locHdTheoHTBH(String htbh) {
+        try {
+            List<HoaDon> listHd = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select HoaDon.Ma as MaHd, HoaDon.NgayTao, HoaDon.NgayThanhToan, KhachHang.Ma as MaKh, KhachHang.HoTen as TenKh, \n"
+                    + " (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as TongTien, \n"
+                    + " HoaDonChiTiet.TienKhachDua, HoaDonChiTiet.TienKhachDua-((HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong) as TienThua, \n"
+                    + " HoaDon.HinhThucBH, HoaDon.HinhThucTT, HoaDon.TinhTrang, HoaDon.GhiChu from HoaDon\n"
+                    + " join HoaDonChiTiet on HoaDon.Id=HoaDonChiTiet.IdHoaDon\n"
+                    + " join ChiTietSP on HoaDonChiTiet.IdChiTietSP=ChiTietSP.Id\n"
+                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + " join KhachHang on HoaDon.IdKH=KhachHang.Id"
+                    + " where HoaDon.HinhThucBH=?";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, htbh);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                HoaDon hd=new HoaDon();
+                hd.setMaHd(rs.getInt("MaHd"));
+                hd.setNgayTao(rs.getString("NgayTao"));
+                hd.setNgayTT(rs.getString("NgayThanhToan"));
+                hd.setMaKh(rs.getString("MaKh"));
+                hd.setTenKh(rs.getString("TenKh"));
+                hd.setTongTien(rs.getDouble("TongTien"));
+                hd.setTienKhachDua(rs.getDouble("TienKhachDua"));
+                hd.setTienThua(rs.getDouble("TienThua"));
+                hd.setHinhThucBh(rs.getString("HinhThucBH"));
+                hd.setHinhThucTT(rs.getString("HinhThucTT"));
+                hd.setTinhTrang(rs.getString("TinhTrang"));
+                hd.setGhiChu(rs.getString("GhiChu"));
+                listHd.add(hd);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listHd;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public List<HoaDon> locHdTheoHTTT(String httt) {
+        try {
+            List<HoaDon> listHd = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select HoaDon.Ma as MaHd, HoaDon.NgayTao, HoaDon.NgayThanhToan, KhachHang.Ma as MaKh, KhachHang.HoTen as TenKh, \n"
+                    + " (HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong as TongTien, \n"
+                    + " HoaDonChiTiet.TienKhachDua, HoaDonChiTiet.TienKhachDua-((HoaDonChiTiet.DonGia-KhuyenMai.GiamGia)*HoaDonChiTiet.SoLuong) as TienThua, \n"
+                    + " HoaDon.HinhThucBH, HoaDon.HinhThucTT, HoaDon.TinhTrang, HoaDon.GhiChu from HoaDon\n"
+                    + " join HoaDonChiTiet on HoaDon.Id=HoaDonChiTiet.IdHoaDon\n"
+                    + " join ChiTietSP on HoaDonChiTiet.IdChiTietSP=ChiTietSP.Id\n"
+                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id\n"
+                    + " join KhachHang on HoaDon.IdKH=KhachHang.Id"
+                    + " where HoaDon.HinhThucTT=?";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, httt);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                HoaDon hd=new HoaDon();
+                hd.setMaHd(rs.getInt("MaHd"));
+                hd.setNgayTao(rs.getString("NgayTao"));
+                hd.setNgayTT(rs.getString("NgayThanhToan"));
+                hd.setMaKh(rs.getString("MaKh"));
+                hd.setTenKh(rs.getString("TenKh"));
+                hd.setTongTien(rs.getDouble("TongTien"));
+                hd.setTienKhachDua(rs.getDouble("TienKhachDua"));
+                hd.setTienThua(rs.getDouble("TienThua"));
+                hd.setHinhThucBh(rs.getString("HinhThucBH"));
+                hd.setHinhThucTT(rs.getString("HinhThucTT"));
+                hd.setTinhTrang(rs.getString("TinhTrang"));
+                hd.setGhiChu(rs.getString("GhiChu"));
+                listHd.add(hd);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listHd;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public Integer addHdc(QlHoaDon hd){
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "insert into HoaDon(IdKH,NgayTao) values(?,getdate())";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, hd.getTenKh());
+                   
+            int addHdc=ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return addHdc;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
     public Integer updateTT(HoaDon hd){
         try {
             Connection conn = DBContext.getConnection();
@@ -71,7 +257,7 @@ public class HoaDonRepo implements IHoaDonRepo {
             ps.setString(2, hd.getHinhThucBh());
             ps.setString(3, hd.getHinhThucTT());
             ps.setString(4, hd.getGhiChu());
-            ps.setString(5, hd.getMaHd());
+            ps.setInt(5, hd.getMaHd());
             int updateTT=ps.executeUpdate();
             ps.close();
             conn.close();
@@ -91,7 +277,7 @@ public class HoaDonRepo implements IHoaDonRepo {
             ps.setString(2, hd.getHinhThucBh());
             ps.setString(3, hd.getHinhThucTT());
             ps.setString(4, hd.getGhiChu());
-            ps.setString(5, hd.getMaHd());
+            ps.setInt(5, hd.getMaHd());
             int updateTT=ps.executeUpdate();
             ps.close();
             conn.close();

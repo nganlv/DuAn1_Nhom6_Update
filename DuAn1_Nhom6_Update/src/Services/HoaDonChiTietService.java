@@ -20,10 +20,10 @@ import java.util.List;
 public class HoaDonChiTietService implements IHoaDonChiTietSer{
     private final IHoaDonChiTietRepo iHoaDonChiTietRepo=(IHoaDonChiTietRepo) new HoaDonChiTietRepo();
     @Override
-    public List<QlHoaDonChiTiet> getAllHdcts(String ma){
+    public List<QlHoaDonChiTiet> getAllHdcts(String ten){
         try {
             List<QlHoaDonChiTiet> listHdct=new ArrayList<>();
-            for(HoaDonChiTiet hdct:iHoaDonChiTietRepo.getAllHdct(ma)){
+            for(HoaDonChiTiet hdct:iHoaDonChiTietRepo.getAllHdct(ten)){
                 listHdct.add(new QlHoaDonChiTiet(hdct.getMaSp(), hdct.getTenSp(), hdct.getDonGia(),hdct.getGiamGia(), hdct.getSoLuong(), hdct.getThanhTien()));
             }
             return listHdct;

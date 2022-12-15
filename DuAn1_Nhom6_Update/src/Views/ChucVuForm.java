@@ -24,6 +24,7 @@ public class ChucVuForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         loadTable();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     public void loadTable(){

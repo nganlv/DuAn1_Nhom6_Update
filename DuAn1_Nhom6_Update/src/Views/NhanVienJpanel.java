@@ -73,7 +73,7 @@ public void LoadTable(){
 private void loadCombobox1() {
         
         String[] gioiTinh = {"Nam", "Nữ"};
-        String[]tinhTrang={"Đang Làm Việc","Đã  Nghỉ  Việc"};
+        String[]tinhTrang={"Đang làm việc","Đã nghỉ việc"};
         cboGioiTinh.setModel(new DefaultComboBoxModel<>(gioiTinh));
         cboTrangThai.setModel(new DefaultComboBoxModel<>(tinhTrang));
     }
@@ -120,9 +120,9 @@ private void loadCombobox1() {
         nv.setIdcv(cv.getId());
         
         if(rdDanglam.isSelected()){
-            nv.setTrangthai("Đang Làm Việc");
+            nv.setTrangthai("Đang làm việc");
       }else{
-         nv.setTrangthai("Đã  Nghỉ  Việc");
+         nv.setTrangthai("Đã nghỉ việc");
       }
       
       return nv;
@@ -242,6 +242,10 @@ private void loadCombobox1() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -273,6 +277,7 @@ private void loadCombobox1() {
         btntk = new javax.swing.JButton();
         btnCv = new javax.swing.JButton();
         btnLoad = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
@@ -288,8 +293,8 @@ private void loadCombobox1() {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Thiết lập thông tin nhân viên");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -306,8 +311,10 @@ private void loadCombobox1() {
 
         jLabel7.setText("Địa chỉ");
 
+        buttonGroup3.add(rdNam);
         rdNam.setText("Nam");
 
+        buttonGroup3.add(rdNu);
         rdNu.setText("Nữ");
 
         jLabel8.setText("Email");
@@ -318,28 +325,30 @@ private void loadCombobox1() {
 
         jLabel12.setText("Trạng thái");
 
+        buttonGroup2.add(rdDanglam);
         rdDanglam.setText("Đang làm");
 
+        buttonGroup2.add(rdDaNghi);
         rdDaNghi.setText("Đã nghỉ việc");
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 51));
         btnThem.setText("Thêm");
+        btnThem.setBackground(new java.awt.Color(255, 255, 51));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(255, 255, 51));
         btnSua.setText("Sửa");
+        btnSua.setBackground(new java.awt.Color(255, 255, 51));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnReset.setBackground(new java.awt.Color(255, 255, 51));
         btnReset.setText("Làm mới");
+        btnReset.setBackground(new java.awt.Color(255, 255, 51));
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -364,13 +373,16 @@ private void loadCombobox1() {
             }
         });
 
-        btnLoad.setBackground(new java.awt.Color(255, 255, 51));
         btnLoad.setText("Load");
+        btnLoad.setBackground(new java.awt.Color(255, 255, 51));
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
             }
         });
+
+        btnXoa.setText("Xóa");
+        btnXoa.setBackground(new java.awt.Color(255, 255, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -419,12 +431,13 @@ private void loadCombobox1() {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btntk)
                                     .addComponent(btnCv))))))
-                .addGap(18, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReset, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLoad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLoad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(112, 112, 112))
         );
         jPanel2Layout.setVerticalGroup(
@@ -438,11 +451,13 @@ private void loadCombobox1() {
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(6, 6, 6)
                         .addComponent(btnThem)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua)
                         .addGap(18, 18, 18)
+                        .addComponent(btnXoa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReset)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnLoad))
@@ -586,8 +601,8 @@ private void loadCombobox1() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Thông tin nhân viên");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -758,9 +773,14 @@ private void loadCombobox1() {
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton btntk;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JComboBox<ChucVu> cbCV;
     private javax.swing.JComboBox<ChucVu> cbLoc;
     private javax.swing.JComboBox<TaiKhoan> cbTK;

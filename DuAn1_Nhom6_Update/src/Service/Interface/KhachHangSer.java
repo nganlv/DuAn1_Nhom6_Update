@@ -23,6 +23,8 @@ public interface KhachHangSer {
     String delete(String KH);
 
     String update(KhachHang Kh);
-    ArrayList<KhachHang> getTim();
+     ArrayList<KhachHang> getTim(String ma);
+           ArrayList<KhachHang> getLOCs(String gt);
+
     
 }

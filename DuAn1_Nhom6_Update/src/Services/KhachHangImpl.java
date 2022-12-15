@@ -87,10 +87,30 @@ public class KhachHangImpl implements KhachHangSer {
         }
     }
 
+      @Override
+    public ArrayList<KhachHang> getTim(String ma) {
+         try {
+            ArrayList<KhachHang> listKh = new ArrayList<>();
+            for (KhachHang kh : KHR.getTim(ma)) {
+                listKh.add(new KhachHang(kh.getMaKH(), kh.getHoTen(), kh.getGioiTinh(),kh.getSdt(), kh.getDiaChi() ,kh.getEmail(),kh.getDiem(),
+                        kh.getNgaysinh(),kh.getNgayTao(),kh.getNgayHetHan()));
+            }
+            return listKh;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return null;
+        }
     @Override
-    public ArrayList<KhachHang> getTim() {
+    public ArrayList<KhachHang> getLOCs(String gt) {
         try {
-            return KHR.getTim();
+            ArrayList<KhachHang> listk =new ArrayList();
+            for (KhachHang k : KHR.getloc(gt)) {
+                listk.add(new KhachHang(k.getMaKH(),k.getHoTen(),k.getGioiTinh(),k.getNgaysinh(),k.getSdt(),k.getDiaChi(),k.getEmail(),k.getNgayTao(),k.getNgayHetHan(),k.getDiem()));
+                
+            }
+            return listk;
         } catch (Exception e) {
             e.printStackTrace();
         }

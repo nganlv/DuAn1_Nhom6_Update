@@ -24,7 +24,7 @@ public class KhachHang_BanHangService implements IKhachHang_BanHangService {
         try {
             List<QlKhachHang_BanHang> listKh = new ArrayList<>();
             for (KhachHang_BanHang kh : iKhachHang_BanHangRepo.getAllKh()) {
-                listKh.add(new QlKhachHang_BanHang(kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
+                listKh.add(new QlKhachHang_BanHang(kh.getId(),kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
                         kh.getDiaChi(), kh.getEmail(), kh.getNgayTao(), kh.getNgayHh(), kh.getDiem()));
             }
             return listKh;
@@ -36,7 +36,7 @@ public class KhachHang_BanHangService implements IKhachHang_BanHangService {
 
     public Integer addKhs(QlKhachHang_BanHang kh) {
         try {
-            return iKhachHang_BanHangRepo.addKh(new KhachHang_BanHang(kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
+            return iKhachHang_BanHangRepo.addKh(new KhachHang_BanHang(kh.getId(),kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
                     kh.getDiaChi(), kh.getEmail(), kh.getNgayTao(), kh.getNgayHh(), kh.getDiem()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class KhachHang_BanHangService implements IKhachHang_BanHangService {
     }
     public Integer updateKhs(QlKhachHang_BanHang kh) {
         try {
-            return iKhachHang_BanHangRepo.updateKh(new KhachHang_BanHang(kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
+            return iKhachHang_BanHangRepo.updateKh(new KhachHang_BanHang(kh.getId(),kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
                     kh.getDiaChi(), kh.getEmail(), kh.getNgayTao(), kh.getNgayHh(), kh.getDiem()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class KhachHang_BanHangService implements IKhachHang_BanHangService {
         try {
             List<QlKhachHang_BanHang> listKh = new ArrayList<>();
             for (KhachHang_BanHang kh : iKhachHang_BanHangRepo.timKh(ten)) {
-                listKh.add(new QlKhachHang_BanHang(kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
+                listKh.add(new QlKhachHang_BanHang(kh.getId(),kh.getMa(), kh.getHoTen(), kh.getGioiTinh(), kh.getNgaySinh(), kh.getSdt(),
                         kh.getDiaChi(), kh.getEmail(), kh.getNgayTao(), kh.getNgayHh(), kh.getDiem()));
             }
             return listKh;

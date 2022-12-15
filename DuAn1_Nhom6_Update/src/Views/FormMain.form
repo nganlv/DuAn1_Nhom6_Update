@@ -69,14 +69,14 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel2" max="32767" attributes="0"/>
-                  <Component id="jpnBanHang" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnSanPham" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnHoaDon" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnKhachHang" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnNhanVien" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnKhuyenMai" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnThongKe" alignment="0" pref="361" max="32767" attributes="0"/>
-                  <Component id="jpnThoat" alignment="0" pref="361" max="32767" attributes="0"/>
+                  <Component id="jpnBanHang" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnSanPham" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnHoaDon" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnKhachHang" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnNhanVien" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnKhuyenMai" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnThongKe" alignment="0" pref="367" max="32767" attributes="0"/>
+                  <Component id="jpnThoat" alignment="0" pref="367" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -134,9 +134,6 @@
                 <Component class="javax.swing.JLabel" name="jlbDongHo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\DuAn1_Nhom6_Update\DuAn1_Nhom6_Update\src\Image\icons8-watch-48.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; B&#xc1;N &#x110;&#x1ed2;NG H&#x1ed2;  "/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="24" style="1"/>
@@ -172,7 +169,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbBanHang" pref="53" max="32767" attributes="0"/>
+                          <Component id="jlbBanHang" pref="39" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -217,7 +214,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbSanPham" pref="53" max="32767" attributes="0"/>
+                          <Component id="jlbSanPham" pref="39" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -307,7 +304,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbKhachHang" pref="53" max="32767" attributes="0"/>
+                          <Component id="jlbKhachHang" pref="39" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -352,7 +349,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbNhanVien" pref="53" max="32767" attributes="0"/>
+                          <Component id="jlbNhanVien" pref="39" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -398,7 +395,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jlbKhuyenMai" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -442,7 +439,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbThongKe" pref="53" max="32767" attributes="0"/>
+                          <Component id="jlbThongKe" pref="39" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>

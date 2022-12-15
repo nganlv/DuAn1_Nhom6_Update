@@ -12,7 +12,7 @@ import java.util.List;
  * @author levan
  */
 public interface IHoaDonChiTietRepo {
-    public List<HoaDonChiTiet> getAllHdct(String ma);
+    public List<HoaDonChiTiet> getAllHdct(String ten);
     public List<HoaDonChiTiet> getAllHdct2(Double tt );
     public Integer updateSl(HoaDonChiTiet hdct);
     public List<HoaDonChiTiet> delete();

@@ -114,7 +114,7 @@ public class ThongKeRepo implements IThongKeRepo {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, month);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while(rs.next()) {
                 ThongKe kh = new ThongKe();
 
                 kh.setMaSP(rs.getString("Ma"));
@@ -152,7 +152,7 @@ public class ThongKeRepo implements IThongKeRepo {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, year);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 ThongKe kh = new ThongKe();
 
                 kh.setMaSP(rs.getString("Ma"));

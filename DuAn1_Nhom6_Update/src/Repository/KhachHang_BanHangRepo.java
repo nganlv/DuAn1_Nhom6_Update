@@ -28,6 +28,7 @@ public class KhachHang_BanHangRepo implements IKhachHang_BanHangRepo{
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 KhachHang_BanHang kh=new KhachHang_BanHang();
+                kh.setId(rs.getString("Id"));
                 kh.setMa(rs.getString("Ma"));
                 kh.setHoTen(rs.getString("HoTen"));
                 kh.setGioiTinh(rs.getString("GioiTinh"));
