@@ -288,7 +288,7 @@ public class HoaDonRepo implements IHoaDonRepo {
     public Integer addHdc(QlHoaDon hd) {
         try {
             Connection conn = DBContext.getConnection();
-            String sql = "insert into HoaDon values( NEWID(),?,'88FAFC48-6A4C-4076-9DEE-682C445272B3',getdate(),null,null,null,null,null,null,null,null)";
+            String sql = "insert into HoaDon values( NEWID(),?,'88FAFC48-6A4C-4076-9DEE-682C445272B3',getdate(),null,null,null,null,null,null,N'Chưa thanh toán',null)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, hd.getTenKh());
             int addHdc = ps.executeUpdate();
@@ -343,6 +343,22 @@ public class HoaDonRepo implements IHoaDonRepo {
             ps.close();
             conn.close();
             return updateTT2;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public Integer updateTT3(HoaDon hd) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "update HoaDon set TinhTrang=N'Chưa thanh toán', where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);        
+            ps.setInt(1, hd.getMaHd());
+            int updateTT3 = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return updateTT3;
         } catch (SQLException e) {
             e.printStackTrace();
         }

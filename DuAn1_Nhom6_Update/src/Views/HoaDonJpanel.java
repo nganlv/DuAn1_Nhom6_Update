@@ -58,7 +58,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
     }
 
     private void loadCombobox() {
-        String[] tinhTrang = {"Đã thanh toán", "Đã hủy"};
+        String[] tinhTrang = {"Đã thanh toán", "Đã hủy","Chưa thanh toán"};
         String[] hinhThucBH = {"Bán trực tiếp", "Ship code"};
         String[] hinhThucTT = {"Tiền mặt", "Chuyển khoản", "Quẹt thẻ"};
         cboTinhTrang.setModel(new DefaultComboBoxModel<>(tinhTrang));
@@ -270,7 +270,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Hiển thị");
+        jButton1.setText("Tất cả");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -295,7 +295,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
         );
