@@ -222,9 +222,19 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
         btnThem.setText("Thêm");
         btnThem.setBackground(new java.awt.Color(255, 255, 51));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
         btnSua.setBackground(new java.awt.Color(255, 255, 51));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnReset.setText("Làm mới");
         btnReset.setBackground(new java.awt.Color(255, 255, 51));
@@ -494,7 +504,12 @@ private final KhachHangImpl KHser = new KhachHangImpl();
     }//GEN-LAST:event_txtDiemActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+         if (txtMa.getText().trim().isEmpty() || txtHoTen.getText().trim().isEmpty() || txtDiaChi.getText().trim().isEmpty()
+                    || txtDiem.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty() || txtSdt.getText().trim().isEmpty()
+                    || txtNgaySinh.getText().trim().isEmpty() || txtNgayHetHan.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không để trống");
+                return;
+            }
         if (KHser.checkMa(txtMa.getText().trim())) {
             JOptionPane.showMessageDialog(this, "Mã tai khoan đã tồn tại");
         } else {
@@ -506,7 +521,12 @@ private final KhachHangImpl KHser = new KhachHangImpl();
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-
+        if (txtMa.getText().trim().isEmpty() || txtHoTen.getText().trim().isEmpty() || txtDiaChi.getText().trim().isEmpty()
+                    || txtDiem.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty() || txtSdt.getText().trim().isEmpty()
+                    || txtNgaySinh.getText().trim().isEmpty() || txtNgayHetHan.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không để trống");
+                return;
+            }
         if(!KHser.checkMa(txtMa.getText().trim())){
             JOptionPane.showMessageDialog(this, "Mã tai khoan không tồn tại");
         }else{
