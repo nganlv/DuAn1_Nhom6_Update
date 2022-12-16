@@ -40,7 +40,7 @@ import javax.swing.DefaultComboBoxModel;
 public class BanHangJpanel extends javax.swing.JPanel {
 
     private final ISanPham_BanHangService iSanPhamService = new SanPham_BanHangService();
-    private final IChiTietSanPhamService iChiTietSanPhamService = new ChiTietSanPhamService();  
+    private final IChiTietSanPhamService iChiTietSanPhamService = new ChiTietSanPhamService();
     private final IHoaDonSer iHoaDonSer = new HoaDonService();
     List<QlHoaDonChiTiet> listHdct = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
         dateTT.getSettings().setDateRangeLimits(LocalDate.now(), LocalDate.MAX);
         jlbUserName.setText(FormDangNhap.userName);
         donHang();
-    
+
     }
 
     public void clock() {
@@ -770,7 +770,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fillHoaDonCho2(int index) {
-       List<QlHoaDon> listhdc = iHoaDonSer.getAllHdcs(jlbTenKh.getText());
+        List<QlHoaDon> listhdc = iHoaDonSer.getAllHdcs(jlbTenKh.getText());
         jlbMaHd.setText(String.valueOf(listhdc.get(index).getMaHd()));
         txtIdHd.setText(listhdc.get(index).getIdHd());
 //        txtTenKh.setText(listhdc.get(index).getTenKh());
@@ -781,7 +781,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Chưa chọn sản phẩm");
             return;
         }
-        if(txtIdHd.getText().trim().isEmpty()){
+        if (txtIdHd.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Chưa tạo hóa đơn");
             return;
         }
@@ -793,6 +793,16 @@ public class BanHangJpanel extends javax.swing.JPanel {
 ////        iHoaDonChiTietSer.updateSls(hdct);
         List<QLSanPham_BanHang> listSp = iSanPhamService.getAllSps();
         int index = tblSanPham.getSelectedRow();
+        int soLuong2 = Integer.parseInt(soLuong);
+        if (soLuong2 <= 0) {
+            JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0");
+            return;
+        }
+
+        if (soLuong2 > listSp.get(index).getSoLuong()) {
+            JOptionPane.showMessageDialog(this, "Số lượng Sản phẩm quá lớn, không đủ");
+            return;
+        }
         QlHoaDonChiTiet hdct = new QlHoaDonChiTiet();
         hdct.setMaSp(listSp.get(index).getMa());
         hdct.setTenSp(listSp.get(index).getTen());
@@ -806,8 +816,8 @@ public class BanHangJpanel extends javax.swing.JPanel {
         ctsp.setSoLuong((listSp.get(index).getSoLuong()) - Integer.parseInt(soLuong));
         ctsp.setMa(listSp.get(index).getMa());
         iChiTietSanPhamService.update(ctsp);
-        
-        QlHoaDon hd=new QlHoaDon();
+
+        QlHoaDon hd = new QlHoaDon();
         hd.setDonGia(listSp.get(index).getDonGia());
         hd.setSoLuong(Integer.parseInt(soLuong));
         hd.setIdCtsp(txtIdCtsp.getText());
@@ -869,22 +879,22 @@ public class BanHangJpanel extends javax.swing.JPanel {
         txtTienKhachDua.setText(null);
         txtGhiChu.setText(null);
         DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Nhân viên tạo", " Khách hàng"});
         tblHoaDonCho.setModel(model);
-        tblGioHang.setModel(model);
+        btnDeleteAllActionPerformed(evt);
     }//GEN-LAST:event_btnResetHdActionPerformed
     private void addHdc() {
-        
+
         QlHoaDon hd = new QlHoaDon();
-       
+
         hd.setTenKh(jlbMaKh.getText());
-        
+
         iHoaDonSer.addHdcs(hd);
     }
     private void btnTaoHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHdActionPerformed
-//if(jlbMaKh.getText().isBlank()||jlbTenKh.getText().isBlank()){
-//    JOptionPane.showMessageDialog(this, "Chưa chọn khách hàng");
-//    return;
-//}       
+//        QlHoaDon hd = new QlHoaDon();
+//        hd.setMaHd(Integer.parseInt(jlbMaHd.getText()));
+//        iHoaDonSer.updateTT3s(hd);
         addHdc();
         loadTableHdc2();
     }//GEN-LAST:event_btnTaoHdActionPerformed
@@ -951,7 +961,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
         hd.setMaHd(Integer.parseInt(jlbMaHd.getText()));
         hd.setGhiChu(txtGhiChu.getText());
         hd.setNgayTT(dateTT.getText());
-        hd.setTongTien(Double.parseDouble(jlbDonGia.getText()));
+        hd.setTongTien(Double.parseDouble(jlbThanhTien.getText()));
         hd.setGiamGia(Double.parseDouble(jlbGiamGia.getText()));
         hd.setTienKhachDua(Double.parseDouble(txtTienKhachDua.getText()));
         hd.setHinhThucBh(cboHtbh.getItemAt(cboHtbh.getSelectedIndex()));
@@ -987,7 +997,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
 
     private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Giảm giá", "Số lượng", "Thành tiền"});      
+        model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Giảm giá", "Số lượng", "Thành tiền"});
         tblGioHang.setModel(model);
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
