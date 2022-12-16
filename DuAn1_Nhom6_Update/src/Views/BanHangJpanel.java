@@ -781,6 +781,10 @@ public class BanHangJpanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Chưa chọn sản phẩm");
             return;
         }
+        if(txtIdHd.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chưa tạo hóa đơn");
+            return;
+        }
         String soLuong = JOptionPane.showInputDialog(null, "Mời bạn nhập số lượng sản phẩm", "Hệ thống quản lý bán hàng", JOptionPane.INFORMATION_MESSAGE);
 //        QlHoaDonChiTiet hdct = new QlHoaDonChiTiet();
 ////        hdct.setSoLuong(Integer.parseInt(soLuong));
